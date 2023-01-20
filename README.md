@@ -1,0 +1,1 @@
+Pruzanje e-commerce resenja na Android platformi pomocu MVVM design pattern-a i Jetpack Compose-a - Aplikacija za diplomski rad

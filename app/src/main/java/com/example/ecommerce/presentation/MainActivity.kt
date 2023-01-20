@@ -1,4 +1,4 @@
-package com.example.ecommerce
+package com.example.ecommerce.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.example.ecommerce.ui.theme.ECommerceTheme
+import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

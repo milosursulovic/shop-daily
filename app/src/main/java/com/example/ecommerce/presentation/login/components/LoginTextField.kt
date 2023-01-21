@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.login
+package com.example.ecommerce.presentation.login.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -35,7 +35,7 @@ fun LoginTextField(
                 IconButton(onClick = { }) {
                     Icon(
                         Icons.Default.Check,
-                        "Check",
+                        null,
                         modifier = Modifier.size(20.dp),
                         tint = Success
                     )

@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.login
+package com.example.ecommerce.presentation.common.components
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
@@ -23,7 +23,7 @@ fun AppBar(
             IconButton(onClick = { onBackClick() }) {
                 Icon(
                     Icons.Default.KeyboardArrowLeft,
-                    "Back",
+                    null,
                     modifier = Modifier.size(40.dp)
                 )
             }

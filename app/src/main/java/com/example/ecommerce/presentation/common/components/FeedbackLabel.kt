@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.common
+package com.example.ecommerce.presentation.common.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.MaterialTheme
@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import com.example.ecommerce.presentation.common.util.FeedbackType
 import com.example.ecommerce.presentation.ui.theme.Success
 
 @Composable

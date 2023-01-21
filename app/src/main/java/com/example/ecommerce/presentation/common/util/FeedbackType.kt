@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.common
+package com.example.ecommerce.presentation.common.util
 
 sealed class FeedbackType(val msg: String) {
     data class Error(val errorMsg: String) : FeedbackType(errorMsg)

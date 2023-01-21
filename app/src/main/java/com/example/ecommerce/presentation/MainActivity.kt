@@ -8,7 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.example.ecommerce.presentation.login.AppBar
+import com.example.ecommerce.presentation.common.components.AppBar
 import com.example.ecommerce.presentation.login.Login
 import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
 

@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.login
+package com.example.ecommerce.presentation.login.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,8 +9,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ecommerce.presentation.common.FeedbackLabel
-import com.example.ecommerce.presentation.common.FeedbackType
+import com.example.ecommerce.presentation.common.components.FeedbackLabel
+import com.example.ecommerce.presentation.common.util.FeedbackType
 import com.example.ecommerce.presentation.login.util.LoginFieldType
 
 @Composable
@@ -36,6 +36,8 @@ fun LoginInput() {
         LoginTextField(type = LoginFieldType.Password, text = passwordState) {
             passwordState = it
         }
+        Spacer(modifier = Modifier.height(20.dp))
+        ForgotPassword()
         Spacer(modifier = Modifier.height(20.dp))
         FeedbackLabel(
             FeedbackType.Error("This is test error message")

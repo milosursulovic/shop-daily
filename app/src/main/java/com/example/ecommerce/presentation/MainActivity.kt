@@ -5,8 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import com.example.ecommerce.presentation.login.AppBar
+import com.example.ecommerce.presentation.login.Login
 import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,6 +22,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    Scaffold(
+                        topBar = {
+                            AppBar() {
+
+                            }
+                        }
+                    ) {
+                        Login()
+                    }
                 }
             }
         }

@@ -25,5 +25,25 @@ val Typography = Typography(
         fontFamily = Metrophobic,
         fontWeight = FontWeight.SemiBold,
         fontSize = 18.sp
-    )
+    ),
+    h4 = TextStyle(
+        fontFamily = Metrophobic,
+        fontWeight = FontWeight.Normal,
+        fontSize = 11.sp
+    ),
+    body1 = TextStyle(
+        fontFamily = Metrophobic,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 16.sp
+    ),
+    body2 = TextStyle(
+        fontFamily = Metrophobic,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp
+    ),
+    subtitle1 = TextStyle(
+        fontFamily = Metrophobic,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp
+    ),
 )

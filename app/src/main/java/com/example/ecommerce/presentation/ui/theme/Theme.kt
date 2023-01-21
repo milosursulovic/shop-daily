@@ -9,14 +9,13 @@ private val LightColorPalette = lightColors(
     primary = LightPrimary,
     error = Error,
     background = LightBackground,
+    onBackground = Black
 )
 
 @Composable
 fun ECommerceTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = LightColorPalette
-
     MaterialTheme(
-        colors = colors,
+        colors = LightColorPalette,
         typography = Typography,
         shapes = Shapes,
         content = content

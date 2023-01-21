@@ -40,7 +40,7 @@ fun ProductBottomArea(
         }
         Spacer(modifier = Modifier.width(5.dp))
         Text(
-            text = "(${product.discount})",
+            text = "(${product.rating})",
             style = MaterialTheme.typography.h4,
             color = Gray
         )
@@ -57,19 +57,27 @@ fun ProductBottomArea(
         fontWeight = FontWeight.Bold
     )
     Row(verticalAlignment = Alignment.CenterVertically) {
-        val strikethroughTextStyle = MaterialTheme.typography.body2.copy(
-            textDecoration = TextDecoration.LineThrough
-        )
-        Text(
-            text = "${product.price}$",
-            style = strikethroughTextStyle,
-            color = Gray
-        )
-        Spacer(modifier = Modifier.width(2.dp))
-        Text(
-            text = "${product.discount}$",
-            style = MaterialTheme.typography.body2,
-            color = Hot
-        )
+        if (areaType is AreaType.New) {
+            Text(
+                text = "${product.price}$",
+                style = MaterialTheme.typography.body2,
+                color = Black
+            )
+        } else {
+            val strikethroughTextStyle = MaterialTheme.typography.body2.copy(
+                textDecoration = TextDecoration.LineThrough
+            )
+            Text(
+                text = "${product.price}$",
+                style = strikethroughTextStyle,
+                color = Gray
+            )
+            Spacer(modifier = Modifier.width(2.dp))
+            Text(
+                text = "${product.price - product.discount * 0.01 * product.price}$",
+                style = MaterialTheme.typography.body2,
+                color = Hot
+            )
+        }
     }
 }

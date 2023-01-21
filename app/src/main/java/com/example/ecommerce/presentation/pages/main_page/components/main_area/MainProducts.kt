@@ -12,14 +12,24 @@ import com.example.ecommerce.presentation.pages.main_page.util.main_area.AreaTyp
 
 @Composable
 fun MainProducts(areaType: AreaType) {
-    val product = Product(
-        R.drawable.product_card_image_1,
-        "T-Shirt Sailing",
-        "Mango Boy",
-        10.0,
-        0,
-        0.0
-    )
+    val product = when (areaType) {
+        is AreaType.New -> Product(
+            R.drawable.product_card_image_1,
+            "T-Shirt Sailing",
+            "Mango Boy",
+            10.0,
+            0,
+            0.0
+        )
+        is AreaType.Sale -> Product(
+            R.drawable.product_card_image_2,
+            "Evening Dress",
+            "Dorothy Perkins",
+            15.0,
+            20,
+            10.0
+        )
+    }
     Row(
         modifier = Modifier.fillMaxSize(),
         horizontalArrangement = Arrangement.SpaceEvenly

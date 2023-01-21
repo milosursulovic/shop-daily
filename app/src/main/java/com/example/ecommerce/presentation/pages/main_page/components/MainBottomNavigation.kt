@@ -11,7 +11,8 @@ import androidx.compose.ui.Modifier
 @Composable
 fun MainBottomNavigation() {
     Row(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .fillMaxHeight(0.2f)
             .background(MaterialTheme.colors.primary)
     ) {

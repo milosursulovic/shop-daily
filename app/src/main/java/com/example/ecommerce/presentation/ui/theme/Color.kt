@@ -13,8 +13,5 @@ val Success = Color(0xFF2AA952) //success
 val LightBackground = Color(0xFFF9F9F9)
 val LightPrimary = Color(0xFFDB3022)
 
-//main bottom nav color
-val MainNavGray = Color(0xFF979797)
-
 //star color
 val StartYellow = Color(0xFFFFBA49)

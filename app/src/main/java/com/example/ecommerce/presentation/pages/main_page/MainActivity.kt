@@ -12,7 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -38,15 +37,15 @@ class MainActivity : ComponentActivity() {
                             navController.currentDestination?.route ?: Screen.MainPageScreen.route
                         )
                     }
-                    Column(
+                    Box(
                         modifier = Modifier.fillMaxSize()
                     ) {
                         NavHost(
                             navController = navController,
                             startDestination = Screen.MainPageScreen.route,
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .fillMaxHeight(0.9f)
+                                .fillMaxSize()
+                                .align(Alignment.Center)
                         ) {
                             composable(route = Screen.MainPageScreen.route) {
                                 MainPage()
@@ -55,33 +54,40 @@ class MainActivity : ComponentActivity() {
                                 Shop()
                             }
                         }
-                        Row(
+                        Card(
+                            shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
                             modifier = Modifier
-                                .fillMaxSize()
-                                .clip(shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp)),
-                            horizontalArrangement = Arrangement.SpaceEvenly
+                                .fillMaxWidth()
+                                .fillMaxHeight(0.1f)
+                                .align(Alignment.BottomCenter),
+                            elevation = 5.dp
                         ) {
-                            navigationIcons.forEach { navIcon ->
-                                Column(
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    IconButton(onClick = {
-                                        navController.navigate(navIcon.destination)
-                                        currentDestination =
-                                            navController.currentDestination?.route!!
-                                    }) {
-                                        Icon(
-                                            if (navIcon.destination == currentDestination) navIcon.selectedIcon else navIcon.unselectedIcon,
-                                            null,
-                                            modifier = Modifier.size(30.dp),
-                                            tint = if (navIcon.destination == currentDestination) MaterialTheme.colors.primary else Gray
+                            Row(
+                                modifier = Modifier.fillMaxSize(),
+                                horizontalArrangement = Arrangement.SpaceEvenly
+                            ) {
+                                navigationIcons.forEach { navIcon ->
+                                    Column(
+                                        horizontalAlignment = Alignment.CenterHorizontally
+                                    ) {
+                                        IconButton(onClick = {
+                                            navController.navigate(navIcon.destination)
+                                            currentDestination =
+                                                navController.currentDestination?.route!!
+                                        }) {
+                                            Icon(
+                                                if (navIcon.destination == currentDestination) navIcon.selectedIcon else navIcon.unselectedIcon,
+                                                null,
+                                                modifier = Modifier.size(30.dp),
+                                                tint = if (navIcon.destination == currentDestination) MaterialTheme.colors.primary else Gray
+                                            )
+                                        }
+                                        Text(
+                                            text = navIcon.label,
+                                            style = MaterialTheme.typography.h4,
+                                            color = if (navIcon.destination == currentDestination) MaterialTheme.colors.primary else Gray
                                         )
                                     }
-                                    Text(
-                                        text = navIcon.label,
-                                        style = MaterialTheme.typography.h4,
-                                        color = if (navIcon.destination == currentDestination) MaterialTheme.colors.primary else Gray
-                                    )
                                 }
                             }
                         }

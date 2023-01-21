@@ -6,8 +6,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.ecommerce.presentation.pages.main_page.components.MainBigBanner
-import com.example.ecommerce.presentation.pages.main_page.components.NewArea
+import com.example.ecommerce.presentation.pages.main_page.components.big_banner.BigBanner
+import com.example.ecommerce.presentation.pages.main_page.components.main_area.MainArea
+import com.example.ecommerce.presentation.pages.main_page.util.main_area.AreaType
 
 @Composable
 fun MainPage() {
@@ -16,7 +17,7 @@ fun MainPage() {
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        MainBigBanner()
-        NewArea()
+        BigBanner()
+        MainArea(AreaType.New)
     }
 }

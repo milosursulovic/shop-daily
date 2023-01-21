@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.main_page.components
+package com.example.ecommerce.presentation.pages.main_page.components.bottom_navigation
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.presentation.pages.main_page.NavIcon
+import com.example.ecommerce.presentation.pages.main_page.util.bottom_navigation.NavIcon
 import com.example.ecommerce.presentation.ui.theme.MainNavGray
 
 @Composable

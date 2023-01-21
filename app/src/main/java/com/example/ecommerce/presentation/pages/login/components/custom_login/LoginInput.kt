@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.login.components
+package com.example.ecommerce.presentation.pages.login.components.custom_login
 
 import android.content.Intent
 import androidx.activity.ComponentActivity
@@ -12,9 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ecommerce.presentation.common.components.FeedbackLabel
-import com.example.ecommerce.presentation.common.util.FeedbackType
-import com.example.ecommerce.presentation.pages.login.util.LoginFieldType
+import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
+import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
+import com.example.ecommerce.presentation.pages.login.util.custom_login.LoginFieldType
 import com.example.ecommerce.presentation.pages.main_page.MainActivity
 
 @Composable

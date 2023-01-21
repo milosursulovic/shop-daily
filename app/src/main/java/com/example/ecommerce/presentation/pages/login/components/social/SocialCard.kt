@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.login.components
+package com.example.ecommerce.presentation.pages.login.components.social
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.R
-import com.example.ecommerce.presentation.pages.login.util.SocialType
+import com.example.ecommerce.presentation.pages.login.util.social.SocialType
 
 @Composable
 fun SocialCard(

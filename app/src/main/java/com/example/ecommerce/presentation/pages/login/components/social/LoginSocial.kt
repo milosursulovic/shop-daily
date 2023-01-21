@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.login.components
+package com.example.ecommerce.presentation.pages.login.components.social
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.presentation.pages.login.util.SocialType
+import com.example.ecommerce.presentation.pages.login.util.social.SocialType
 
 @Composable
 fun LoginSocial() {

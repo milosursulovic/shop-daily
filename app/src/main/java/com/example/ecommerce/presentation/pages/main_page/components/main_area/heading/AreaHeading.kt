@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.main_page.components
+package com.example.ecommerce.presentation.pages.main_page.components.main_area.heading
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -7,11 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.ecommerce.presentation.pages.main_page.util.main_area.AreaType
 import com.example.ecommerce.presentation.ui.theme.Black
 import com.example.ecommerce.presentation.ui.theme.Gray
 
 @Composable
-fun AreaHeading() {
+fun AreaHeading(areaType: AreaType) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -21,7 +22,10 @@ fun AreaHeading() {
     ) {
         Column {
             Text(
-                text = "New",
+                text = when (areaType) {
+                    is AreaType.New -> "New"
+                    is AreaType.Sale -> "Sale"
+                },
                 style = MaterialTheme.typography.h1,
                 color = Black
             )

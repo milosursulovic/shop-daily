@@ -27,13 +27,12 @@ class LoginActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     Scaffold(
                         topBar = {
-                            AppBar() {
-
-                            }
+                            AppBar() {}
+                        },
+                        content = {
+                            Login()
                         }
-                    ) {
-                        Login()
-                    }
+                    )
                 }
             }
         }

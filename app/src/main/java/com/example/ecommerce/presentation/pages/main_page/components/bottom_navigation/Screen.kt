@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.navigation
+package com.example.ecommerce.presentation.pages.main_page.components.bottom_navigation
 
 sealed class Screen(val route: String) {
     object MainPageScreen : Screen("main_page_screen")

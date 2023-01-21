@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.main_page.components
+package com.example.ecommerce.presentation.pages.main_page.components.big_banner
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -19,7 +19,7 @@ import com.example.ecommerce.R
 import com.example.ecommerce.presentation.ui.theme.White
 
 @Composable
-fun MainBigBanner() {
+fun BigBanner() {
     Box(
         modifier = Modifier
             .fillMaxWidth()

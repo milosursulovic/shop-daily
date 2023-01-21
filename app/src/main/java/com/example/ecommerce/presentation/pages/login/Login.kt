@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.presentation.pages.login.components.LoginInput
-import com.example.ecommerce.presentation.pages.login.components.LoginSocial
+import com.example.ecommerce.presentation.pages.login.components.custom_login.LoginInput
+import com.example.ecommerce.presentation.pages.login.components.social.LoginSocial
 
 @Composable
 fun Login() {

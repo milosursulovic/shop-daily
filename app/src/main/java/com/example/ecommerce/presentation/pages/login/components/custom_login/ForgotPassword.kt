@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.login.components
+package com.example.ecommerce.presentation.pages.login.components.custom_login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.login.components
+package com.example.ecommerce.presentation.pages.login.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ecommerce.presentation.common.components.FeedbackLabel
 import com.example.ecommerce.presentation.common.util.FeedbackType
-import com.example.ecommerce.presentation.login.util.LoginFieldType
+import com.example.ecommerce.presentation.pages.login.util.LoginFieldType
 
 @Composable
 fun LoginInput() {

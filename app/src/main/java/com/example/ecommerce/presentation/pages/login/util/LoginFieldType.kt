@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.login.util
+package com.example.ecommerce.presentation.pages.login.util
 
 sealed class LoginFieldType {
     object Email : LoginFieldType()

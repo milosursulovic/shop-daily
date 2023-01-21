@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.login.components
+package com.example.ecommerce.presentation.pages.login.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.presentation.login.util.LoginFieldType
+import com.example.ecommerce.presentation.pages.login.util.LoginFieldType
 import com.example.ecommerce.presentation.ui.theme.Gray
 import com.example.ecommerce.presentation.ui.theme.Success
 import com.example.ecommerce.presentation.ui.theme.White

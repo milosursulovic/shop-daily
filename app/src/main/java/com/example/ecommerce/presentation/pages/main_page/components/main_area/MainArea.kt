@@ -1,18 +1,21 @@
 package com.example.ecommerce.presentation.pages.main_page.components.main_area
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.R
-import com.example.ecommerce.domain.model.Product
+import com.example.ecommerce.data.remote.FakeApi
 import com.example.ecommerce.presentation.pages.main_page.components.products.ProductCard
 import com.example.ecommerce.presentation.pages.main_page.util.main_area.AreaType
 import com.example.ecommerce.presentation.ui.theme.Black
 import com.example.ecommerce.presentation.ui.theme.Gray
+
+val fakeApi = FakeApi()
 
 @Composable
 fun MainArea(areaType: AreaType) {
@@ -45,29 +48,16 @@ fun MainArea(areaType: AreaType) {
                 color = Black
             )
         }
-        val product = when (areaType) {
-            is AreaType.New -> Product(
-                R.drawable.product_card_image_1,
-                "T-Shirt Sailing",
-                "Mango Boy",
-                10.0,
-                0,
-                0.0
-            )
-            is AreaType.Sale -> Product(
-                R.drawable.product_card_image_2,
-                "Evening Dress",
-                "Dorothy Perkins",
-                15.0,
-                20,
-                10.0
-            )
+        val products = when (areaType) {
+            is AreaType.New -> fakeApi.getNewProducts()
+            is AreaType.Sale -> fakeApi.getSaleProducts()
         }
-        Row(
+        LazyRow(
             modifier = Modifier.fillMaxSize(),
-            horizontalArrangement = Arrangement.SpaceEvenly
+            contentPadding = PaddingValues(10.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            repeat(2) {
+            items(products) { product ->
                 ProductCard(areaType, product = product)
             }
         }

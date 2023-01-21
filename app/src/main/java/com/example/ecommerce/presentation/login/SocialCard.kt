@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.R
+import com.example.ecommerce.presentation.login.util.SocialType
 
 @Composable
 fun SocialCard(

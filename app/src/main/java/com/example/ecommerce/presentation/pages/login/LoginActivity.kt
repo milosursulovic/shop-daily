@@ -1,7 +1,8 @@
-package com.example.ecommerce.presentation
+package com.example.ecommerce.presentation.pages.login
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,11 +15,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ecommerce.presentation.common.components.AppBar
 import com.example.ecommerce.presentation.navigation.Screen
-import com.example.ecommerce.presentation.pages.login.Login
 import com.example.ecommerce.presentation.pages.main_page.MainPage
 import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
 
-class MainActivity : ComponentActivity() {
+class LoginActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +37,7 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     ) {
-                        NavHost(
-                            navController = navController,
-                            startDestination = Screen.LoginScreen.route
-                        ) {
-                            composable(route = Screen.LoginScreen.route) {
-                                Login()
-                            }
-                            composable(route = Screen.MainPageScreen.route) {
-                                MainPage()
-                            }
-                        }
+                        Login()
                     }
                 }
             }

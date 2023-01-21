@@ -13,7 +13,9 @@ fun MainPage() {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
     ) {
         MainBigBanner()
+
     }
 }

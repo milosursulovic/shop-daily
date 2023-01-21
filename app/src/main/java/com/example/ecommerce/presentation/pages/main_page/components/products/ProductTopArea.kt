@@ -17,13 +17,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Product
+import com.example.ecommerce.presentation.pages.main_page.util.main_area.AreaType
 import com.example.ecommerce.presentation.ui.theme.Black
 import com.example.ecommerce.presentation.ui.theme.Hot
-import com.example.ecommerce.presentation.ui.theme.Success
 import com.example.ecommerce.presentation.ui.theme.White
 
 @Composable
-fun ProductTopArea(product: Product) {
+fun ProductTopArea(areaType: AreaType, product: Product) {
     Box {
         Image(
             painter = painterResource(id = product.image),
@@ -40,10 +40,18 @@ fun ProductTopArea(product: Product) {
                 .align(Alignment.TopStart)
         ) {
             Text(
-                text = if (product.discount != null) "-${product.discount}%" else "NEW",
+                text = when (areaType) {
+                    is AreaType.New -> "NEW"
+                    is AreaType.Sale -> "-${product.discount}%"
+                },
                 modifier = Modifier
                     .clip(RoundedCornerShape(5.dp))
-                    .background(if (product.discount != null) Hot else Black)
+                    .background(
+                        when (areaType) {
+                            is AreaType.New -> Black
+                            is AreaType.Sale -> Hot
+                        }
+                    )
                     .padding(5.dp),
                 style = MaterialTheme.typography.h4,
                 color = White

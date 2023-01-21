@@ -8,15 +8,16 @@ import androidx.compose.ui.Modifier
 import com.example.ecommerce.R
 import com.example.ecommerce.domain.model.Product
 import com.example.ecommerce.presentation.pages.main_page.components.products.ProductCard
+import com.example.ecommerce.presentation.pages.main_page.util.main_area.AreaType
 
 @Composable
-fun MainProducts() {
+fun MainProducts(areaType: AreaType) {
     val product = Product(
         R.drawable.product_card_image_1,
         "T-Shirt Sailing",
         "Mango Boy",
         10.0,
-        null,
+        0,
         0.0
     )
     Row(
@@ -24,7 +25,7 @@ fun MainProducts() {
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         repeat(2) {
-            ProductCard(product = product)
+            ProductCard(areaType, product = product)
         }
     }
 }

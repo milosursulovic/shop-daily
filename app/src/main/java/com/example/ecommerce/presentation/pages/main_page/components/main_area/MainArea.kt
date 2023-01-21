@@ -9,6 +9,6 @@ import com.example.ecommerce.presentation.pages.main_page.util.main_area.AreaTyp
 fun MainArea(areaType: AreaType) {
     Column {
         AreaHeading(areaType)
-        MainProducts()
+        MainProducts(areaType)
     }
 }

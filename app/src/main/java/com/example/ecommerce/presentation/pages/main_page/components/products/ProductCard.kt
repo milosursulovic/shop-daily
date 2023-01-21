@@ -4,11 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,6 +59,26 @@ fun ProductCard(
                     style = MaterialTheme.typography.h4,
                     color = White
                 )
+            }
+            Card(
+                elevation = 4.dp,
+                modifier = Modifier
+                    .height(30.dp)
+                    .width(30.dp)
+                    .align(Alignment.BottomEnd)
+                    .offset(x = 0.dp, y = 15.dp),
+                shape = RoundedCornerShape(30.dp)
+            ) {
+                IconButton(onClick = { }) {
+                    Icon(
+                        imageVector = Icons.Outlined.FavoriteBorder,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .width(15.dp)
+                            .height(15.dp),
+                        tint = Gray
+                    )
+                }
             }
         }
         Spacer(modifier = Modifier.height(10.dp))

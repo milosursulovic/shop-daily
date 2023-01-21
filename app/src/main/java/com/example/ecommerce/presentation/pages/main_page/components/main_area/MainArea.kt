@@ -37,7 +37,10 @@ fun MainArea(areaType: AreaType) {
                     color = Black
                 )
                 Text(
-                    text = "You've never seen it before!",
+                    text = when (areaType) {
+                        is AreaType.New -> "You've never seen it before!"
+                        is AreaType.Sale -> "Super summer sale"
+                    },
                     style = MaterialTheme.typography.h4,
                     color = Gray
                 )

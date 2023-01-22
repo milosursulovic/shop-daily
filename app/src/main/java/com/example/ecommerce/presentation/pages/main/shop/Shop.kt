@@ -15,6 +15,7 @@ import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.data.remote.FakeApi
 import com.example.ecommerce.presentation.common.components.appbar.AppBar
@@ -32,7 +33,8 @@ val categories = fakeApi.getCategories()
 fun Shop() {
     val tabItems = listOf("Women", "Men", "Kids")
     val pagerState = rememberPagerState()
-
+    val configuration = LocalConfiguration.current
+    val screenHeight = configuration.screenHeightDp.dp
     Scaffold(
         topBar = {
             AppBar(
@@ -42,7 +44,10 @@ fun Shop() {
             )
         },
         content = {
-            Column(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {
                 TabRow(
                     selectedTabIndex = pagerState.currentPage,
                     indicator = { tabPositions ->
@@ -101,7 +106,12 @@ fun Shop() {
                     LazyColumn(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(10.dp),
+                            .padding(
+                                top = 10.dp,
+                                start = 10.dp,
+                                end = 10.dp,
+                                bottom = screenHeight * 0.1f
+                            ),
                         verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         items(categories) { category ->

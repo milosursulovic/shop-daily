@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.outlined.Check
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,7 +33,7 @@ fun LoginTextField(
             if (type is LoginFieldType.Email && text.isNotEmpty()) {
                 IconButton(onClick = { }) {
                     Icon(
-                        Icons.Default.Check,
+                        Icons.Outlined.Check,
                         null,
                         modifier = Modifier.size(20.dp),
                         tint = Success

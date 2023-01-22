@@ -20,11 +20,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Product
-import com.example.ecommerce.presentation.common.components.product.ProductFavorite
-import com.example.ecommerce.presentation.common.components.product.ProductPrice
-import com.example.ecommerce.presentation.common.components.product.ProductSubtitle
-import com.example.ecommerce.presentation.common.components.product.ProductTitle
-import com.example.ecommerce.presentation.common.components.product.ProductRating
+import com.example.ecommerce.presentation.common.components.product.*
+import com.example.ecommerce.presentation.screens.main.MainViewModel
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
 import com.example.ecommerce.presentation.screens.product.ProductActivity
 import com.example.ecommerce.presentation.screens.product.common.Constants
@@ -34,7 +31,8 @@ import com.example.ecommerce.presentation.ui.theme.White
 
 @Composable
 fun ProductCard(
-    product: Product
+    product: Product,
+    mainViewModel: MainViewModel
 ) {
     val context = LocalContext.current
     val launcher = rememberLauncherForActivityResult(
@@ -42,6 +40,9 @@ fun ProductCard(
     ) { activityResult ->
         if (activityResult.resultCode == Activity.RESULT_OK) {
             val result = activityResult.data?.getBooleanExtra(Constants.ADD_TO_CART, false)
+            if (result == true) {
+                mainViewModel.addProduct(product)
+            }
         }
     }
     Column(

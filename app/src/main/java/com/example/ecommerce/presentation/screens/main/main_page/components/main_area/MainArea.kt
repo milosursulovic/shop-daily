@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.data.remote.FakeApi
+import com.example.ecommerce.presentation.screens.main.MainViewModel
 import com.example.ecommerce.presentation.screens.main.main_page.components.products.ProductsRow
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
 import com.example.ecommerce.presentation.ui.theme.Gray
@@ -15,7 +16,7 @@ import com.example.ecommerce.presentation.ui.theme.Gray
 val fakeApi = FakeApi()
 
 @Composable
-fun MainArea(productType: ProductType) {
+fun MainArea(productType: ProductType, mainViewModel: MainViewModel) {
     Column {
         Row(
             modifier = Modifier
@@ -52,6 +53,6 @@ fun MainArea(productType: ProductType) {
             is ProductType.New -> fakeApi.getNewProducts()
             is ProductType.Sale -> fakeApi.getSaleProducts()
         }
-        ProductsRow(products)
+        ProductsRow(products, mainViewModel = mainViewModel)
     }
 }

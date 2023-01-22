@@ -109,7 +109,7 @@ fun Shop() {
                                 top = 10.dp,
                                 start = 10.dp,
                                 end = 10.dp,
-                                bottom = screenHeight * 0.1f
+                                bottom = screenHeight * 0.15f
                             ),
                         verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {

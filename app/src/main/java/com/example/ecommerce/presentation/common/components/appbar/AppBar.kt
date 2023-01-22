@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.outlined.KeyboardArrowLeft
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,6 +19,7 @@ fun AppBar(
     title: String = "",
     elevation: Dp = 0.dp,
     vararg actions: ImageVector = emptyArray(),
+    isBackEnabled: Boolean = true,
     onBackPressed: () -> Unit
 ) {
     TopAppBar(
@@ -40,13 +41,15 @@ fun AppBar(
             }
         },
         navigationIcon = {
-            IconButton(onClick = { onBackPressed() }) {
-                Icon(
-                    Icons.Default.KeyboardArrowLeft,
-                    null,
-                    modifier = Modifier.size(40.dp),
-                    tint = MaterialTheme.colors.onBackground
-                )
+            if (isBackEnabled) {
+                IconButton(onClick = { onBackPressed() }) {
+                    Icon(
+                        Icons.Outlined.KeyboardArrowLeft,
+                        null,
+                        modifier = Modifier.size(40.dp),
+                        tint = MaterialTheme.colors.onBackground
+                    )
+                }
             }
         },
         actions = {

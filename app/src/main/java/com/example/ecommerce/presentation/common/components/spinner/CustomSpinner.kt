@@ -9,7 +9,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.outlined.ArrowDropDown
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,7 +41,7 @@ fun CustomSpinner(spinnerType: SpinnerType) {
         )
         Icon(
             modifier = Modifier.padding(10.dp),
-            imageVector = Icons.Default.ArrowDropDown,
+            imageVector = Icons.Outlined.ArrowDropDown,
             contentDescription = null,
             tint = MaterialTheme.colors.onSecondary
         )

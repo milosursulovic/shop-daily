@@ -19,7 +19,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.outlined.Share
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -29,11 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Product
 import com.example.ecommerce.presentation.common.components.appbar.AppBar
 import com.example.ecommerce.presentation.common.components.button.CustomButton
-import com.example.ecommerce.presentation.common.components.product.ProductFavorite
-import com.example.ecommerce.presentation.common.components.product.ProductPrice
-import com.example.ecommerce.presentation.common.components.product.ProductSubtitle
-import com.example.ecommerce.presentation.common.components.product.ProductTitle
-import com.example.ecommerce.presentation.common.components.product.ProductRating
+import com.example.ecommerce.presentation.common.components.product.*
 import com.example.ecommerce.presentation.common.components.spinner.CustomSpinner
 import com.example.ecommerce.presentation.common.util.spinner.SpinnerType
 import com.example.ecommerce.presentation.screens.product.common.Constants
@@ -51,7 +47,6 @@ class ProductActivity : ComponentActivity() {
                 ) {
                     val context = LocalContext.current
                     val product = intent.extras?.getSerializable(Constants.PRODUCT) as Product
-                    println("debugtag: ${product.price}")
                     BackHandler {
                         sendResult(context, false)
                     }
@@ -59,7 +54,7 @@ class ProductActivity : ComponentActivity() {
                         topBar = {
                             AppBar(
                                 title = product.title,
-                                actions = arrayOf(Icons.Default.Share),
+                                actions = arrayOf(Icons.Outlined.Share),
                                 onBackPressed = {}
                             )
                         },

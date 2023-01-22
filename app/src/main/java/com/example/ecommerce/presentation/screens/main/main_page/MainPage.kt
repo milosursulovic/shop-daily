@@ -19,18 +19,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ecommerce.R
 import com.example.ecommerce.presentation.common.components.button.CustomButton
+import com.example.ecommerce.presentation.screens.main.MainViewModel
 import com.example.ecommerce.presentation.screens.main.main_page.components.main_area.MainArea
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
 
 @Composable
-fun MainPage() {
+fun MainPage(mainViewModel: MainViewModel) {
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(bottom = screenHeight * 0.1f)
+            .padding(bottom = screenHeight * 0.15f)
     ) {
         Box(
             modifier = Modifier
@@ -67,8 +68,8 @@ fun MainPage() {
                     onClick = { })
             }
         }
-        MainArea(ProductType.New)
+        MainArea(ProductType.New, mainViewModel = mainViewModel)
         Spacer(modifier = Modifier.height(10.dp))
-        MainArea(ProductType.Sale)
+        MainArea(ProductType.Sale, mainViewModel = mainViewModel)
     }
 }

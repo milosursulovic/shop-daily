@@ -9,10 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Product
+import com.example.ecommerce.presentation.screens.main.MainViewModel
 
 @Composable
 fun ProductsRow(
-    products: List<Product>
+    products: List<Product>,
+    mainViewModel: MainViewModel
 ) {
     LazyRow(
         modifier = Modifier.fillMaxSize(),
@@ -20,7 +22,7 @@ fun ProductsRow(
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         items(products) { product ->
-            ProductCard(product = product)
+            ProductCard(product = product, mainViewModel = mainViewModel)
         }
     }
 }

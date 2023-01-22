@@ -1,6 +1,5 @@
 package com.example.ecommerce.presentation.screens.main.shop.category
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,12 +12,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Category
+import com.example.ecommerce.presentation.common.components.product.CardImage
 
 @Composable
 fun ProductCategory(category: Category) {
@@ -41,13 +39,10 @@ fun ProductCategory(category: Category) {
                 textAlign = TextAlign.Center,
                 modifier = Modifier.weight(1f)
             )
-            Image(
-                painter = painterResource(id = category.image),
-                contentDescription = null,
+            CardImage(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxSize(),
-                contentScale = ContentScale.Crop
+                    .fillMaxSize(), category.image
             )
         }
     }

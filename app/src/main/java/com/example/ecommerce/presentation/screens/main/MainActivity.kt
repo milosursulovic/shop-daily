@@ -16,11 +16,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
 import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
+import com.example.ecommerce.presentation.screens.main.bag.Bag
 import com.example.ecommerce.presentation.screens.main.main_page.MainPage
 import com.example.ecommerce.presentation.screens.main.main_page.util.bottom_navigation.MainScreen
 import com.example.ecommerce.presentation.screens.main.main_page.util.bottom_navigation.navigationIcons
@@ -37,6 +39,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background,
                 ) {
+                    val mainViewModel: MainViewModel = viewModel()
                     val context = LocalContext.current
                     val navController = rememberNavController()
                     var currentDestination by remember {
@@ -65,13 +68,13 @@ class MainActivity : ComponentActivity() {
                                 .align(Alignment.Center)
                         ) {
                             composable(route = MainScreen.MainPage.route) {
-                                MainPage()
+                                MainPage(mainViewModel = mainViewModel)
                             }
                             composable(route = MainScreen.ShopPage.route) {
                                 Shop()
                             }
                             composable(route = MainScreen.BagPage.route) {
-                                FeedbackLabel(FeedbackType.Info("TO DO"))
+                                Bag(mainViewModel = mainViewModel)
                             }
                             composable(route = MainScreen.FavoritesPage.route) {
                                 FeedbackLabel(FeedbackType.Info("TO DO"))

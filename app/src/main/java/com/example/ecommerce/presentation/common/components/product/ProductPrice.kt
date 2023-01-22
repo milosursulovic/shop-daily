@@ -1,8 +1,6 @@
 package com.example.ecommerce.presentation.common.components.product
 
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -17,7 +15,12 @@ import com.example.ecommerce.presentation.ui.theme.Hot
 
 @Composable
 fun ProductPrice(product: Product) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.End
+    ) {
         if (product.productType is ProductType.New) {
             Text(
                 text = "${product.price}$",

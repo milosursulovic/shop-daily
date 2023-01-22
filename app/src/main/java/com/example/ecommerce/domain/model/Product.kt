@@ -1,6 +1,7 @@
 package com.example.ecommerce.domain.model
 
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
+import java.io.Serializable
 
 data class Product(
     val image: Int,
@@ -10,4 +11,4 @@ data class Product(
     val discount: Int,
     val rating: Double,
     val productType: ProductType
-)
+) : Serializable

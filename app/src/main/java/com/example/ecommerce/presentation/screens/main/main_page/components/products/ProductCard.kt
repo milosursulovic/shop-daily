@@ -1,7 +1,12 @@
 package com.example.ecommerce.presentation.screens.main.main_page.components.products
 
+import android.app.Activity
+import android.content.Intent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -13,19 +18,38 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Product
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
+import com.example.ecommerce.presentation.screens.product.ProductActivity
+import com.example.ecommerce.presentation.screens.product.common.Constants
 import com.example.ecommerce.presentation.ui.theme.*
 
 @Composable
 fun ProductCard(
     product: Product
 ) {
-    Column {
+    val context = LocalContext.current
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult(),
+    ) { activityResult ->
+        if (activityResult.resultCode == Activity.RESULT_OK) {
+            val result = activityResult.data?.getBooleanExtra(Constants.ADD_TO_CART, false)
+            println("debugtag: $result")
+        }
+    }
+    Column(
+        modifier = Modifier.clickable {
+            val intent = Intent(context, ProductActivity::class.java).apply {
+                putExtra(Constants.PRODUCT, product)
+            }
+            launcher.launch(intent)
+        }
+    ) {
         Box {
             Image(
                 painter = painterResource(id = product.image),

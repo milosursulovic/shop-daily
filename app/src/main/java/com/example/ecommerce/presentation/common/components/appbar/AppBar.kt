@@ -19,7 +19,8 @@ import com.example.ecommerce.presentation.ui.theme.Black
 fun AppBar(
     title: String = "",
     elevation: Dp = 0.dp,
-    vararg actions: ImageVector = emptyArray()
+    vararg actions: ImageVector = emptyArray(),
+    onBackPressed: () -> Unit
 ) {
     TopAppBar(
         backgroundColor = MaterialTheme.colors.background,
@@ -40,7 +41,7 @@ fun AppBar(
             }
         },
         navigationIcon = {
-            IconButton(onClick = { }) {
+            IconButton(onClick = { onBackPressed() }) {
                 Icon(
                     Icons.Default.KeyboardArrowLeft,
                     null,

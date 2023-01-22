@@ -3,6 +3,7 @@ package com.example.ecommerce.data.remote
 import com.example.ecommerce.R
 import com.example.ecommerce.domain.model.Category
 import com.example.ecommerce.domain.model.Product
+import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
 
 class FakeApi {
     fun getNewProducts() = listOf(
@@ -12,7 +13,8 @@ class FakeApi {
             "Mango Boy",
             10.0,
             0,
-            0.0
+            0.0,
+            ProductType.New
         ),
         Product(
             R.drawable.product_card_image_1,
@@ -20,7 +22,8 @@ class FakeApi {
             "Mango Boy",
             10.0,
             0,
-            0.0
+            0.0,
+            ProductType.New
         ),
         Product(
             R.drawable.product_card_image_1,
@@ -28,7 +31,8 @@ class FakeApi {
             "Mango Boy",
             10.0,
             0,
-            0.0
+            0.0,
+            ProductType.New
         ),
         Product(
             R.drawable.product_card_image_1,
@@ -36,7 +40,8 @@ class FakeApi {
             "Mango Boy",
             10.0,
             0,
-            0.0
+            0.0,
+            ProductType.New
         ),
         Product(
             R.drawable.product_card_image_1,
@@ -44,7 +49,8 @@ class FakeApi {
             "Mango Boy",
             10.0,
             0,
-            0.0
+            0.0,
+            ProductType.New
         )
     )
 
@@ -55,7 +61,8 @@ class FakeApi {
             "Dorothy Perkins",
             15.0,
             20,
-            10.0
+            10.0,
+            ProductType.Sale
         ),
         Product(
             R.drawable.product_card_image_2,
@@ -63,7 +70,8 @@ class FakeApi {
             "Dorothy Perkins",
             15.0,
             20,
-            10.0
+            10.0,
+            ProductType.Sale
         ),
         Product(
             R.drawable.product_card_image_2,
@@ -71,7 +79,8 @@ class FakeApi {
             "Dorothy Perkins",
             15.0,
             20,
-            10.0
+            10.0,
+            ProductType.Sale
         ),
         Product(
             R.drawable.product_card_image_2,
@@ -79,7 +88,8 @@ class FakeApi {
             "Dorothy Perkins",
             15.0,
             20,
-            10.0
+            10.0,
+            ProductType.Sale
         ),
         Product(
             R.drawable.product_card_image_2,
@@ -87,7 +97,8 @@ class FakeApi {
             "Dorothy Perkins",
             15.0,
             20,
-            10.0
+            10.0,
+            ProductType.Sale
         )
     )
 

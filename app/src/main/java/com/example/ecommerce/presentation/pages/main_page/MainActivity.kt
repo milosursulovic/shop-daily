@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                         Card(
-                            shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
+                            shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .fillMaxHeight(0.1f)

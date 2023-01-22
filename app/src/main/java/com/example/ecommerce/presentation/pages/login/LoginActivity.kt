@@ -9,8 +9,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.rememberNavController
-import com.example.ecommerce.presentation.common.components.AppBar
+import com.example.ecommerce.presentation.common.components.appbar.AppBar
 import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
 
 class LoginActivity : ComponentActivity() {
@@ -23,10 +22,9 @@ class LoginActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val navController = rememberNavController()
                     Scaffold(
                         topBar = {
-                            AppBar() {}
+                            AppBar(onBackClick = {})
                         },
                         content = {
                             Login()

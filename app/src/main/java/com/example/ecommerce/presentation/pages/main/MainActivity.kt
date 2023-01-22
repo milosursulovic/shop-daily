@@ -2,6 +2,7 @@ package com.example.ecommerce.presentation.pages.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -34,11 +36,22 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background,
                 ) {
+                    val context = LocalContext.current
                     val navController = rememberNavController()
                     var currentDestination by remember {
                         mutableStateOf(
                             navController.currentDestination?.route ?: Screen.MainPageScreen.route
                         )
+                    }
+                    BackHandler {
+                        if (navController.currentDestination?.route == Screen.MainPageScreen.route) {
+                            (context as ComponentActivity).finish()
+                        } else {
+                            navController.popBackStack()
+                            navController.currentDestination?.route?.let {
+                                currentDestination = it
+                            }
+                        }
                     }
                     Box(
                         modifier = Modifier.fillMaxSize()

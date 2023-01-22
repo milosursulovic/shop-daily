@@ -34,7 +34,6 @@ fun Shop() {
             )
         },
         content = {
-            //tab layout
             TabRow(
                 selectedTabIndex = pagerState.currentPage,
                 indicator = { tabPositions ->

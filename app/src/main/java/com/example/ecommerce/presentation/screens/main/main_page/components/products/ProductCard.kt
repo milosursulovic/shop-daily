@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,10 +19,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Product
+import com.example.ecommerce.presentation.common.components.product.ProductPrice
+import com.example.ecommerce.presentation.common.components.product.ProductSubtitle
+import com.example.ecommerce.presentation.common.components.product.ProductTitle
+import com.example.ecommerce.presentation.common.components.product.rating.Rating
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
 import com.example.ecommerce.presentation.screens.product.ProductActivity
 import com.example.ecommerce.presentation.screens.product.common.Constants
@@ -105,58 +106,9 @@ fun ProductCard(
             }
         }
         Spacer(modifier = Modifier.height(10.dp))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            repeat(5) {
-                Icon(
-                    imageVector = Icons.Filled.Star,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .height(15.dp)
-                        .width(15.dp),
-                    tint = StartYellow
-                )
-            }
-            Spacer(modifier = Modifier.width(5.dp))
-            Text(
-                text = "(${product.rating})",
-                style = MaterialTheme.typography.h4,
-                color = Gray
-            )
-        }
-        Text(
-            text = product.subtitle,
-            style = MaterialTheme.typography.h4,
-            color = Gray,
-        )
-        Text(
-            text = product.title,
-            style = MaterialTheme.typography.body1,
-            color = Black,
-            fontWeight = FontWeight.Bold
-        )
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            if (product.productType is ProductType.New) {
-                Text(
-                    text = "${product.price}$",
-                    style = MaterialTheme.typography.body2,
-                    color = Black
-                )
-            } else {
-                val strikethroughTextStyle = MaterialTheme.typography.body2.copy(
-                    textDecoration = TextDecoration.LineThrough
-                )
-                Text(
-                    text = "${product.price}$",
-                    style = strikethroughTextStyle,
-                    color = Gray
-                )
-                Spacer(modifier = Modifier.width(2.dp))
-                Text(
-                    text = "${product.price - product.discount * 0.01 * product.price}$",
-                    style = MaterialTheme.typography.body2,
-                    color = Hot
-                )
-            }
-        }
+        Rating(product = product)
+        ProductSubtitle(product = product)
+        ProductTitle(product = product)
+        ProductPrice(product = product)
     }
 }

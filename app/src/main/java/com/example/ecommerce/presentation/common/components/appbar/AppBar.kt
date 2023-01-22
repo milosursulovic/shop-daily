@@ -53,7 +53,7 @@ fun AppBar(
             if (actions.isNotEmpty()) {
                 actions.forEach { action ->
                     IconButton(onClick = { }) {
-                        Icon(imageVector = action, contentDescription = null)
+                        Icon(imageVector = action, contentDescription = null, tint = Black)
                     }
                 }
             }

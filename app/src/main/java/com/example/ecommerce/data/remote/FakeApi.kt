@@ -1,6 +1,7 @@
 package com.example.ecommerce.data.remote
 
 import com.example.ecommerce.R
+import com.example.ecommerce.domain.model.Category
 import com.example.ecommerce.domain.model.Product
 
 class FakeApi {
@@ -88,5 +89,12 @@ class FakeApi {
             20,
             10.0
         )
+    )
+
+    fun getCategories() = listOf(
+        Category("New", R.drawable.category_image_1),
+        Category("Clothes", R.drawable.category_image_2),
+        Category("Shoes", R.drawable.category_image_3),
+        Category("Accessories", R.drawable.category_image_4)
     )
 }

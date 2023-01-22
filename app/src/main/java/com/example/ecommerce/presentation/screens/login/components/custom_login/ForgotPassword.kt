@@ -22,7 +22,10 @@ fun ForgotPassword() {
         horizontalArrangement = Arrangement.End,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = "Forgot you password?", style = MaterialTheme.typography.body2)
+        Text(
+            text = "Forgot you password?", style = MaterialTheme.typography.body2,
+            color = MaterialTheme.colors.onBackground
+        )
         IconButton(onClick = { }) {
             Icon(
                 Icons.Default.ArrowForward,

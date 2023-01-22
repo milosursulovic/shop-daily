@@ -20,8 +20,6 @@ import androidx.compose.ui.unit.dp
 import com.example.ecommerce.data.remote.FakeApi
 import com.example.ecommerce.presentation.common.components.appbar.AppBar
 import com.example.ecommerce.presentation.screens.main.shop.category.ProductCategory
-import com.example.ecommerce.presentation.ui.theme.Black
-import com.example.ecommerce.presentation.ui.theme.White
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
@@ -60,12 +58,12 @@ fun Shop() {
                 ) {
                     tabItems.forEachIndexed { index, category ->
                         Tab(
-                            modifier = Modifier.background(color = White),
+                            modifier = Modifier.background(color = MaterialTheme.colors.secondary),
                             text = {
                                 Text(
                                     category,
                                     style = MaterialTheme.typography.body1,
-                                    color = Black
+                                    color = MaterialTheme.colors.onSecondary
                                 )
                             },
                             selected = pagerState.currentPage == index,
@@ -94,12 +92,12 @@ fun Shop() {
                             Text(
                                 text = "SUMMER SALES",
                                 style = MaterialTheme.typography.h2,
-                                color = White
+                                color = MaterialTheme.colors.onPrimary
                             )
                             Text(
                                 text = "Up to 50% off",
                                 style = MaterialTheme.typography.body2,
-                                color = White
+                                color = MaterialTheme.colors.onPrimary
                             )
                         }
                     }

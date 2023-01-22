@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.common.components.product.rating
+package com.example.ecommerce.presentation.common.components.product
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

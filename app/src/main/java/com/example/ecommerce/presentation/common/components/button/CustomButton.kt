@@ -2,6 +2,7 @@ package com.example.ecommerce.presentation.common.components.button
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,7 +25,8 @@ fun CustomButton(
         Text(
             text = text,
             modifier = textModifier,
-            fontSize = 14.sp
+            fontSize = 14.sp,
+            color = MaterialTheme.colors.onPrimary
         )
     }
 }

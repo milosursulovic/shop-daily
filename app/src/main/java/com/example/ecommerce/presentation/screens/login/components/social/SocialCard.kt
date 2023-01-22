@@ -1,5 +1,6 @@
 package com.example.ecommerce.presentation.screens.login.components.social
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -8,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,15 +27,19 @@ fun SocialCard(
             .width(100.dp)
             .height(80.dp)
     ) {
-        IconButton(modifier = Modifier.fillMaxSize(), onClick = { }) {
+        IconButton(modifier = Modifier
+            .fillMaxSize()
+            .background(color = MaterialTheme.colors.secondary), onClick = { }) {
             Icon(
-                painter = when (socialType) {
-                    is SocialType.Google -> painterResource(id = R.drawable.ic_google)
-                    is SocialType.Facebook -> painterResource(id = R.drawable.ic_facebook)
-                },
-                null,
+                painter = painterResource(
+                    id = when (socialType) {
+                        is SocialType.Google -> R.drawable.ic_google
+                        is SocialType.Facebook -> R.drawable.ic_facebook
+                    }
+                ),
+                contentDescription = null,
                 modifier = Modifier.size(40.dp),
-                tint = Color.Unspecified
+                tint = Color.Unspecified,
             )
         }
     }

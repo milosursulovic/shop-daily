@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,7 +21,6 @@ import com.example.ecommerce.R
 import com.example.ecommerce.presentation.common.components.button.CustomButton
 import com.example.ecommerce.presentation.screens.main.main_page.components.main_area.MainArea
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
-import com.example.ecommerce.presentation.ui.theme.White
 
 @Composable
 fun MainPage() {
@@ -55,7 +55,7 @@ fun MainPage() {
             ) {
                 Text(
                     text = "Fashion\nSale",
-                    color = White,
+                    color = MaterialTheme.colors.onPrimary,
                     fontWeight = FontWeight.Bold,
                     fontSize = 48.sp,
                     fontFamily = FontFamily(Font(R.font.metrophobic_regular, FontWeight.Bold))

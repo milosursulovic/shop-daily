@@ -40,6 +40,7 @@ fun Login() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 20.dp),
+            color = MaterialTheme.colors.onBackground,
             textAlign = TextAlign.Start
         )
         Column(
@@ -78,7 +79,11 @@ fun Login() {
                 .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Or login with social account", style = MaterialTheme.typography.body2)
+            Text(
+                text = "Or login with social account",
+                style = MaterialTheme.typography.body2,
+                color = MaterialTheme.colors.onBackground
+            )
             Spacer(modifier = Modifier.height(10.dp))
             Row {
                 SocialCard(SocialType.Google)

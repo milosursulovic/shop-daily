@@ -19,8 +19,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Category
-import com.example.ecommerce.presentation.ui.theme.Black
-import com.example.ecommerce.presentation.ui.theme.White
 
 @Composable
 fun ProductCategory(category: Category) {
@@ -32,13 +30,13 @@ fun ProductCategory(category: Category) {
         elevation = 5.dp
     ) {
         Row(
-            modifier = Modifier.background(color = White),
+            modifier = Modifier.background(color = MaterialTheme.colors.secondary),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = category.title,
                 style = MaterialTheme.typography.h3,
-                color = Black,
+                color = MaterialTheme.colors.onSecondary,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.weight(1f)

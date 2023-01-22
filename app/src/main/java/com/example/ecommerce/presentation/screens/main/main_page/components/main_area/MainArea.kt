@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.dp
 import com.example.ecommerce.data.remote.FakeApi
 import com.example.ecommerce.presentation.screens.main.main_page.components.products.ProductsRow
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
-import com.example.ecommerce.presentation.ui.theme.Black
 import com.example.ecommerce.presentation.ui.theme.Gray
 
 val fakeApi = FakeApi()
@@ -32,7 +31,7 @@ fun MainArea(productType: ProductType) {
                         is ProductType.Sale -> "Sale"
                     },
                     style = MaterialTheme.typography.h1,
-                    color = Black
+                    color = MaterialTheme.colors.onBackground
                 )
                 Text(
                     text = when (productType) {
@@ -46,7 +45,7 @@ fun MainArea(productType: ProductType) {
             Text(
                 text = "View all",
                 style = MaterialTheme.typography.h4,
-                color = Black
+                color = MaterialTheme.colors.onBackground
             )
         }
         val products = when (productType) {

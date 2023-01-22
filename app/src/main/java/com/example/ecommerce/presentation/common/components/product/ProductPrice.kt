@@ -12,7 +12,6 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Product
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
-import com.example.ecommerce.presentation.ui.theme.Black
 import com.example.ecommerce.presentation.ui.theme.Gray
 import com.example.ecommerce.presentation.ui.theme.Hot
 
@@ -23,7 +22,7 @@ fun ProductPrice(product: Product) {
             Text(
                 text = "${product.price}$",
                 style = MaterialTheme.typography.body2,
-                color = Black
+                color = MaterialTheme.colors.onBackground
             )
         } else {
             val strikethroughTextStyle = MaterialTheme.typography.body2.copy(

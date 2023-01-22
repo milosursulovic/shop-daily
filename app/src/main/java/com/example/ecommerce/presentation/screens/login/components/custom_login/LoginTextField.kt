@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import com.example.ecommerce.presentation.screens.login.util.custom_login.LoginFieldType
 import com.example.ecommerce.presentation.ui.theme.Gray
 import com.example.ecommerce.presentation.ui.theme.Success
-import com.example.ecommerce.presentation.ui.theme.White
 
 @Composable
 fun LoginTextField(
@@ -43,27 +42,27 @@ fun LoginTextField(
             }
         },
         label = {
-            when (type) {
-                is LoginFieldType.Email -> Text(text = "Email")
-                is LoginFieldType.Password -> Text(text = "Password")
-            }
+            Text(
+                text = when (type) {
+                    is LoginFieldType.Email -> "Email"
+                    is LoginFieldType.Password -> "Password"
+                }, color = MaterialTheme.colors.onSecondary
+            )
         },
         visualTransformation = if (type is LoginFieldType.Email) VisualTransformation.None else PasswordVisualTransformation(),
         placeholder = {
-            when (type) {
-                is LoginFieldType.Email -> Text(
-                    text = "Email",
-                    style = MaterialTheme.typography.body2
-                )
-                is LoginFieldType.Password -> Text(
-                    text = "Password",
-                    style = MaterialTheme.typography.body2
-                )
-            }
+            Text(
+                text = when (type) {
+                    is LoginFieldType.Email -> "Email"
+                    is LoginFieldType.Password -> "Password"
+                },
+                style = MaterialTheme.typography.body2,
+                color = MaterialTheme.colors.onSecondary
+            )
         },
         modifier = Modifier.fillMaxWidth(),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            backgroundColor = White,
+            backgroundColor = MaterialTheme.colors.secondary,
             unfocusedBorderColor = Color.Transparent,
             focusedBorderColor = Color.Transparent,
             focusedLabelColor = Gray

@@ -33,7 +33,7 @@ import com.example.ecommerce.presentation.common.components.product.ProductFavor
 import com.example.ecommerce.presentation.common.components.product.ProductPrice
 import com.example.ecommerce.presentation.common.components.product.ProductSubtitle
 import com.example.ecommerce.presentation.common.components.product.ProductTitle
-import com.example.ecommerce.presentation.common.components.product.rating.ProductRating
+import com.example.ecommerce.presentation.common.components.product.ProductRating
 import com.example.ecommerce.presentation.common.components.spinner.CustomSpinner
 import com.example.ecommerce.presentation.common.util.spinner.SpinnerType
 import com.example.ecommerce.presentation.screens.product.common.Constants
@@ -58,7 +58,7 @@ class ProductActivity : ComponentActivity() {
                     Scaffold(
                         topBar = {
                             AppBar(
-                                title = "Short dress",
+                                title = product.title,
                                 actions = arrayOf(Icons.Default.Share),
                                 onBackPressed = {}
                             )

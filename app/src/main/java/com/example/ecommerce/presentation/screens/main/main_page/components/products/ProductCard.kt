@@ -24,7 +24,7 @@ import com.example.ecommerce.presentation.common.components.product.ProductFavor
 import com.example.ecommerce.presentation.common.components.product.ProductPrice
 import com.example.ecommerce.presentation.common.components.product.ProductSubtitle
 import com.example.ecommerce.presentation.common.components.product.ProductTitle
-import com.example.ecommerce.presentation.common.components.product.rating.ProductRating
+import com.example.ecommerce.presentation.common.components.product.ProductRating
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
 import com.example.ecommerce.presentation.screens.product.ProductActivity
 import com.example.ecommerce.presentation.screens.product.common.Constants

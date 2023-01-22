@@ -1,5 +1,6 @@
 package com.example.ecommerce.presentation.common.components.spinner
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -14,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.presentation.common.util.spinner.SpinnerType
-import com.example.ecommerce.presentation.ui.theme.Black
 import com.example.ecommerce.presentation.ui.theme.Gray
 
 @Composable
@@ -27,7 +27,7 @@ fun CustomSpinner(spinnerType: SpinnerType) {
                     is SpinnerType.Color -> Gray
                 }
             )
-            .padding(vertical = 10.dp, horizontal = 30.dp),
+            .background(color = MaterialTheme.colors.secondary),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -36,8 +36,14 @@ fun CustomSpinner(spinnerType: SpinnerType) {
                 is SpinnerType.Size -> "Size"
                 is SpinnerType.Color -> "Color"
             },
-            color = Black
+            modifier = Modifier.padding(vertical = 10.dp, horizontal = 30.dp),
+            color = MaterialTheme.colors.onSecondary
         )
-        Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null, tint = Black)
+        Icon(
+            modifier = Modifier.padding(10.dp),
+            imageVector = Icons.Default.ArrowDropDown,
+            contentDescription = null,
+            tint = MaterialTheme.colors.onSecondary
+        )
     }
 }

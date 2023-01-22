@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.presentation.ui.theme.Black
 
 @Composable
 fun AppBar(
@@ -35,7 +34,7 @@ fun AppBar(
                     Text(
                         text = title,
                         style = MaterialTheme.typography.h3,
-                        color = Black
+                        color = MaterialTheme.colors.onBackground
                     )
                 }
             }
@@ -45,7 +44,8 @@ fun AppBar(
                 Icon(
                     Icons.Default.KeyboardArrowLeft,
                     null,
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier.size(40.dp),
+                    tint = MaterialTheme.colors.onBackground
                 )
             }
         },
@@ -53,7 +53,11 @@ fun AppBar(
             if (actions.isNotEmpty()) {
                 actions.forEach { action ->
                     IconButton(onClick = { }) {
-                        Icon(imageVector = action, contentDescription = null, tint = Black)
+                        Icon(
+                            imageVector = action,
+                            contentDescription = null,
+                            tint = MaterialTheme.colors.onBackground
+                        )
                     }
                 }
             }

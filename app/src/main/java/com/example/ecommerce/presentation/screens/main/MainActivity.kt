@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -88,18 +89,22 @@ class MainActivity : ComponentActivity() {
                             elevation = 5.dp
                         ) {
                             Row(
-                                modifier = Modifier.fillMaxSize(),
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(color = MaterialTheme.colors.secondary),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
                                 navigationIcons.forEach { navIcon ->
                                     Column(
                                         horizontalAlignment = Alignment.CenterHorizontally
                                     ) {
-                                        IconButton(onClick = {
-                                            navController.navigate(navIcon.destination)
-                                            currentDestination =
-                                                navController.currentDestination?.route!!
-                                        }) {
+                                        IconButton(
+                                            onClick = {
+                                                navController.navigate(navIcon.destination)
+                                                currentDestination =
+                                                    navController.currentDestination?.route!!
+                                            }
+                                        ) {
                                             Icon(
                                                 if (navIcon.destination == currentDestination) navIcon.selectedIcon else navIcon.unselectedIcon,
                                                 null,

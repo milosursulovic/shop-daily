@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.ecommerce.presentation.screens.product
 
 import android.annotation.SuppressLint
@@ -16,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import com.example.ecommerce.domain.model.Product
 import com.example.ecommerce.presentation.common.components.appbar.AppBar
 import com.example.ecommerce.presentation.screens.product.common.Constants
 import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
@@ -31,6 +34,8 @@ class ProductActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val context = LocalContext.current
+                    val product = intent.extras?.getSerializable(Constants.PRODUCT) as Product
+                    println("debugtag: ${product.price}")
                     BackHandler {
                         val data = Intent().apply {
                             putExtra(Constants.ADD_TO_CART, true)

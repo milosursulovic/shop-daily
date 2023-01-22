@@ -4,6 +4,7 @@ import com.example.ecommerce.R
 import com.example.ecommerce.domain.model.Category
 import com.example.ecommerce.domain.model.Product
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
+import com.example.ecommerce.presentation.screens.product.common.Constants
 
 class FakeApi {
     fun getNewProducts() = listOf(
@@ -14,6 +15,7 @@ class FakeApi {
             10.0,
             0,
             0.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.New
         ),
         Product(
@@ -23,6 +25,7 @@ class FakeApi {
             10.0,
             0,
             0.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.New
         ),
         Product(
@@ -32,6 +35,7 @@ class FakeApi {
             10.0,
             0,
             0.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.New
         ),
         Product(
@@ -41,6 +45,7 @@ class FakeApi {
             10.0,
             0,
             0.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.New
         ),
         Product(
@@ -50,6 +55,7 @@ class FakeApi {
             10.0,
             0,
             0.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.New
         )
     )
@@ -62,6 +68,7 @@ class FakeApi {
             15.0,
             20,
             10.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.Sale
         ),
         Product(
@@ -71,6 +78,7 @@ class FakeApi {
             15.0,
             20,
             10.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.Sale
         ),
         Product(
@@ -80,6 +88,7 @@ class FakeApi {
             15.0,
             20,
             10.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.Sale
         ),
         Product(
@@ -89,6 +98,7 @@ class FakeApi {
             15.0,
             20,
             10.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.Sale
         ),
         Product(
@@ -98,6 +108,7 @@ class FakeApi {
             15.0,
             20,
             10.0,
+            Constants.PRODUCT_DESCRIPTION,
             ProductType.Sale
         )
     )

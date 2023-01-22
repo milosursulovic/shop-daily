@@ -3,8 +3,6 @@ package com.example.ecommerce.presentation.screens.login
 import android.content.Intent
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -13,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.ecommerce.presentation.common.components.button.CustomButton
 import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
 import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
 import com.example.ecommerce.presentation.screens.login.components.custom_login.ForgotPassword
@@ -65,20 +63,14 @@ fun Login() {
                 FeedbackType.Error("This is test error message")
             )
             Spacer(modifier = Modifier.height(20.dp))
-            Button(
+            CustomButton(modifier = Modifier
+                .fillMaxWidth(),
+                textModifier = Modifier.padding(vertical = 10.dp),
+                text = "LOGIN",
                 onClick = {
                     context.startActivity(Intent(context, MainActivity::class.java))
                     (context as ComponentActivity).finish()
-                }, modifier = Modifier
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(30.dp)
-            ) {
-                Text(
-                    text = "LOGIN",
-                    modifier = Modifier.padding(vertical = 10.dp),
-                    fontSize = 14.sp
-                )
-            }
+                })
         }
         Column(
             modifier = Modifier

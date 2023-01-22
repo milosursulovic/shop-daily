@@ -3,9 +3,7 @@ package com.example.ecommerce.presentation.screens.main.main_page
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ecommerce.R
+import com.example.ecommerce.presentation.common.components.button.CustomButton
 import com.example.ecommerce.presentation.screens.main.main_page.components.main_area.MainArea
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
 import com.example.ecommerce.presentation.ui.theme.White
@@ -61,18 +60,11 @@ fun MainPage() {
                     fontSize = 48.sp,
                     fontFamily = FontFamily(Font(R.font.metrophobic_regular, FontWeight.Bold))
                 )
-                Button(
-                    onClick = { },
-                    modifier = Modifier
-                        .width(200.dp),
-                    shape = RoundedCornerShape(30.dp)
-                ) {
-                    Text(
-                        text = "Check",
-                        modifier = Modifier.padding(vertical = 5.dp),
-                        fontSize = 14.sp
-                    )
-                }
+                CustomButton(modifier = Modifier
+                    .width(200.dp),
+                    textModifier = Modifier.padding(vertical = 5.dp),
+                    text = "Check",
+                    onClick = { })
             }
         }
         MainArea(ProductType.New)

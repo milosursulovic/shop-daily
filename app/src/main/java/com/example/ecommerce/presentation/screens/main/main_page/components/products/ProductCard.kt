@@ -9,9 +9,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,14 +20,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Product
+import com.example.ecommerce.presentation.common.components.product.ProductFavorite
 import com.example.ecommerce.presentation.common.components.product.ProductPrice
 import com.example.ecommerce.presentation.common.components.product.ProductSubtitle
 import com.example.ecommerce.presentation.common.components.product.ProductTitle
-import com.example.ecommerce.presentation.common.components.product.rating.Rating
+import com.example.ecommerce.presentation.common.components.product.rating.ProductRating
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
 import com.example.ecommerce.presentation.screens.product.ProductActivity
 import com.example.ecommerce.presentation.screens.product.common.Constants
-import com.example.ecommerce.presentation.ui.theme.*
+import com.example.ecommerce.presentation.ui.theme.Black
+import com.example.ecommerce.presentation.ui.theme.Hot
+import com.example.ecommerce.presentation.ui.theme.White
 
 @Composable
 fun ProductCard(
@@ -40,7 +42,6 @@ fun ProductCard(
     ) { activityResult ->
         if (activityResult.resultCode == Activity.RESULT_OK) {
             val result = activityResult.data?.getBooleanExtra(Constants.ADD_TO_CART, false)
-            println("debugtag: $result")
         }
     }
     Column(
@@ -84,29 +85,16 @@ fun ProductCard(
                     color = White
                 )
             }
-            Card(
-                elevation = 4.dp,
+            ProductFavorite(
                 modifier = Modifier
                     .height(30.dp)
                     .width(30.dp)
                     .align(Alignment.BottomEnd)
-                    .offset(x = 0.dp, y = 15.dp),
-                shape = RoundedCornerShape(30.dp)
-            ) {
-                IconButton(onClick = { }) {
-                    Icon(
-                        imageVector = Icons.Outlined.FavoriteBorder,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .width(15.dp)
-                            .height(15.dp),
-                        tint = Gray
-                    )
-                }
-            }
+                    .offset(x = 0.dp, y = 15.dp)
+            )
         }
         Spacer(modifier = Modifier.height(10.dp))
-        Rating(product = product)
+        ProductRating(product = product)
         ProductSubtitle(product = product)
         ProductTitle(product = product)
         ProductPrice(product = product)

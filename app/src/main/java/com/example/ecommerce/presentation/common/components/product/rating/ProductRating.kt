@@ -18,7 +18,7 @@ import com.example.ecommerce.presentation.ui.theme.Gray
 import com.example.ecommerce.presentation.ui.theme.StartYellow
 
 @Composable
-fun Rating(product: Product) {
+fun ProductRating(product: Product) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         repeat(5) {
             Icon(

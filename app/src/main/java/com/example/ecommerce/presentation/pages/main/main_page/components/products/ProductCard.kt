@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.main_page.components.products
+package com.example.ecommerce.presentation.pages.main.main_page.components.products
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.domain.model.Product
-import com.example.ecommerce.presentation.pages.main_page.util.main_area.AreaType
+import com.example.ecommerce.presentation.pages.main.main_page.util.main_area.AreaType
 import com.example.ecommerce.presentation.ui.theme.*
 
 @Composable

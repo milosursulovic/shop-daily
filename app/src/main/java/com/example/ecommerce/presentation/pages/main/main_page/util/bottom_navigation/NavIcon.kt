@@ -1,10 +1,10 @@
-package com.example.ecommerce.presentation.pages.main_page.util.bottom_navigation
+package com.example.ecommerce.presentation.pages.main.main_page.util.bottom_navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.ecommerce.presentation.pages.main_page.components.bottom_navigation.Screen
+import com.example.ecommerce.presentation.pages.main.main_page.components.bottom_navigation.Screen
 
 data class NavIcon(
     val label: String,
@@ -34,7 +34,7 @@ val navigationIcons = listOf(
     ),
     NavIcon(
         label = "Favorites",
-        selectedIcon = Icons.Filled.FavoriteBorder,
+        selectedIcon = Icons.Filled.Favorite,
         unselectedIcon = Icons.Outlined.FavoriteBorder,
         destination = Screen.FavoritesScreen.route
     ),

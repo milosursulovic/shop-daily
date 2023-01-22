@@ -26,7 +26,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".presentation.pages.main_page.MainActivity" />
+        <activity android:name=".presentation.pages.main.MainActivity" />
     </application>
 
 </manifest>

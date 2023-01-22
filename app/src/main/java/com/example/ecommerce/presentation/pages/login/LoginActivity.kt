@@ -1,3 +1,5 @@
+@file:SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+
 package com.example.ecommerce.presentation.pages.login
 
 import android.annotation.SuppressLint
@@ -13,7 +15,6 @@ import com.example.ecommerce.presentation.common.components.appbar.AppBar
 import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
 
 class LoginActivity : ComponentActivity() {
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -24,7 +25,7 @@ class LoginActivity : ComponentActivity() {
                 ) {
                     Scaffold(
                         topBar = {
-                            AppBar(onBackClick = {})
+                            AppBar()
                         },
                         content = {
                             Login()

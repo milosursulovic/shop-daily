@@ -21,7 +21,7 @@ import com.example.ecommerce.presentation.pages.login.components.custom_login.Lo
 import com.example.ecommerce.presentation.pages.login.components.social.SocialCard
 import com.example.ecommerce.presentation.pages.login.util.custom_login.LoginFieldType
 import com.example.ecommerce.presentation.pages.login.util.social.SocialType
-import com.example.ecommerce.presentation.pages.main_page.MainActivity
+import com.example.ecommerce.presentation.pages.main.MainActivity
 
 @Composable
 fun Login() {

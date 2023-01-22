@@ -11,18 +11,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.presentation.ui.theme.Black
 
 @Composable
 fun AppBar(
-    onBackClick: () -> Unit,
     title: String = "",
+    elevation: Dp = 0.dp,
     vararg actions: ImageVector = emptyArray()
 ) {
     TopAppBar(
         backgroundColor = MaterialTheme.colors.background,
-        elevation = 0.dp,
+        elevation = elevation,
         title = {
             if (title != "") {
                 Row(
@@ -39,7 +40,7 @@ fun AppBar(
             }
         },
         navigationIcon = {
-            IconButton(onClick = { onBackClick() }) {
+            IconButton(onClick = { }) {
                 Icon(
                     Icons.Default.KeyboardArrowLeft,
                     null,

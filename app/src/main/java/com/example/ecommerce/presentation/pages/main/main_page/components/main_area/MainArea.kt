@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.main_page.components.main_area
+package com.example.ecommerce.presentation.pages.main.main_page.components.main_area
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -10,8 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.data.remote.FakeApi
-import com.example.ecommerce.presentation.pages.main_page.components.products.ProductCard
-import com.example.ecommerce.presentation.pages.main_page.util.main_area.AreaType
+import com.example.ecommerce.presentation.pages.main.main_page.components.products.ProductCard
+import com.example.ecommerce.presentation.pages.main.main_page.util.main_area.AreaType
 import com.example.ecommerce.presentation.ui.theme.Black
 import com.example.ecommerce.presentation.ui.theme.Gray
 

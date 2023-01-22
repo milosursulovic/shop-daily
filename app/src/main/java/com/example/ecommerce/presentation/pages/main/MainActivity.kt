@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.pages.main_page
+package com.example.ecommerce.presentation.pages.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -16,9 +16,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.ecommerce.presentation.pages.main_page.components.bottom_navigation.Screen
-import com.example.ecommerce.presentation.pages.main_page.util.bottom_navigation.navigationIcons
-import com.example.ecommerce.presentation.pages.shop.Shop
+import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
+import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
+import com.example.ecommerce.presentation.pages.main.main_page.MainPage
+import com.example.ecommerce.presentation.pages.main.main_page.components.bottom_navigation.Screen
+import com.example.ecommerce.presentation.pages.main.main_page.util.bottom_navigation.navigationIcons
+import com.example.ecommerce.presentation.pages.main.shop.Shop
 import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
 import com.example.ecommerce.presentation.ui.theme.Gray
 
@@ -52,6 +55,15 @@ class MainActivity : ComponentActivity() {
                             }
                             composable(route = Screen.ShopScreen.route) {
                                 Shop()
+                            }
+                            composable(route = Screen.BagScreen.route) {
+                                FeedbackLabel(FeedbackType.Info("TO DO"))
+                            }
+                            composable(route = Screen.FavoritesScreen.route) {
+                                FeedbackLabel(FeedbackType.Info("TO DO"))
+                            }
+                            composable(route = Screen.ProfileScreen.route) {
+                                FeedbackLabel(FeedbackType.Info("TO DO"))
                             }
                         }
                         Card(

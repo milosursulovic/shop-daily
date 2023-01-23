@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.screens.main.shop.category
+package com.example.ecommerce.presentation.screens.main.shop.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row

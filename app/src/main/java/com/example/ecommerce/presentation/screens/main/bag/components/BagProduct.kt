@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.screens.main.bag
+package com.example.ecommerce.presentation.screens.main.bag.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

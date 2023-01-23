@@ -23,6 +23,7 @@ import com.example.ecommerce.presentation.common.components.screen.BottomPadding
 import com.example.ecommerce.presentation.common.components.screen.ScreenTitle
 import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
 import com.example.ecommerce.presentation.screens.main.MainViewModel
+import com.example.ecommerce.presentation.screens.main.bag.components.BagProduct
 import com.example.ecommerce.presentation.ui.theme.Gray
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

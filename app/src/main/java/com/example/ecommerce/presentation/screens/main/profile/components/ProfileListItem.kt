@@ -26,7 +26,7 @@ fun ProfileListItem(item: ProfileItem) {
             Text(
                 text = item.title,
                 style = MaterialTheme.typography.body1,
-                color = MaterialTheme.colors.onPrimary
+                color = MaterialTheme.colors.onBackground
             )
             Text(text = item.subtitle, style = MaterialTheme.typography.h4, color = Gray)
         }

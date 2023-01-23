@@ -23,7 +23,7 @@ import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.
 
 @Composable
 fun MainPage(mainViewModel: MainViewModel) {
-    BottomPaddingColumn(verticalScroll = true) {
+    BottomPaddingColumn(verticalScroll = true, justBottomPadding = true) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()

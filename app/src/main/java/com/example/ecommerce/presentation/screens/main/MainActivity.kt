@@ -20,13 +20,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
-import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
-import com.example.ecommerce.presentation.screens.favorites.Favorites
 import com.example.ecommerce.presentation.screens.main.bag.Bag
+import com.example.ecommerce.presentation.screens.main.favorites.Favorites
 import com.example.ecommerce.presentation.screens.main.main_page.MainPage
 import com.example.ecommerce.presentation.screens.main.main_page.util.bottom_navigation.MainScreen
 import com.example.ecommerce.presentation.screens.main.main_page.util.bottom_navigation.navigationIcons
+import com.example.ecommerce.presentation.screens.main.profile.Profile
 import com.example.ecommerce.presentation.screens.main.shop.Shop
 import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
 import com.example.ecommerce.presentation.ui.theme.Gray
@@ -81,7 +80,7 @@ class MainActivity : ComponentActivity() {
                                 Favorites(mainViewModel = mainViewModel)
                             }
                             composable(route = MainScreen.ProfilePage.route) {
-                                FeedbackLabel(FeedbackType.Info("TO DO"))
+                                Profile(mainViewModel = mainViewModel)
                             }
                         }
                         Card(

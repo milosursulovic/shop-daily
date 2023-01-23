@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.screens.favorites
+package com.example.ecommerce.presentation.screens.main.favorites
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

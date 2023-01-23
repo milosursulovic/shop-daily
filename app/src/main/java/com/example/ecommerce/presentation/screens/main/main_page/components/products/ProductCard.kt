@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -86,13 +88,17 @@ fun ProductCard(
                     color = White
                 )
             }
-            ProductFavorite(
-                modifier = Modifier
-                    .height(30.dp)
-                    .width(30.dp)
-                    .align(Alignment.BottomEnd)
-                    .offset(x = 0.dp, y = 15.dp)
-            )
+            CircularButton(modifier = Modifier
+                .height(30.dp)
+                .width(30.dp)
+                .align(Alignment.BottomEnd)
+                .offset(x = 0.dp, y = 15.dp),
+                iconModifier = Modifier
+                    .width(15.dp)
+                    .height(15.dp),
+                icon = Icons.Outlined.FavoriteBorder,
+                tint = MaterialTheme.colors.onSecondary,
+                onClick = {})
         }
         Spacer(modifier = Modifier.height(10.dp))
         ProductRating(product = product)

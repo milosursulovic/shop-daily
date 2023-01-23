@@ -102,14 +102,16 @@ fun Bag(mainViewModel: MainViewModel) {
                             focusedLabelColor = Gray
                         )
                     )
-                    CircularButton(
-                        modifier = Modifier
-                            .height(40.dp)
+                    CircularButton(modifier = Modifier
+                        .height(60.dp)
+                        .width(60.dp)
+                        .align(Alignment.CenterEnd),
+                        iconModifier = Modifier
                             .width(40.dp)
-                            .align(Alignment.CenterEnd), icon = Icons.Outlined.KeyboardArrowRight
-                    ) {
-
-                    }
+                            .height(40.dp),
+                        icon = Icons.Outlined.KeyboardArrowRight,
+                        tint = Gray,
+                        onClick = {})
                 }
                 Spacer(modifier = Modifier.height(20.dp))
                 Row(

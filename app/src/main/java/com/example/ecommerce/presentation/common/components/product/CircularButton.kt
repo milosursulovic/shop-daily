@@ -8,14 +8,16 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.presentation.ui.theme.Gray
 
 @Composable
 fun CircularButton(
     modifier: Modifier,
+    iconModifier: Modifier = Modifier,
     icon: ImageVector,
+    tint: Color,
     onClick: () -> Unit
 ) {
     Card(
@@ -26,7 +28,12 @@ fun CircularButton(
         IconButton(
             modifier = Modifier.background(color = MaterialTheme.colors.secondary),
             onClick = { onClick() }) {
-            Icon(imageVector = icon, contentDescription = null, tint = Gray)
+            Icon(
+                modifier = iconModifier,
+                imageVector = icon,
+                contentDescription = null,
+                tint = tint
+            )
         }
     }
 }

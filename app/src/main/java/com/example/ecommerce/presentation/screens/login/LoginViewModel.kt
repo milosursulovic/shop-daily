@@ -8,9 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.ecommerce.common.Resource
 import com.example.ecommerce.domain.use_cases.remote.LoginUseCase
 import com.example.ecommerce.presentation.screens.login.util.LoginState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
     private var _loginState by mutableStateOf(LoginState())
     val loginState: LoginState = _loginState
 

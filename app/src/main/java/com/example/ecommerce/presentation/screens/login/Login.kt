@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ecommerce.presentation.common.components.button.CustomButton
 import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
 import com.example.ecommerce.presentation.common.components.screen.ScreenTitle
@@ -22,7 +23,7 @@ import com.example.ecommerce.presentation.screens.login.util.social.SocialType
 import com.example.ecommerce.presentation.screens.main.MainActivity
 
 @Composable
-fun Login() {
+fun Login(viewModel: LoginViewModel = hiltViewModel()) {
     var emailState by remember {
         mutableStateOf("")
     }

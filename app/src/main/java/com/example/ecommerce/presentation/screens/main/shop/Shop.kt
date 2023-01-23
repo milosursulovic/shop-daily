@@ -17,18 +17,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
-import com.example.ecommerce.data.remote.FakeApi
 import com.example.ecommerce.presentation.common.components.appbar.AppBar
+import com.example.ecommerce.presentation.screens.main.MainViewModel
 import com.example.ecommerce.presentation.screens.main.shop.category.ProductCategory
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 
-val fakeApi = FakeApi()
-val categories = fakeApi.getCategories()
-
 @Composable
-fun Shop() {
+fun Shop(mainViewModel: MainViewModel) {
     val tabItems = listOf("Women", "Men", "Kids")
     val pagerState = rememberPagerState()
     val configuration = LocalConfiguration.current
@@ -113,7 +110,7 @@ fun Shop() {
                             ),
                         verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
-                        items(categories) { category ->
+                        items(mainViewModel.categories) { category ->
                             ProductCategory(category = category)
                         }
                     }

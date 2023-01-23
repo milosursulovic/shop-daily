@@ -18,8 +18,8 @@ import com.example.ecommerce.presentation.ui.theme.Gray
 import com.example.ecommerce.presentation.ui.theme.StartYellow
 
 @Composable
-fun ProductRating(product: Product) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+fun ProductRating(product: Product, modifier: Modifier = Modifier) {
+    Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically) {
         repeat(5) {
             Icon(
                 imageVector = Icons.Filled.Star,

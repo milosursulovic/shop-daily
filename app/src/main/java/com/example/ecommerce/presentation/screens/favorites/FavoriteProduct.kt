@@ -1,4 +1,4 @@
-package com.example.ecommerce.presentation.screens.main.bag
+package com.example.ecommerce.presentation.screens.favorites
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -8,7 +8,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,7 +18,7 @@ import com.example.ecommerce.presentation.common.components.product.*
 import com.example.ecommerce.presentation.ui.theme.Gray
 
 @Composable
-fun BagProduct(product: Product) {
+fun FavoriteProduct(favorite: Product) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -33,7 +33,7 @@ fun BagProduct(product: Product) {
             CardImage(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxSize(), product.image
+                    .fillMaxSize(), favorite.image
             )
             Column(
                 modifier = Modifier
@@ -48,15 +48,16 @@ fun BagProduct(product: Product) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    ProductTitle(product = product)
+                    ProductSubtitle(product = favorite)
                     IconButton(onClick = { }) {
                         Icon(
-                            imageVector = Icons.Outlined.MoreVert,
+                            imageVector = Icons.Outlined.Close,
                             contentDescription = null,
                             tint = Gray
                         )
                     }
                 }
+                ProductTitle(product = favorite)
                 ColorAndSize()
                 Row(
                     modifier = Modifier
@@ -64,8 +65,8 @@ fun BagProduct(product: Product) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    ProductAmount()
-                    ProductPrice(product = product, modifier = Modifier.fillMaxWidth())
+                    ProductRating(product = favorite, modifier = Modifier.weight(1f))
+                    ProductPrice(product = favorite, modifier = Modifier.weight(1f))
                 }
             }
         }

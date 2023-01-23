@@ -104,6 +104,6 @@ fun ProductCard(
         ProductRating(product = product)
         ProductSubtitle(product = product)
         ProductTitle(product = product)
-        ProductPrice(product = product)
+        ProductPrice(product = product, modifier = Modifier.fillMaxWidth())
     }
 }

@@ -17,12 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.presentation.common.components.appbar.AppBar
 import com.example.ecommerce.presentation.common.components.button.CustomButton
 import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
 import com.example.ecommerce.presentation.common.components.product.CircularButton
+import com.example.ecommerce.presentation.common.components.screen.ScreenTitle
 import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
 import com.example.ecommerce.presentation.screens.main.MainViewModel
 import com.example.ecommerce.presentation.ui.theme.Gray
@@ -46,12 +46,7 @@ fun Bag(mainViewModel: MainViewModel) {
                     .verticalScroll(rememberScrollState())
                     .padding(top = 10.dp, start = 10.dp, end = 10.dp, bottom = screenHeight * 0.15f)
             ) {
-                Text(
-                    text = "My Bag",
-                    style = MaterialTheme.typography.h1,
-                    color = MaterialTheme.colors.onBackground,
-                    fontWeight = FontWeight.Bold
-                )
+                ScreenTitle(title = "My Bag")
                 if (mainViewModel.cartProducts.isNotEmpty()) {
                     LazyColumn(
                         modifier = Modifier

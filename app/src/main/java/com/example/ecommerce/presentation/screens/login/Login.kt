@@ -9,10 +9,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.presentation.common.components.button.CustomButton
 import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
+import com.example.ecommerce.presentation.common.components.screen.ScreenTitle
 import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
 import com.example.ecommerce.presentation.screens.login.components.custom_login.ForgotPassword
 import com.example.ecommerce.presentation.screens.login.components.custom_login.LoginTextField
@@ -34,14 +34,9 @@ fun Login() {
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Text(
-            text = "Login",
-            style = MaterialTheme.typography.h1,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp),
-            color = MaterialTheme.colors.onBackground,
-            textAlign = TextAlign.Start
+        ScreenTitle(
+            title = "Login", modifier = Modifier
+                .padding(start = 20.dp)
         )
         Column(
             modifier = Modifier

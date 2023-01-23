@@ -96,7 +96,10 @@ class ProductActivity : ComponentActivity() {
                                         horizontalArrangement = Arrangement.SpaceBetween
                                     ) {
                                         ProductTitle(product = product)
-                                        ProductPrice(product = product)
+                                        ProductPrice(
+                                            product = product,
+                                            modifier = Modifier.fillMaxWidth()
+                                        )
                                     }
                                     ProductSubtitle(product = product)
                                     ProductRating(product = product)

@@ -22,6 +22,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
 import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
+import com.example.ecommerce.presentation.screens.favorites.Favorites
 import com.example.ecommerce.presentation.screens.main.bag.Bag
 import com.example.ecommerce.presentation.screens.main.main_page.MainPage
 import com.example.ecommerce.presentation.screens.main.main_page.util.bottom_navigation.MainScreen
@@ -71,13 +72,13 @@ class MainActivity : ComponentActivity() {
                                 MainPage(mainViewModel = mainViewModel)
                             }
                             composable(route = MainScreen.ShopPage.route) {
-                                Shop()
+                                Shop(mainViewModel = mainViewModel)
                             }
                             composable(route = MainScreen.BagPage.route) {
                                 Bag(mainViewModel = mainViewModel)
                             }
                             composable(route = MainScreen.FavoritesPage.route) {
-                                FeedbackLabel(FeedbackType.Info("TO DO"))
+                                Favorites(mainViewModel = mainViewModel)
                             }
                             composable(route = MainScreen.ProfilePage.route) {
                                 FeedbackLabel(FeedbackType.Info("TO DO"))

@@ -9,10 +9,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.presentation.common.components.appbar.AppBar
 import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
+import com.example.ecommerce.presentation.common.components.screen.BottomPaddingColumn
 import com.example.ecommerce.presentation.common.components.screen.ScreenTitle
 import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
 import com.example.ecommerce.presentation.screens.main.MainViewModel
@@ -32,13 +32,7 @@ fun Favorites(
             )
         },
         content = {
-            val configuration = LocalConfiguration.current
-            val screenHeight = configuration.screenHeightDp.dp
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 10.dp, start = 10.dp, end = 10.dp, bottom = screenHeight * 0.15f)
-            ) {
+            BottomPaddingColumn {
                 ScreenTitle(title = "Favorites")
                 if (mainViewModel.favorites.isNotEmpty()) {
                     LazyColumn(

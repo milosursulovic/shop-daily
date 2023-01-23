@@ -2,15 +2,12 @@ package com.example.ecommerce.presentation.screens.main.main_page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -19,20 +16,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ecommerce.R
 import com.example.ecommerce.presentation.common.components.button.CustomButton
+import com.example.ecommerce.presentation.common.components.screen.BottomPaddingColumn
 import com.example.ecommerce.presentation.screens.main.MainViewModel
 import com.example.ecommerce.presentation.screens.main.main_page.components.main_area.MainArea
 import com.example.ecommerce.presentation.screens.main.main_page.util.main_area.ProductType
 
 @Composable
 fun MainPage(mainViewModel: MainViewModel) {
-    val configuration = LocalConfiguration.current
-    val screenHeight = configuration.screenHeightDp.dp
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(bottom = screenHeight * 0.15f)
-    ) {
+    BottomPaddingColumn(verticalScroll = true) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()

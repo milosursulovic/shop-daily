@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.KeyboardArrowRight
@@ -16,12 +14,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.example.ecommerce.presentation.common.components.appbar.AppBar
 import com.example.ecommerce.presentation.common.components.button.CustomButton
 import com.example.ecommerce.presentation.common.components.feedback.FeedbackLabel
 import com.example.ecommerce.presentation.common.components.product.CircularButton
+import com.example.ecommerce.presentation.common.components.screen.BottomPaddingColumn
 import com.example.ecommerce.presentation.common.components.screen.ScreenTitle
 import com.example.ecommerce.presentation.common.util.feedback.FeedbackType
 import com.example.ecommerce.presentation.screens.main.MainViewModel
@@ -38,14 +36,7 @@ fun Bag(mainViewModel: MainViewModel) {
                 onBackPressed = {})
         },
         content = {
-            val configuration = LocalConfiguration.current
-            val screenHeight = configuration.screenHeightDp.dp
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(top = 10.dp, start = 10.dp, end = 10.dp, bottom = screenHeight * 0.15f)
-            ) {
+            BottomPaddingColumn(verticalScroll = true) {
                 ScreenTitle(title = "My Bag")
                 if (mainViewModel.cartProducts.isNotEmpty()) {
                     LazyColumn(

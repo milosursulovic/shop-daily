@@ -5,13 +5,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -107,10 +110,22 @@ class MainActivity : ComponentActivity() {
                                             }
                                         ) {
                                             Icon(
-                                                if (navIcon.destination == currentDestination) navIcon.selectedIcon else navIcon.unselectedIcon,
+                                                painterResource(
+                                                    id =
+                                                    if (navIcon.destination == currentDestination)
+                                                        if (isSystemInDarkTheme())
+                                                            navIcon.selectedIconDark
+                                                        else
+                                                            navIcon.selectedIcon
+                                                    else
+                                                        if (isSystemInDarkTheme())
+                                                            navIcon.unselectedIconDark
+                                                        else
+                                                            navIcon.unselectedIcon
+                                                ),
                                                 null,
                                                 modifier = Modifier.size(30.dp),
-                                                tint = if (navIcon.destination == currentDestination) MaterialTheme.colors.primary else Gray
+                                                tint = Color.Unspecified
                                             )
                                         }
                                         Text(

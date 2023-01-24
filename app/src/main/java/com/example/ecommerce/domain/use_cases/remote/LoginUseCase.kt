@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class LoginUseCase(private val repository: DummyJsonRepository) {
-    suspend operator fun invoke(): Flow<Resource<User>> = flow {
+    suspend operator fun invoke(username: String, password: String): Flow<Resource<User>> = flow {
         emit(Resource.Loading())
         try {
-            val response = repository.login()
+            val response = repository.login(username, password)
             if (response.isSuccessful) {
                 response.body()?.let {
                     emit(Resource.Success(it.toUser()))

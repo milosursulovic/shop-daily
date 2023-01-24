@@ -11,7 +11,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.example.ecommerce.presentation.common.components.appbar.AppBar
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ecommerce.presentation.ui.theme.ECommerceTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,12 +25,13 @@ class LoginActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    val viewModel: LoginViewModel = hiltViewModel()
                     Scaffold(
                         topBar = {
-                            AppBar(onBackPressed = {})
+//                            AppBar(onBackPressed = {})
                         },
                         content = {
-                            Login()
+                            Login(viewModel = viewModel)
                         }
                     )
                 }

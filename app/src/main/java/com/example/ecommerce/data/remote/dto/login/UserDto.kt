@@ -2,9 +2,7 @@ package com.example.ecommerce.data.remote.dto.login
 
 
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
 data class UserDto(
     @Json(name = "email")
     val email: String,

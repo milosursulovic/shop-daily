@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
-    private var _loginState by mutableStateOf(LoginState())
-    val loginState: LoginState = _loginState
+    var loginState by mutableStateOf(LoginState())
+        private set
 
     fun onEvent(event: LoginEvent) {
         when (event) {
@@ -29,11 +29,11 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
             loginUseCase(username, password).collect { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        _loginState = _loginState.copy(isLoading = true)
+                        loginState = loginState.copy(isLoading = true)
                     }
                     is Resource.Success -> {
                         result.data?.let { user ->
-                            _loginState = _loginState.copy(
+                            loginState = loginState.copy(
                                 isLoading = false,
                                 loggedUser = user
                             )
@@ -41,7 +41,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                     }
                     is Resource.Error -> {
                         result.message?.let { errorMessage ->
-                            _loginState = _loginState.copy(
+                            loginState = loginState.copy(
                                 isLoading = false,
                                 error = errorMessage
                             )

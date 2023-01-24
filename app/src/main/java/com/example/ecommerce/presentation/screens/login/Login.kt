@@ -1,5 +1,7 @@
 package com.example.ecommerce.presentation.screens.login
 
+import android.content.Intent
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -19,6 +21,7 @@ import com.example.ecommerce.presentation.screens.login.components.social.Social
 import com.example.ecommerce.presentation.screens.login.util.LoginEvent
 import com.example.ecommerce.presentation.screens.login.util.custom_login.LoginFieldType
 import com.example.ecommerce.presentation.screens.login.util.social.SocialType
+import com.example.ecommerce.presentation.screens.main.MainActivity
 
 @Composable
 fun Login(viewModel: LoginViewModel) {
@@ -39,8 +42,10 @@ fun Login(viewModel: LoginViewModel) {
                 .padding(start = 20.dp)
         )
         loginState.loggedUser?.let {
-//            context.startActivity(Intent(context, MainActivity::class.java))
-//            (context as ComponentActivity).finish()
+            context.startActivity(Intent(context, MainActivity::class.java))
+            (context as ComponentActivity).finish()
+
+            //write user to db
         }
         if (loginState.isLoading) {
             Column(

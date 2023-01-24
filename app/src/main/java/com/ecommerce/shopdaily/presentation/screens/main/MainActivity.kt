@@ -27,8 +27,8 @@ import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.bottom_n
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.bottom_navigation.navigationIcons
 import com.ecommerce.shopdaily.presentation.screens.main.profile.Profile
 import com.ecommerce.shopdaily.presentation.screens.main.shop.Shop
-import com.ecommerce.shopdaily.presentation.ui.theme.ShopDailyTheme
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
+import com.ecommerce.shopdaily.presentation.ui.theme.ShopDailyTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

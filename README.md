@@ -2,7 +2,7 @@
 
 A Simple E Commerce Mobile Application which has been implemented using Clean Architecture alongside MVVM design.
 
-***THIS REPOSITORY IS JUST FOR TRAINING PURPOSE***
+## ***THIS REPOSITORY IS JUST FOR TRAINING PURPOSE***
 
 ### Technologies & Methodologies which used:
 

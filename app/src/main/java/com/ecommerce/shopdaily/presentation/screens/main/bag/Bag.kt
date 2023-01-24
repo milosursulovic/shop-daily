@@ -33,8 +33,8 @@ fun Bag(mainViewModel: MainViewModel) {
         topBar = {
             AppBar(
                 isBackEnabled = false,
-                actions = arrayOf(Icons.Outlined.Search),
-                onBackPressed = {})
+                actions = arrayOf(Icons.Outlined.Search)
+            )
         },
         content = {
             BottomPaddingColumn(verticalScroll = true) {

@@ -35,8 +35,7 @@ fun Shop(mainViewModel: MainViewModel) {
             AppBar(
                 title = "Categories",
                 elevation = 5.dp,
-                actions = arrayOf(Icons.Outlined.Search),
-                onBackPressed = {}
+                actions = arrayOf(Icons.Outlined.Search)
             )
         },
         content = {

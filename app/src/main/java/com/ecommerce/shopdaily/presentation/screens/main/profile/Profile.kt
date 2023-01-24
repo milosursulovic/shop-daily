@@ -35,7 +35,6 @@ fun Profile(mainViewModel: MainViewModel) {
         topBar = {
             AppBar(
                 isBackEnabled = false,
-                onBackPressed = {},
                 actions = arrayOf(Icons.Outlined.Search)
             )
         },

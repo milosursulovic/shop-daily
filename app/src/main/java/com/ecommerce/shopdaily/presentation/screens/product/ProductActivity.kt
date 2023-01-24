@@ -54,8 +54,7 @@ class ProductActivity : ComponentActivity() {
                         topBar = {
                             AppBar(
                                 title = product.title,
-                                actions = arrayOf(Icons.Outlined.Share),
-                                onBackPressed = {}
+                                actions = arrayOf(Icons.Outlined.Share)
                             )
                         },
                         content = {

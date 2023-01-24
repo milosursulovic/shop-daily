@@ -12,6 +12,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ecommerce.shopdaily.presentation.common.components.appbar.AppBar
 import com.ecommerce.shopdaily.presentation.ui.theme.ShopDailyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +29,7 @@ class LoginActivity : ComponentActivity() {
                     val viewModel: LoginViewModel = hiltViewModel()
                     Scaffold(
                         topBar = {
-//                            AppBar(onBackPressed = {})
+                            AppBar()
                         },
                         content = {
                             Login(viewModel = viewModel)

@@ -18,9 +18,8 @@ import androidx.compose.ui.unit.dp
 fun AppBar(
     title: String = "",
     elevation: Dp = 0.dp,
-    vararg actions: ImageVector = emptyArray(),
-    isBackEnabled: Boolean = true,
-    onBackPressed: () -> Unit
+    actions: Array<ImageVector> = emptyArray(),
+    isBackEnabled: Boolean = true
 ) {
     TopAppBar(
         backgroundColor = MaterialTheme.colors.background,
@@ -42,7 +41,7 @@ fun AppBar(
         },
         navigationIcon = {
             if (isBackEnabled) {
-                IconButton(onClick = { onBackPressed() }) {
+                IconButton(onClick = { }) {
                     Icon(
                         Icons.Outlined.KeyboardArrowLeft,
                         null,

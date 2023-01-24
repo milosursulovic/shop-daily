@@ -28,7 +28,6 @@ fun Favorites(
         topBar = {
             AppBar(
                 isBackEnabled = false,
-                onBackPressed = {},
                 actions = arrayOf(Icons.Outlined.Search)
             )
         },

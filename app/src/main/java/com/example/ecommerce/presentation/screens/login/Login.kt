@@ -46,6 +46,7 @@ fun Login(viewModel: LoginViewModel) {
             (context as ComponentActivity).finish()
 
             //write user to db
+
         }
         if (loginState.isLoading) {
             Column(

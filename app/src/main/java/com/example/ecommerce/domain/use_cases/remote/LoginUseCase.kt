@@ -1,7 +1,7 @@
 package com.example.ecommerce.domain.use_cases.remote
 
 import com.example.ecommerce.common.Resource
-import com.example.ecommerce.data.mappers.remote.login.toUser
+import com.example.ecommerce.data.mappers.toUser
 import com.example.ecommerce.domain.model.login.User
 import com.example.ecommerce.domain.repository.DummyJsonRepository
 import kotlinx.coroutines.flow.Flow

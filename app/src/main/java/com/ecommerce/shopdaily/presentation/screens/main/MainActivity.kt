@@ -8,10 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -46,6 +43,9 @@ class MainActivity : ComponentActivity() {
                         mutableStateOf(
                             navController.currentDestination?.route ?: MainScreen.MainPage.route
                         )
+                    }
+                    LaunchedEffect(key1 = currentDestination) {
+                        navController.navigate(currentDestination)
                     }
                     BackHandler {
                         if (navController.currentDestination?.route == MainScreen.MainPage.route) {
@@ -103,9 +103,7 @@ class MainActivity : ComponentActivity() {
                                     ) {
                                         IconButton(
                                             onClick = {
-                                                navController.navigate(navIcon.destination)
-                                                currentDestination =
-                                                    navController.currentDestination?.route!!
+                                                currentDestination = navIcon.destination
                                             }
                                         ) {
                                             Icon(

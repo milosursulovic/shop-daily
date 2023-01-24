@@ -27,7 +27,7 @@ You can login with some of this users:
 - User 2 **username: hbingley1; password: CQutx25i8r**
 - User 3 **username: rshawe2; password: OWsTbMUgFc**
 - User 4 **username: yraigatt3; password: sRQxjPfdS**
-- User 3 **username: kmeus4; password: aUTdmmmbH**
+- User 5 **username: kmeus4; password: aUTdmmmbH**
 
 For more users visit: https://dummyjson.com/users
 

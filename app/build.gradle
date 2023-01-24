@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.ecommerce'
+    namespace 'com.ecommerce.shopdaily'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.ecommerce"
+        applicationId "com.ecommerce.shopdaily"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -72,6 +72,7 @@ dependencies {
 
     //room
     implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
     implementation 'androidx.core:core-ktx:1.9.0'

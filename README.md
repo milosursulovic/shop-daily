@@ -1,4 +1,4 @@
-# E Commerce App
+# Shop Daily
 
 A Simple E Commerce Mobile Application which has been implemented using Clean Architecture alongside MVVM design.
 

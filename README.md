@@ -1,4 +1,5 @@
 # Shop Daily
+<img src="https://user-images.githubusercontent.com/59211003/214390070-e5906c03-2774-4d48-a04c-e8026c16f96e.png" width="50"/>
 
 A Simple E Commerce Mobile Application which has been implemented using Clean Architecture alongside MVVM design.
 

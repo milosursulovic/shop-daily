@@ -13,9 +13,13 @@ class GetSavedUserUseCase(
     suspend operator fun invoke(): Flow<Resource<User>> = flow {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(repository.getSavedUser()[0].toUser()))
+            if (repository.getSavedUser().isNotEmpty()) {
+                emit(Resource.Success(repository.getSavedUser()[0].toUser()))
+            } else {
+                emit(Resource.Error(""))
+            }
         } catch (e: Exception) {
-            emit(Resource.Error("[ERROR]: ${e.localizedMessage}"))
+            emit(Resource.Error(e.message.toString()))
         }
     }
 }

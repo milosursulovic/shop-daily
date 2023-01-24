@@ -22,6 +22,7 @@ import com.ecommerce.shopdaily.presentation.screens.login.util.LoginEvent
 import com.ecommerce.shopdaily.presentation.screens.login.util.custom_login.LoginFieldType
 import com.ecommerce.shopdaily.presentation.screens.login.util.social.SocialType
 import com.ecommerce.shopdaily.presentation.screens.main.MainActivity
+import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 
 @Composable
 fun Login(viewModel: LoginViewModel) {
@@ -41,11 +42,14 @@ fun Login(viewModel: LoginViewModel) {
             title = "Login", modifier = Modifier
                 .padding(start = 20.dp)
         )
-        loginState.loggedUser?.let {
-            context.startActivity(Intent(context, MainActivity::class.java))
+        loginState.savedUser?.let {
+            val intent = Intent(context, MainActivity::class.java).apply {
+                putExtra(Constants.USER, it)
+            }
+            context.startActivity(intent)
             (context as ComponentActivity).finish()
-
-            //write user to db
+        }
+        loginState.loggedUser?.let {
             viewModel.onEvent(LoginEvent.SaveUser(it))
         }
         if (loginState.isLoading) {
@@ -73,10 +77,12 @@ fun Login(viewModel: LoginViewModel) {
                 Spacer(modifier = Modifier.height(20.dp))
                 ForgotPassword()
                 Spacer(modifier = Modifier.height(20.dp))
-                loginState.error?.let {
-                    FeedbackLabel(
-                        FeedbackType.Error(it)
-                    )
+                loginState.error?.let { errorMessage ->
+                    if (errorMessage.isNotBlank()) {
+                        FeedbackLabel(
+                            FeedbackType.Error(errorMessage)
+                        )
+                    }
                 }
                 Spacer(modifier = Modifier.height(20.dp))
                 CustomButton(modifier = Modifier

@@ -25,6 +25,10 @@ class LoginViewModel @Inject constructor(
     var loginState by mutableStateOf(LoginState())
         private set
 
+    init {
+        onEvent(LoginEvent.GetSavedUser)
+    }
+
     fun onEvent(event: LoginEvent) {
         when (event) {
             is LoginEvent.Login -> login(event.username, event.password)
@@ -38,13 +42,20 @@ class LoginViewModel @Inject constructor(
             loginUseCase(username, password).collect { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        loginState = loginState.copy(isLoading = true)
+                        loginState = loginState.copy(
+                            isLoading = true,
+                            loggedUser = null,
+                            savedUser = null,
+                            error = null
+                        )
                     }
                     is Resource.Success -> {
                         result.data?.let { user ->
                             loginState = loginState.copy(
                                 isLoading = false,
-                                loggedUser = user
+                                loggedUser = user,
+                                savedUser = null,
+                                error = null
                             )
                         }
                     }
@@ -52,7 +63,9 @@ class LoginViewModel @Inject constructor(
                         result.message?.let { errorMessage ->
                             loginState = loginState.copy(
                                 isLoading = false,
-                                error = errorMessage
+                                error = errorMessage,
+                                loggedUser = null,
+                                savedUser = null
                             )
                         }
                     }
@@ -65,9 +78,34 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             saveUserUseCase(user).collect { result ->
                 when (result) {
-                    is Resource.Loading -> {}
-                    is Resource.Success -> {}
-                    is Resource.Error -> {}
+                    is Resource.Loading -> {
+                        loginState = loginState.copy(
+                            isLoading = true,
+                            loggedUser = null,
+                            savedUser = null,
+                            error = null
+                        )
+                    }
+                    is Resource.Success -> {
+                        result.data?.let { user ->
+                            loginState = loginState.copy(
+                                isLoading = false,
+                                savedUser = user,
+                                loggedUser = null,
+                                error = null
+                            )
+                        }
+                    }
+                    is Resource.Error -> {
+                        result.message?.let { errorMessage ->
+                            loginState = loginState.copy(
+                                isLoading = false,
+                                error = errorMessage,
+                                savedUser = null,
+                                loggedUser = null
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -77,9 +115,34 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             getSavedUserUseCase().collect { result ->
                 when (result) {
-                    is Resource.Loading -> {}
-                    is Resource.Success -> {}
-                    is Resource.Error -> {}
+                    is Resource.Loading -> {
+                        loginState = loginState.copy(
+                            isLoading = true,
+                            loggedUser = null,
+                            savedUser = null,
+                            error = null
+                        )
+                    }
+                    is Resource.Success -> {
+                        result.data?.let { user ->
+                            loginState = loginState.copy(
+                                isLoading = false,
+                                savedUser = user,
+                                loggedUser = null,
+                                error = null
+                            )
+                        }
+                    }
+                    is Resource.Error -> {
+                        result.message?.let { errorMessage ->
+                            loginState = loginState.copy(
+                                isLoading = false,
+                                error = errorMessage,
+                                savedUser = null,
+                                loggedUser = null
+                            )
+                        }
+                    }
                 }
             }
         }

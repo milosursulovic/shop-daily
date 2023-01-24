@@ -10,13 +10,13 @@ import kotlinx.coroutines.flow.flow
 class SaveUserUseCase(
     private val repository: DummyJsonRepository
 ) {
-    suspend operator fun invoke(user: User): Flow<Resource<Long>> = flow {
+    suspend operator fun invoke(user: User): Flow<Resource<User>> = flow {
         emit(Resource.Loading())
         try {
             val result = repository.saveUser(user.toUserEntity())
-            emit(Resource.Success(result))
+            emit(Resource.Success(user))
         } catch (e: Exception) {
-            emit(Resource.Error("[ERROR]: ${e.localizedMessage}"))
+            emit(Resource.Error(e.message.toString()))
         }
     }
 }

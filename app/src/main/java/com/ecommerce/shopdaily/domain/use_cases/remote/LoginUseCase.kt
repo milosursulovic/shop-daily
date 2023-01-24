@@ -25,7 +25,7 @@ class LoginUseCase(private val repository: DummyJsonRepository) {
                 } ?: emit(Resource.Error("Something went wrong!"))
             }
         } catch (e: Exception) {
-            emit(Resource.Error("[ERROR]: ${e.localizedMessage}"))
+            emit(Resource.Error(e.message.toString()))
         }
     }
 }

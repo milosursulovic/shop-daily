@@ -21,6 +21,16 @@ add them to cart and do checkout, add promo codes,
 add different payment methods, be able to favorite products,
 see different product categories, be able to change profile settings, etc.
 
+### Users for login
+You can login with some of this users:
+- User 1 **username: atuny0; password: 9uQFF1Lh**
+- User 2 **username: hbingley1; password: CQutx25i8r**
+- User 3 **username: rshawe2; password: OWsTbMUgFc**
+- User 4 **username: yraigatt3; password: sRQxjPfdS**
+- User 2 **username: kmeus4; password: aUTdmmmbH**
+
+For more users visit: https://dummyjson.com/users
+
 ### Supported Android Versions
 Android versions targeted:
 

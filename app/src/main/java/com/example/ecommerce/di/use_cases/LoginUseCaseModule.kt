@@ -1,6 +1,8 @@
-package com.example.ecommerce.di.use_cases.remote
+package com.example.ecommerce.di.use_cases
 
 import com.example.ecommerce.domain.repository.DummyJsonRepository
+import com.example.ecommerce.domain.use_cases.local.GetSavedUserUseCase
+import com.example.ecommerce.domain.use_cases.local.SaveUserUseCase
 import com.example.ecommerce.domain.use_cases.remote.LoginUseCase
 import dagger.Module
 import dagger.Provides
@@ -15,4 +17,14 @@ object LoginUseCaseModule {
     @Provides
     fun providesLoginUseCase(repository: DummyJsonRepository): LoginUseCase =
         LoginUseCase(repository)
+
+    @Singleton
+    @Provides
+    fun providesSaveUserUseCase(repository: DummyJsonRepository): SaveUserUseCase =
+        SaveUserUseCase(repository)
+
+    @Singleton
+    @Provides
+    fun providesGetSavedUserUseCase(repository: DummyJsonRepository): GetSavedUserUseCase =
+        GetSavedUserUseCase(repository)
 }

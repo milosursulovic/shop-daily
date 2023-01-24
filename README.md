@@ -1,5 +1,16 @@
-Pruzanje e-commerce resenja na Android platformi pomocu MVVM design pattern-a i Jetpack Compose-a - Aplikacija za diplomski rad
+# E Commerce App
 
-Koristi se https://dummyjson.com/docs API za proizvode, autentifikaciju, komentare, itd.
+A Simple E Commerce Mobile Application which has been implemented using Clean Architecture alongside MVVM design.
 
-Design za aplikaciju: https://drive.google.com/drive/folders/1EU-OF7AcT-d-2vYxHYpudHhxynkzlzkl?usp=share_link
+
+### Technologies & Methodologies which used:
+
+- Jetpack Compose
+- Dagger Hilt
+- Coroutines
+- Clean Architecture
+- MVVM Pattern
+- Flow
+
+### Used API
+The API is here: https://dummyjson.com/

@@ -6,6 +6,9 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ecommerce.common.Resource
+import com.example.ecommerce.domain.model.login.User
+import com.example.ecommerce.domain.use_cases.local.GetSavedUserUseCase
+import com.example.ecommerce.domain.use_cases.local.SaveUserUseCase
 import com.example.ecommerce.domain.use_cases.remote.LoginUseCase
 import com.example.ecommerce.presentation.screens.login.util.LoginEvent
 import com.example.ecommerce.presentation.screens.login.util.LoginState
@@ -14,13 +17,19 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
+class LoginViewModel @Inject constructor(
+    private val loginUseCase: LoginUseCase,
+    private val saveUserUseCase: SaveUserUseCase,
+    private val getSavedUserUseCase: GetSavedUserUseCase
+) : ViewModel() {
     var loginState by mutableStateOf(LoginState())
         private set
 
     fun onEvent(event: LoginEvent) {
         when (event) {
             is LoginEvent.Login -> login(event.username, event.password)
+            is LoginEvent.SaveUser -> saveUser(event.user)
+            is LoginEvent.GetSavedUser -> getSavedUser()
         }
     }
 
@@ -47,6 +56,30 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                             )
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private fun saveUser(user: User) {
+        viewModelScope.launch {
+            saveUserUseCase(user).collect { result ->
+                when (result) {
+                    is Resource.Loading -> {}
+                    is Resource.Success -> {}
+                    is Resource.Error -> {}
+                }
+            }
+        }
+    }
+
+    private fun getSavedUser() {
+        viewModelScope.launch {
+            getSavedUserUseCase().collect { result ->
+                when (result) {
+                    is Resource.Loading -> {}
+                    is Resource.Success -> {}
+                    is Resource.Error -> {}
                 }
             }
         }

@@ -1,7 +1,6 @@
 package com.ecommerce.shopdaily.presentation.screens.main.profile
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -15,10 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.ecommerce.shopdaily.R
+import coil.compose.AsyncImage
 import com.ecommerce.shopdaily.presentation.common.components.appbar.AppBar
 import com.ecommerce.shopdaily.presentation.common.components.screen.BottomPaddingColumn
 import com.ecommerce.shopdaily.presentation.common.components.screen.ScreenTitle
@@ -46,25 +44,25 @@ fun Profile(mainViewModel: MainViewModel) {
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Image(
+                    AsyncImage(
                         modifier = Modifier
                             .clip(RoundedCornerShape(40.dp))
                             .width(60.dp)
                             .height(60.dp),
-                        painter = painterResource(id = R.drawable.profile_avatar),
+                        model = mainViewModel.loggedUser?.image,
                         contentDescription = null
                     )
                     Column(
                         modifier = Modifier.padding(10.dp)
                     ) {
                         Text(
-                            text = "Matilda Brown",
+                            text = "${mainViewModel.loggedUser?.firstName} ${mainViewModel.loggedUser?.lastName}",
                             style = MaterialTheme.typography.h3,
                             color = MaterialTheme.colors.onBackground,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            text = "matilda.brown@mail.com",
+                            text = "${mainViewModel.loggedUser?.email}",
                             style = MaterialTheme.typography.h3,
                             color = Gray,
                             fontWeight = FontWeight.Bold

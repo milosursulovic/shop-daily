@@ -13,6 +13,7 @@ A Simple E Commerce Mobile Application which has been implemented using Clean Ar
 - Clean Architecture
 - MVVM Pattern
 - Flow
+- Material design
 
 ### App Scenario
 User should register, login, list available products,
@@ -27,7 +28,7 @@ Android versions targeted:
 
 Tested on:
 
-- Pixel 3a API 33 x86 64
+- Pixel 3a API 33 x86 64 (emulator device)
 
 ### Used API
 The API is here: https://dummyjson.com/

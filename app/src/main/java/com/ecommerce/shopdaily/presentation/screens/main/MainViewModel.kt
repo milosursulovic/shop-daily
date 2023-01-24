@@ -5,8 +5,15 @@ import com.ecommerce.shopdaily.data.db.FakeDb
 import com.ecommerce.shopdaily.data.remote.FakeApi
 import com.ecommerce.shopdaily.domain.model.Category
 import com.ecommerce.shopdaily.domain.model.Product
+import com.ecommerce.shopdaily.domain.model.login.User
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor() : ViewModel() {
+    private var _loggedUser: User? = null
+    var loggedUser: User? = _loggedUser
+
     private val fakeApi = FakeApi()
     private val fakeDb = FakeDb()
 

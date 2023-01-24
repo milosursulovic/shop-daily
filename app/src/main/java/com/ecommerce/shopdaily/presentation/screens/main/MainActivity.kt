@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.ecommerce.shopdaily.presentation.screens.main
 
 import android.os.Bundle
@@ -16,10 +18,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ecommerce.shopdaily.domain.model.login.User
 import com.ecommerce.shopdaily.presentation.screens.main.bag.Bag
 import com.ecommerce.shopdaily.presentation.screens.main.favorites.Favorites
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.MainPage
@@ -27,9 +31,12 @@ import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.bottom_n
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.bottom_navigation.navigationIcons
 import com.ecommerce.shopdaily.presentation.screens.main.profile.Profile
 import com.ecommerce.shopdaily.presentation.screens.main.shop.Shop
+import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 import com.ecommerce.shopdaily.presentation.ui.theme.ShopDailyTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +46,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background,
                 ) {
-                    val mainViewModel: MainViewModel = viewModel()
+                    val mainViewModel: MainViewModel = hiltViewModel()
+                    mainViewModel.loggedUser = intent?.getSerializableExtra(Constants.USER) as User
                     val context = LocalContext.current
                     val navController = rememberNavController()
                     var currentDestination by remember {

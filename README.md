@@ -1,4 +1,4 @@
-# <img href="https://user-images.githubusercontent.com/59211003/214391898-4cb85ff4-aed7-4aad-ace0-66fc3f2c5eb2.jpg" width="50"/> Shop Daily
+# ![This is an image](https://user-images.githubusercontent.com/59211003/214391898-4cb85ff4-aed7-4aad-ace0-66fc3f2c5eb2.jpg) Shop Daily
 
 A Simple E Commerce Mobile Application which has been implemented using Clean Architecture alongside MVVM design.
 

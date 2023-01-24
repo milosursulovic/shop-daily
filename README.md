@@ -16,9 +16,9 @@ A Simple E Commerce Mobile Application which has been implemented using Clean Ar
 
 ### App Scenario
 User should register, login, list available products,
-add them to card, to successful checkout, add promo codes,
-add different payment methods, be able to add products to favorites,
-be able to change profile settings, etc.
+add them to cart and do checkout, add promo codes,
+add different payment methods, be able to favorite products,
+see different product categories, be able to change profile settings, etc.
 
 ### Supported Android Versions
 Android versions targeted:

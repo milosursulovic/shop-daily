@@ -1,6 +1,7 @@
 package com.ecommerce.shopdaily.presentation.screens.main.shop.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -14,11 +15,12 @@ import androidx.compose.ui.unit.dp
 import com.ecommerce.shopdaily.domain.model.category.ShopCategory
 
 @Composable
-fun ProductCategory(category: ShopCategory) {
+fun ProductCategory(shopCategory: ShopCategory, onCategoryClick: (ShopCategory) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(120.dp),
+            .height(120.dp)
+            .clickable { onCategoryClick(shopCategory) },
         shape = RoundedCornerShape(20.dp),
         elevation = 5.dp
     ) {
@@ -30,7 +32,7 @@ fun ProductCategory(category: ShopCategory) {
             horizontalArrangement = Arrangement.Center
         ) {
             Text(
-                text = category.name,
+                text = shopCategory.name,
                 style = MaterialTheme.typography.h3,
                 color = MaterialTheme.colors.onSecondary,
                 fontWeight = FontWeight.Bold

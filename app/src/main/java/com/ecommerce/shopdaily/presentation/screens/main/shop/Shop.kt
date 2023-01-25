@@ -13,9 +13,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -25,7 +22,9 @@ import com.ecommerce.shopdaily.presentation.common.components.feedback.FeedbackL
 import com.ecommerce.shopdaily.presentation.common.components.screen.Loading
 import com.ecommerce.shopdaily.presentation.common.util.feedback.FeedbackType
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
+import com.ecommerce.shopdaily.presentation.screens.main.shop.components.CategoryProduct
 import com.ecommerce.shopdaily.presentation.screens.main.shop.components.ProductCategory
+import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryEvent
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
@@ -36,10 +35,10 @@ fun Shop(mainViewModel: MainViewModel) {
     val pagerState = rememberPagerState()
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
-    val categoriesState = mainViewModel.categoriesState
-    val showCategory by remember {
-        mutableStateOf(false)
-    }
+    val categoriesState = mainViewModel.shopCategoriesState
+    val categoryState = mainViewModel.categoryState
+    val loggedUser = mainViewModel.loggedUser
+
     Scaffold(
         topBar = {
             AppBar(
@@ -53,11 +52,30 @@ fun Shop(mainViewModel: MainViewModel) {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                if (showCategory) {
-                    //here show category list
-                    //loading while api call, and than show
-                    //on back pressed show categories again
+                if (categoryState.isCategoryVisible) {
+                    if (categoryState.isLoading) {
+                        Loading(modifier = Modifier.fillMaxSize())
+                    } else {
+                        categoryState.category?.let { category ->
+                            LazyColumn(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(
+                                        top = 10.dp,
+                                        start = 10.dp,
+                                        end = 10.dp,
+                                        bottom = screenHeight * 0.15f
+                                    ),
+                                verticalArrangement = Arrangement.spacedBy(15.dp)
+                            ) {
+                                items(category.products) { product ->
+                                    CategoryProduct(product = product) {
 
+                                    }
+                                }
+                            }
+                        }
+                    }
                 } else {
                     TabRow(
                         selectedTabIndex = pagerState.currentPage,
@@ -127,7 +145,7 @@ fun Shop(mainViewModel: MainViewModel) {
                                     )
                                 }
                             }
-                            categoriesState.categories?.let { categories ->
+                            categoriesState.shopCategories?.let { shopCategories ->
                                 LazyColumn(
                                     modifier = Modifier
                                         .fillMaxSize()
@@ -139,8 +157,16 @@ fun Shop(mainViewModel: MainViewModel) {
                                         ),
                                     verticalArrangement = Arrangement.spacedBy(10.dp)
                                 ) {
-                                    items(categories) { category ->
-                                        ProductCategory(category = category)
+                                    items(shopCategories) { shopCategory ->
+                                        ProductCategory(shopCategory = shopCategory) { category ->
+                                            mainViewModel.onCategoriesEvent(
+                                                CategoryEvent.GetCategory(
+                                                    loggedUser?.token!!,
+                                                    category.categoryId,
+                                                    category.name
+                                                )
+                                            )
+                                        }
                                     }
                                 }
                             }

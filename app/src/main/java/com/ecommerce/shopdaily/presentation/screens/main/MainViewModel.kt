@@ -13,9 +13,9 @@ import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.domain.use_cases.local.GetSavedUserUseCase
 import com.ecommerce.shopdaily.domain.use_cases.remote.categories.GetCategoriesUseCase
 import com.ecommerce.shopdaily.domain.use_cases.remote.categories.GetCategoryUseCase
-import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoriesState
 import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryEvent
 import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryState
+import com.ecommerce.shopdaily.presentation.screens.main.util.category.ShopCategoriesState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -32,7 +32,7 @@ class MainViewModel @Inject constructor(
     var screenLoadingState by mutableStateOf(true)
         private set
 
-    var categoriesState by mutableStateOf(CategoriesState())
+    var shopCategoriesState by mutableStateOf(ShopCategoriesState())
         private set
 
     var categoryState by mutableStateOf(CategoryState())
@@ -68,6 +68,7 @@ class MainViewModel @Inject constructor(
                 categoryEvent.categoryId,
                 categoryEvent.name
             )
+            is CategoryEvent.CloseCategory -> {}
         }
     }
 
@@ -76,26 +77,26 @@ class MainViewModel @Inject constructor(
             getCategoriesUseCase(token).collect { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        categoriesState = categoriesState.copy(
+                        shopCategoriesState = shopCategoriesState.copy(
                             isLoading = true,
-                            categories = null,
+                            shopCategories = null,
                             error = null
                         )
                     }
                     is Resource.Success -> {
                         result.data?.let { categories ->
-                            categoriesState = categoriesState.copy(
+                            shopCategoriesState = shopCategoriesState.copy(
                                 isLoading = false,
-                                categories = categories,
+                                shopCategories = categories,
                                 error = null
                             )
                         }
                     }
                     is Resource.Error -> {
                         result.message?.let { errorMsg ->
-                            categoriesState = categoriesState.copy(
+                            shopCategoriesState = shopCategoriesState.copy(
                                 isLoading = false,
-                                categories = null,
+                                shopCategories = null,
                                 error = errorMsg
                             )
                         }
@@ -111,6 +112,7 @@ class MainViewModel @Inject constructor(
                 when (result) {
                     is Resource.Loading -> {
                         categoryState = categoryState.copy(
+                            isCategoryVisible = true,
                             isLoading = true,
                             category = null,
                             error = null
@@ -119,6 +121,7 @@ class MainViewModel @Inject constructor(
                     is Resource.Success -> {
                         result.data?.let { category ->
                             categoryState = categoryState.copy(
+                                isCategoryVisible = true,
                                 isLoading = false,
                                 category = category,
                                 error = null
@@ -128,6 +131,7 @@ class MainViewModel @Inject constructor(
                     is Resource.Error -> {
                         result.message?.let { errorMsg ->
                             categoryState = categoryState.copy(
+                                isCategoryVisible = true,
                                 isLoading = false,
                                 category = null,
                                 error = errorMsg

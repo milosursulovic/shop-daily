@@ -15,15 +15,15 @@ import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.product.*
 
 @Composable
-fun CategoryProduct(product: Product) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp),
-        shape = RoundedCornerShape(20.dp),
-        elevation = 5.dp
-    ) {
-        Box(modifier = Modifier.fillMaxSize()) {
+fun CategoryProduct(product: Product, onProductClick: (Product) -> Unit) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp),
+            shape = RoundedCornerShape(20.dp),
+            elevation = 5.dp
+        ) {
             Row(
                 modifier = Modifier.background(color = MaterialTheme.colors.secondary),
                 verticalAlignment = Alignment.CenterVertically
@@ -46,17 +46,17 @@ fun CategoryProduct(product: Product) {
                     ProductPrice(product = product)
                 }
             }
-            CircularButton(modifier = Modifier
-                .height(30.dp)
-                .width(30.dp)
-                .align(Alignment.BottomEnd)
-                .offset(x = 0.dp, y = 15.dp),
-                iconModifier = Modifier
-                    .width(15.dp)
-                    .height(15.dp),
-                icon = Icons.Outlined.FavoriteBorder,
-                tint = MaterialTheme.colors.onSecondary,
-                onClick = {})
         }
+        CircularButton(modifier = Modifier
+            .height(40.dp)
+            .width(40.dp)
+            .align(Alignment.BottomEnd)
+            .offset(x = 0.dp, y = 5.dp),
+            iconModifier = Modifier
+                .width(25.dp)
+                .height(25.dp),
+            icon = Icons.Outlined.FavoriteBorder,
+            tint = MaterialTheme.colors.onSecondary,
+            onClick = {})
     }
 }

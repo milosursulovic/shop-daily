@@ -68,7 +68,7 @@ class MainViewModel @Inject constructor(
                 categoryEvent.categoryId,
                 categoryEvent.name
             )
-            is CategoryEvent.CloseCategory -> {}
+            is CategoryEvent.CloseCategory -> closeCategory()
         }
     }
 
@@ -141,6 +141,15 @@ class MainViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    private fun closeCategory() {
+        categoryState = categoryState.copy(
+            isLoading = false,
+            category = null,
+            error = null,
+            isCategoryVisible = false
+        )
     }
 
     private fun getSavedUser() {

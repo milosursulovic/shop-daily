@@ -30,6 +30,7 @@ import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.bottom_n
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.bottom_navigation.navigationIcons
 import com.ecommerce.shopdaily.presentation.screens.main.profile.Profile
 import com.ecommerce.shopdaily.presentation.screens.main.shop.Shop
+import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryEvent
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 import com.ecommerce.shopdaily.presentation.ui.theme.ShopDailyTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,12 +52,16 @@ class MainActivity : ComponentActivity() {
                 }
                 if (!screenLoading) {
                     BackHandler {
-                        if (navController.currentDestination?.route == MainScreen.MainPage.route) {
-                            (context as ComponentActivity).finish()
+                        if (mainViewModel.categoryState.isCategoryVisible) {
+                            mainViewModel.onCategoriesEvent(CategoryEvent.CloseCategory)
                         } else {
-                            navController.popBackStack()
-                            navController.currentDestination?.route?.let {
-                                currentDestination = it
+                            if (navController.currentDestination?.route == MainScreen.MainPage.route) {
+                                (context as ComponentActivity).finish()
+                            } else {
+                                navController.popBackStack()
+                                navController.currentDestination?.route?.let {
+                                    currentDestination = it
+                                }
                             }
                         }
                     }

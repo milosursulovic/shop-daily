@@ -13,6 +13,9 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
@@ -34,6 +37,9 @@ fun Shop(mainViewModel: MainViewModel) {
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
     val categoriesState = mainViewModel.categoriesState
+    val showCategory by remember {
+        mutableStateOf(false)
+    }
     Scaffold(
         topBar = {
             AppBar(
@@ -47,85 +53,95 @@ fun Shop(mainViewModel: MainViewModel) {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                TabRow(
-                    selectedTabIndex = pagerState.currentPage,
-                    indicator = { tabPositions ->
-                        TabRowDefaults.Indicator(
-                            modifier = Modifier.pagerTabIndicatorOffset(pagerState, tabPositions),
-                            color = MaterialTheme.colors.primary
-                        )
-                    }
-                ) {
-                    tabItems.forEachIndexed { index, category ->
-                        Tab(
-                            modifier = Modifier.background(color = MaterialTheme.colors.secondary),
-                            text = {
-                                Text(
-                                    category,
-                                    style = MaterialTheme.typography.body1,
-                                    color = MaterialTheme.colors.onSecondary
-                                )
-                            },
-                            selected = pagerState.currentPage == index,
-                            onClick = { },
-                        )
-                    }
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(10.dp)
-                ) {
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(120.dp)
-                            .padding(10.dp),
-                        shape = RoundedCornerShape(20.dp),
-                        elevation = 5.dp
-                    ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center,
-                            modifier = Modifier.background(color = MaterialTheme.colors.primary)
-                        ) {
-                            Text(
-                                text = "SUMMER SALES",
-                                style = MaterialTheme.typography.h2,
-                                color = MaterialTheme.colors.onPrimary
+                if (showCategory) {
+                    //here show category list
+                    //loading while api call, and than show
+                    //on back pressed show categories again
+
+                } else {
+                    TabRow(
+                        selectedTabIndex = pagerState.currentPage,
+                        indicator = { tabPositions ->
+                            TabRowDefaults.Indicator(
+                                modifier = Modifier.pagerTabIndicatorOffset(
+                                    pagerState,
+                                    tabPositions
+                                ),
+                                color = MaterialTheme.colors.primary
                             )
-                            Text(
-                                text = "Up to 50% off",
-                                style = MaterialTheme.typography.body2,
-                                color = MaterialTheme.colors.onPrimary
+                        }
+                    ) {
+                        tabItems.forEachIndexed { index, category ->
+                            Tab(
+                                modifier = Modifier.background(color = MaterialTheme.colors.secondary),
+                                text = {
+                                    Text(
+                                        category,
+                                        style = MaterialTheme.typography.body1,
+                                        color = MaterialTheme.colors.onSecondary
+                                    )
+                                },
+                                selected = pagerState.currentPage == index,
+                                onClick = { },
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.height(10.dp))
-                    if (categoriesState.isLoading) {
-                        Loading(modifier = Modifier.fillMaxSize())
-                    } else {
-                        categoriesState.error?.let { errorMessage ->
-                            if (errorMessage.isNotBlank()) {
-                                FeedbackLabel(
-                                    FeedbackType.Error(errorMessage)
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(10.dp)
+                    ) {
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(120.dp)
+                                .padding(10.dp),
+                            shape = RoundedCornerShape(20.dp),
+                            elevation = 5.dp
+                        ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center,
+                                modifier = Modifier.background(color = MaterialTheme.colors.primary)
+                            ) {
+                                Text(
+                                    text = "SUMMER SALES",
+                                    style = MaterialTheme.typography.h2,
+                                    color = MaterialTheme.colors.onPrimary
+                                )
+                                Text(
+                                    text = "Up to 50% off",
+                                    style = MaterialTheme.typography.body2,
+                                    color = MaterialTheme.colors.onPrimary
                                 )
                             }
                         }
-                        categoriesState.categories?.let { categories ->
-                            LazyColumn(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(
-                                        top = 10.dp,
-                                        start = 10.dp,
-                                        end = 10.dp,
-                                        bottom = screenHeight * 0.15f
-                                    ),
-                                verticalArrangement = Arrangement.spacedBy(10.dp)
-                            ) {
-                                items(categories) { category ->
-                                    ProductCategory(category = category)
+                        Spacer(modifier = Modifier.height(10.dp))
+                        if (categoriesState.isLoading) {
+                            Loading(modifier = Modifier.fillMaxSize())
+                        } else {
+                            categoriesState.error?.let { errorMessage ->
+                                if (errorMessage.isNotBlank()) {
+                                    FeedbackLabel(
+                                        FeedbackType.Error(errorMessage)
+                                    )
+                                }
+                            }
+                            categoriesState.categories?.let { categories ->
+                                LazyColumn(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .padding(
+                                            top = 10.dp,
+                                            start = 10.dp,
+                                            end = 10.dp,
+                                            bottom = screenHeight * 0.15f
+                                        ),
+                                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                                ) {
+                                    items(categories) { category ->
+                                        ProductCategory(category = category)
+                                    }
                                 }
                             }
                         }

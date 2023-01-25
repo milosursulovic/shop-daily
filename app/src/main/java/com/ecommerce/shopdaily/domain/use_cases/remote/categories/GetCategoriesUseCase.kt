@@ -1,7 +1,7 @@
-package com.ecommerce.shopdaily.domain.use_cases.remote
+package com.ecommerce.shopdaily.domain.use_cases.remote.categories
 
 import com.ecommerce.shopdaily.common.Resource
-import com.ecommerce.shopdaily.domain.model.Category
+import com.ecommerce.shopdaily.domain.model.category.ShopCategory
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -11,13 +11,13 @@ import java.util.*
 class GetCategoriesUseCase(
     private val repository: DummyJsonRepository
 ) {
-    suspend operator fun invoke(token: String): Flow<Resource<List<Category>>> = flow {
+    suspend operator fun invoke(token: String): Flow<Resource<List<ShopCategory>>> = flow {
         emit(Resource.Loading())
         try {
             val response = repository.getCategories(token)
             if (response.isSuccessful) {
                 response.body()?.let { categories ->
-                    val newCategories = mutableListOf<Category>()
+                    val newCategories = mutableListOf<ShopCategory>()
                     categories.forEach { category ->
                         val newCategory = category.replace("-", " ").split(" ")
                             .joinToString(" ") { word ->
@@ -27,7 +27,7 @@ class GetCategoriesUseCase(
                                     ) else it.toString()
                                 }
                             }
-                        newCategories.add(Category(categoryId = category, title = newCategory))
+                        newCategories.add(ShopCategory(categoryId = category, name = newCategory))
                     }
                     emit(Resource.Success(newCategories))
                 }

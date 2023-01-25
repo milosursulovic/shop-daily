@@ -1,4 +1,4 @@
-package com.ecommerce.shopdaily.data.remote.dto.login
+package com.ecommerce.shopdaily.data.remote.dto.login.request
 
 import com.squareup.moshi.Json
 

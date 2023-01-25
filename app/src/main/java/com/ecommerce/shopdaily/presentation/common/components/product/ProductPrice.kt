@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import com.ecommerce.shopdaily.domain.model.Product
+import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_area.ProductType
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 import com.ecommerce.shopdaily.presentation.ui.theme.Hot

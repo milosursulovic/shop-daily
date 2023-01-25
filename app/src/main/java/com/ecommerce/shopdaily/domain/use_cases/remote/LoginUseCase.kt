@@ -1,7 +1,7 @@
 package com.ecommerce.shopdaily.domain.use_cases.remote
 
 import com.ecommerce.shopdaily.common.Resource
-import com.ecommerce.shopdaily.data.mappers.toUser
+import com.ecommerce.shopdaily.data.mappers.user.toUser
 import com.ecommerce.shopdaily.domain.model.login.User
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
 import kotlinx.coroutines.flow.Flow

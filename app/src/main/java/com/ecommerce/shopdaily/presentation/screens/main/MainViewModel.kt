@@ -8,12 +8,14 @@ import androidx.lifecycle.viewModelScope
 import com.ecommerce.shopdaily.common.Resource
 import com.ecommerce.shopdaily.data.db.FakeDb
 import com.ecommerce.shopdaily.data.remote.FakeApi
-import com.ecommerce.shopdaily.domain.model.Product
 import com.ecommerce.shopdaily.domain.model.login.User
+import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.domain.use_cases.local.GetSavedUserUseCase
-import com.ecommerce.shopdaily.domain.use_cases.remote.GetCategoriesUseCase
+import com.ecommerce.shopdaily.domain.use_cases.remote.categories.GetCategoriesUseCase
+import com.ecommerce.shopdaily.domain.use_cases.remote.categories.GetCategoryUseCase
 import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoriesState
 import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryEvent
+import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,7 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getSavedUserUseCase: GetSavedUserUseCase,
-    private val getCategoriesUseCase: GetCategoriesUseCase
+    private val getCategoriesUseCase: GetCategoriesUseCase,
+    private val getCategoryUseCase: GetCategoryUseCase
 ) : ViewModel() {
     var loggedUser: User? = null
         private set
@@ -30,6 +33,9 @@ class MainViewModel @Inject constructor(
         private set
 
     var categoriesState by mutableStateOf(CategoriesState())
+        private set
+
+    var categoryState by mutableStateOf(CategoryState())
         private set
 
     init {
@@ -57,7 +63,11 @@ class MainViewModel @Inject constructor(
 
     fun onCategoriesEvent(categoryEvent: CategoryEvent) {
         when (categoryEvent) {
-            is CategoryEvent.GetCategory -> getCategory(categoryEvent.token)
+            is CategoryEvent.GetCategory -> getCategory(
+                categoryEvent.token,
+                categoryEvent.categoryId,
+                categoryEvent.name
+            )
         }
     }
 
@@ -95,8 +105,38 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun getCategory(token: String) {
-        TODO("Not yet implemented")
+    private fun getCategory(token: String, categoryId: String, name: String) {
+        viewModelScope.launch {
+            getCategoryUseCase(token, categoryId, name).collect { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        categoryState = categoryState.copy(
+                            isLoading = true,
+                            category = null,
+                            error = null
+                        )
+                    }
+                    is Resource.Success -> {
+                        result.data?.let { category ->
+                            categoryState = categoryState.copy(
+                                isLoading = false,
+                                category = category,
+                                error = null
+                            )
+                        }
+                    }
+                    is Resource.Error -> {
+                        result.message?.let { errorMsg ->
+                            categoryState = categoryState.copy(
+                                isLoading = false,
+                                category = null,
+                                error = errorMsg
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun getSavedUser() {

@@ -3,8 +3,9 @@ package com.ecommerce.shopdaily.data.repository
 import com.ecommerce.shopdaily.data.db.ShopDailyDao
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
 import com.ecommerce.shopdaily.data.remote.DummyJsonService
-import com.ecommerce.shopdaily.data.remote.dto.login.LoginRequestBody
+import com.ecommerce.shopdaily.data.remote.dto.categories.CategoryDto
 import com.ecommerce.shopdaily.data.remote.dto.login.UserDto
+import com.ecommerce.shopdaily.data.remote.dto.login.request.LoginRequestBody
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
 import retrofit2.Response
 
@@ -22,4 +23,7 @@ class DummyJsonRepositoryImpl(
 
     override suspend fun getCategories(token: String): Response<List<String>> =
         api.getCategories(token)
+
+    override suspend fun getCategory(token: String, categoryId: String): Response<CategoryDto> =
+        api.getCategory(token, categoryId)
 }

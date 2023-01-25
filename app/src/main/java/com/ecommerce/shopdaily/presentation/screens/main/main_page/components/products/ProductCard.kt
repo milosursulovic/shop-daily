@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -19,9 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.ecommerce.shopdaily.domain.model.Product
+import coil.compose.AsyncImage
+import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.product.*
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_area.ProductType
@@ -56,8 +55,8 @@ fun ProductCard(
         }
     ) {
         Box {
-            Image(
-                painter = painterResource(id = product.image),
+            AsyncImage(
+                model = product.image,
                 contentDescription = null,
                 modifier = Modifier
                     .align(Alignment.Center)

@@ -1,4 +1,4 @@
-package com.ecommerce.shopdaily.data.mappers
+package com.ecommerce.shopdaily.data.mappers.user
 
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
 import com.ecommerce.shopdaily.data.remote.dto.login.UserDto

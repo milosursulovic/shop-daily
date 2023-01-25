@@ -11,10 +11,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.ecommerce.shopdaily.domain.model.Category
+import com.ecommerce.shopdaily.domain.model.category.ShopCategory
 
 @Composable
-fun ProductCategory(category: Category) {
+fun ProductCategory(category: ShopCategory) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -30,7 +30,7 @@ fun ProductCategory(category: Category) {
             horizontalArrangement = Arrangement.Center
         ) {
             Text(
-                text = category.title,
+                text = category.name,
                 style = MaterialTheme.typography.h3,
                 color = MaterialTheme.colors.onSecondary,
                 fontWeight = FontWeight.Bold

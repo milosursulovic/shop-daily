@@ -10,7 +10,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -24,9 +23,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.ecommerce.shopdaily.domain.model.Product
+import coil.compose.AsyncImage
+import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.appbar.AppBar
 import com.ecommerce.shopdaily.presentation.common.components.button.CustomButton
 import com.ecommerce.shopdaily.presentation.common.components.product.*
@@ -62,8 +61,8 @@ class ProductActivity : ComponentActivity() {
                                 .fillMaxSize()
                                 .verticalScroll(rememberScrollState())
                         ) {
-                            Image(
-                                painter = painterResource(id = product.image),
+                            AsyncImage(
+                                model = product.image,
                                 contentDescription = null,
                                 modifier = Modifier
                                     .fillMaxWidth()

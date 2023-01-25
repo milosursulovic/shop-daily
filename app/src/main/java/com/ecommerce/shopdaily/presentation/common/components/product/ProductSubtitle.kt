@@ -3,7 +3,7 @@ package com.ecommerce.shopdaily.presentation.common.components.product
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import com.ecommerce.shopdaily.domain.model.Product
+import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 
 @Composable

@@ -4,7 +4,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
-import com.ecommerce.shopdaily.domain.model.Product
+import com.ecommerce.shopdaily.domain.model.product.Product
 
 @Composable
 fun ProductTitle(product: Product) {

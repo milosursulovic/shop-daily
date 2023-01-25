@@ -1,7 +1,6 @@
 package com.ecommerce.shopdaily.data.remote
 
 import com.ecommerce.shopdaily.R
-import com.ecommerce.shopdaily.domain.model.Category
 import com.ecommerce.shopdaily.domain.model.Product
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_area.ProductType
 import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
@@ -111,12 +110,5 @@ class FakeApi {
             Constants.PRODUCT_DESCRIPTION,
             ProductType.Sale
         )
-    )
-
-    fun getCategories() = listOf(
-        Category("New", R.drawable.category_image_1),
-        Category("Clothes", R.drawable.category_image_2),
-        Category("Shoes", R.drawable.category_image_3),
-        Category("Accessories", R.drawable.category_image_4)
     )
 }

@@ -3,7 +3,6 @@ package com.ecommerce.shopdaily.presentation.screens.login
 import android.content.Intent
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -13,6 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.ecommerce.shopdaily.presentation.common.components.button.CustomButton
 import com.ecommerce.shopdaily.presentation.common.components.feedback.FeedbackLabel
+import com.ecommerce.shopdaily.presentation.common.components.screen.Loading
 import com.ecommerce.shopdaily.presentation.common.components.screen.ScreenTitle
 import com.ecommerce.shopdaily.presentation.common.util.feedback.FeedbackType
 import com.ecommerce.shopdaily.presentation.screens.login.components.custom_login.ForgotPassword
@@ -22,7 +22,6 @@ import com.ecommerce.shopdaily.presentation.screens.login.util.LoginEvent
 import com.ecommerce.shopdaily.presentation.screens.login.util.custom_login.LoginFieldType
 import com.ecommerce.shopdaily.presentation.screens.login.util.social.SocialType
 import com.ecommerce.shopdaily.presentation.screens.main.MainActivity
-import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 
 @Composable
 fun Login(viewModel: LoginViewModel) {
@@ -43,22 +42,14 @@ fun Login(viewModel: LoginViewModel) {
                 .padding(start = 20.dp)
         )
         loginState.savedUser?.let {
-            val intent = Intent(context, MainActivity::class.java).apply {
-                putExtra(Constants.USER, it)
-            }
-            context.startActivity(intent)
+            context.startActivity(Intent(context, MainActivity::class.java))
             (context as ComponentActivity).finish()
         }
         loginState.loggedUser?.let {
             viewModel.onEvent(LoginEvent.SaveUser(it))
         }
         if (loginState.isLoading) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                CircularProgressIndicator()
-            }
+            Loading(modifier = Modifier.fillMaxWidth())
         } else {
             Column(
                 modifier = Modifier

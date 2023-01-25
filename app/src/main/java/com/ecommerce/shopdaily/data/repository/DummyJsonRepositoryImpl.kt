@@ -19,4 +19,7 @@ class DummyJsonRepositoryImpl(
     override suspend fun getSavedUser(): List<UserEntity> = dao.getUser()
 
     override suspend fun saveUser(user: UserEntity): Long = dao.saveUser(user)
+
+    override suspend fun getCategories(token: String): Response<List<String>> =
+        api.getCategories(token)
 }

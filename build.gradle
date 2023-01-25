@@ -7,6 +7,8 @@ buildscript {
         hilt_version = "2.44.2"
         pager_version = "0.29.0-alpha"
         room_version = "2.5.0"
+        coil_version = "2.2.2"
+        navigation_hilt_version = "1.0.0"
     }
 }
 plugins {

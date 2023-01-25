@@ -18,6 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.ecommerce.shopdaily.presentation.common.components.appbar.AppBar
+import com.ecommerce.shopdaily.presentation.common.components.feedback.FeedbackLabel
+import com.ecommerce.shopdaily.presentation.common.components.screen.Loading
+import com.ecommerce.shopdaily.presentation.common.util.feedback.FeedbackType
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.shop.components.ProductCategory
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -30,6 +33,7 @@ fun Shop(mainViewModel: MainViewModel) {
     val pagerState = rememberPagerState()
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
+    val categoriesState = mainViewModel.categoriesState
     Scaffold(
         topBar = {
             AppBar(
@@ -98,19 +102,32 @@ fun Shop(mainViewModel: MainViewModel) {
                         }
                     }
                     Spacer(modifier = Modifier.height(10.dp))
-                    LazyColumn(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(
-                                top = 10.dp,
-                                start = 10.dp,
-                                end = 10.dp,
-                                bottom = screenHeight * 0.15f
-                            ),
-                        verticalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
-                        items(mainViewModel.categories) { category ->
-                            ProductCategory(category = category)
+                    if (categoriesState.isLoading) {
+                        Loading(modifier = Modifier.fillMaxSize())
+                    } else {
+                        categoriesState.error?.let { errorMessage ->
+                            if (errorMessage.isNotBlank()) {
+                                FeedbackLabel(
+                                    FeedbackType.Error(errorMessage)
+                                )
+                            }
+                        }
+                        categoriesState.categories?.let { categories ->
+                            LazyColumn(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(
+                                        top = 10.dp,
+                                        start = 10.dp,
+                                        end = 10.dp,
+                                        bottom = screenHeight * 0.15f
+                                    ),
+                                verticalArrangement = Arrangement.spacedBy(10.dp)
+                            ) {
+                                items(categories) { category ->
+                                    ProductCategory(category = category)
+                                }
+                            }
                         }
                     }
                 }

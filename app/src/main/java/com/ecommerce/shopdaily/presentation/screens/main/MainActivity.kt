@@ -22,7 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.ecommerce.shopdaily.domain.model.login.User
+import com.ecommerce.shopdaily.presentation.common.components.screen.Loading
 import com.ecommerce.shopdaily.presentation.screens.main.bag.Bag
 import com.ecommerce.shopdaily.presentation.screens.main.favorites.Favorites
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.MainPage
@@ -30,7 +30,6 @@ import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.bottom_n
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.bottom_navigation.navigationIcons
 import com.ecommerce.shopdaily.presentation.screens.main.profile.Profile
 import com.ecommerce.shopdaily.presentation.screens.main.shop.Shop
-import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 import com.ecommerce.shopdaily.presentation.ui.theme.ShopDailyTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,35 +40,36 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ShopDailyTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background,
-                ) {
-                    val mainViewModel: MainViewModel = hiltViewModel()
-                    mainViewModel.loggedUser = intent?.getSerializableExtra(Constants.USER) as User
-                    val context = LocalContext.current
-                    val navController = rememberNavController()
-                    var currentDestination by remember {
-                        mutableStateOf(
-                            navController.currentDestination?.route ?: MainScreen.MainPage.route
-                        )
-                    }
-                    LaunchedEffect(key1 = currentDestination) {
-                        navController.navigate(currentDestination)
-                    }
-                    BackHandler {
-                        if (navController.currentDestination?.route == MainScreen.MainPage.route) {
-                            (context as ComponentActivity).finish()
-                        } else {
-                            navController.popBackStack()
-                            navController.currentDestination?.route?.let {
-                                currentDestination = it
-                            }
+                val mainViewModel: MainViewModel = hiltViewModel()
+                val screenLoading = mainViewModel.screenLoadingState
+                val context = LocalContext.current
+                val navController = rememberNavController()
+                var currentDestination by remember {
+                    mutableStateOf(
+                        navController.currentDestination?.route ?: MainScreen.MainPage.route
+                    )
+                }
+                BackHandler {
+                    if (navController.currentDestination?.route == MainScreen.MainPage.route) {
+                        (context as ComponentActivity).finish()
+                    } else {
+                        navController.popBackStack()
+                        navController.currentDestination?.route?.let {
+                            currentDestination = it
                         }
                     }
-                    Box(
-                        modifier = Modifier.fillMaxSize()
-                    ) {
+                }
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = MaterialTheme.colors.background),
+                ) {
+                    if (screenLoading) {
+                        Loading(modifier = Modifier.fillMaxSize())
+                    } else {
+                        LaunchedEffect(key1 = currentDestination) {
+                            navController.navigate(currentDestination)
+                        }
                         NavHost(
                             navController = navController,
                             startDestination = MainScreen.MainPage.route,
@@ -146,6 +146,7 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 }
+
             }
         }
     }

@@ -6,10 +6,10 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ecommerce.shopdaily.presentation.common.components.appbar.AppBar
@@ -22,20 +22,18 @@ class LoginActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ShopDailyTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    val viewModel: LoginViewModel = hiltViewModel()
-                    Scaffold(
-                        topBar = {
-                            AppBar()
-                        },
-                        content = {
-                            Login(viewModel = viewModel)
-                        }
-                    )
-                }
+                val viewModel: LoginViewModel = hiltViewModel()
+                Scaffold(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = MaterialTheme.colors.background),
+                    topBar = {
+                        AppBar()
+                    },
+                    content = {
+                        Login(viewModel = viewModel)
+                    }
+                )
             }
         }
     }

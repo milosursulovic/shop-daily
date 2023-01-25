@@ -26,14 +26,13 @@ class LoginViewModel @Inject constructor(
         private set
 
     init {
-        onEvent(LoginEvent.GetSavedUser)
+        getSavedUser()
     }
 
     fun onEvent(event: LoginEvent) {
         when (event) {
             is LoginEvent.Login -> login(event.username, event.password)
             is LoginEvent.SaveUser -> saveUser(event.user)
-            is LoginEvent.GetSavedUser -> getSavedUser()
         }
     }
 

@@ -8,4 +8,5 @@ interface DummyJsonRepository {
     suspend fun login(username: String, password: String): Response<UserDto>
     suspend fun getSavedUser(): List<UserEntity>
     suspend fun saveUser(user: UserEntity): Long
+    suspend fun getCategories(token: String): Response<List<String>>
 }

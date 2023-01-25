@@ -49,14 +49,21 @@ class MainActivity : ComponentActivity() {
                         navController.currentDestination?.route ?: MainScreen.MainPage.route
                     )
                 }
-                BackHandler {
-                    if (navController.currentDestination?.route == MainScreen.MainPage.route) {
-                        (context as ComponentActivity).finish()
-                    } else {
-                        navController.popBackStack()
-                        navController.currentDestination?.route?.let {
-                            currentDestination = it
+                if (!screenLoading) {
+                    BackHandler {
+                        if (navController.currentDestination?.route == MainScreen.MainPage.route) {
+                            (context as ComponentActivity).finish()
+                        } else {
+                            navController.popBackStack()
+                            navController.currentDestination?.route?.let {
+                                currentDestination = it
+                            }
                         }
+                    }
+                }
+                LaunchedEffect(key1 = currentDestination) {
+                    if (!screenLoading) {
+                        navController.navigate(currentDestination)
                     }
                 }
                 Box(
@@ -67,9 +74,6 @@ class MainActivity : ComponentActivity() {
                     if (screenLoading) {
                         Loading(modifier = Modifier.fillMaxSize())
                     } else {
-                        LaunchedEffect(key1 = currentDestination) {
-                            navController.navigate(currentDestination)
-                        }
                         NavHost(
                             navController = navController,
                             startDestination = MainScreen.MainPage.route,

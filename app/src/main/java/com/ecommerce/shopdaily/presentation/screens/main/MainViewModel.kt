@@ -109,7 +109,8 @@ class MainViewModel @Inject constructor(
                     is Resource.Success -> {
                         screenLoadingState = false
                         result.data?.let { user ->
-                            getCategories(user.token)
+                            loggedUser = user
+                            getCategories(loggedUser?.token!!)
                         }
                     }
                     is Resource.Error -> {

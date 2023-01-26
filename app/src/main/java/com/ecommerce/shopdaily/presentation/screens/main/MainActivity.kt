@@ -41,8 +41,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ShopDailyTheme {
-                val mainViewModel: MainViewModel = hiltViewModel()
-                val screenLoading = mainViewModel.screenLoadingState
+                val viewModel: MainViewModel = hiltViewModel()
+                val screenLoading = viewModel.screenLoadingState
                 val context = LocalContext.current
                 val navController = rememberNavController()
                 var currentDestination by remember {
@@ -52,8 +52,8 @@ class MainActivity : ComponentActivity() {
                 }
                 if (!screenLoading) {
                     BackHandler {
-                        if (mainViewModel.categoryState.isCategoryVisible) {
-                            mainViewModel.onCategoriesEvent(CategoryEvent.CloseCategory)
+                        if (viewModel.categoryState.isCategoryVisible) {
+                            viewModel.onCategoriesEvent(CategoryEvent.CloseCategory)
                         } else {
                             if (navController.currentDestination?.route == MainScreen.MainPage.route) {
                                 (context as ComponentActivity).finish()
@@ -87,19 +87,19 @@ class MainActivity : ComponentActivity() {
                                 .align(Alignment.Center)
                         ) {
                             composable(route = MainScreen.MainPage.route) {
-                                MainPage(mainViewModel = mainViewModel)
+                                MainPage(viewModel = viewModel)
                             }
                             composable(route = MainScreen.ShopPage.route) {
-                                Shop(mainViewModel = mainViewModel)
+                                Shop(viewModel = viewModel)
                             }
                             composable(route = MainScreen.BagPage.route) {
-                                Bag(mainViewModel = mainViewModel)
+                                Bag(viewModel = viewModel)
                             }
                             composable(route = MainScreen.FavoritesPage.route) {
-                                Favorites(mainViewModel = mainViewModel)
+                                Favorites(viewModel = viewModel)
                             }
                             composable(route = MainScreen.ProfilePage.route) {
-                                Profile(mainViewModel = mainViewModel)
+                                Profile(viewModel = viewModel)
                             }
                         }
                         Card(

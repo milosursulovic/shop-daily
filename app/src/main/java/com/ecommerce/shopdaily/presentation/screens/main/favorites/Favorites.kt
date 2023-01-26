@@ -23,9 +23,9 @@ import com.ecommerce.shopdaily.presentation.screens.main.util.product.ProductEve
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Favorites(
-    mainViewModel: MainViewModel
+    viewModel: MainViewModel
 ) {
-    val favoritesState = mainViewModel.favoritesState
+    val favoritesState = viewModel.favoritesState
 
     Scaffold(modifier = Modifier
         .fillMaxSize(),
@@ -41,7 +41,7 @@ fun Favorites(
                 if (favoritesState.isLoading) {
                     Loading(modifier = Modifier.fillMaxSize())
                 } else {
-                    if (favoritesState.error != null && favoritesState.error.isNotEmpty()) {
+                    if (favoritesState.error != null && favoritesState.error.isNotBlank()) {
                         FeedbackLabel(
                             modifier = Modifier.fillMaxSize(),
                             FeedbackType.Error(favoritesState.error)
@@ -58,7 +58,7 @@ fun Favorites(
                                     FavoriteProduct(
                                         favorite = favorite,
                                         onRemoveClick = { chosenFavorite ->
-                                            mainViewModel.onProductEvent(
+                                            viewModel.onProductEvent(
                                                 ProductEvent.DeleteFromFavorites(
                                                     chosenFavorite
                                                 )

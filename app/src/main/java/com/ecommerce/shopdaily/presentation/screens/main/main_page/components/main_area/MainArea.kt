@@ -12,7 +12,7 @@ import com.ecommerce.shopdaily.presentation.screens.main.main_page.components.pr
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 
 @Composable
-fun MainArea(mainAreaLabel: String, mainAreaSubtitle: String, mainViewModel: MainViewModel) {
+fun MainArea(mainAreaLabel: String, mainAreaSubtitle: String, viewModel: MainViewModel) {
     Column {
         Row(
             modifier = Modifier
@@ -39,6 +39,6 @@ fun MainArea(mainAreaLabel: String, mainAreaSubtitle: String, mainViewModel: Mai
                 color = MaterialTheme.colors.onBackground
             )
         }
-        ProductsRow(mainViewModel = mainViewModel)
+        ProductsRow(viewModel = viewModel)
     }
 }

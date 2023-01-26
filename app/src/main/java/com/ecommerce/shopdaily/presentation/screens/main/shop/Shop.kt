@@ -39,15 +39,15 @@ import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 
 @Composable
-fun Shop(mainViewModel: MainViewModel) {
+fun Shop(viewModel: MainViewModel) {
     val context = LocalContext.current
     val tabItems = listOf("Women", "Men", "Kids")
     val pagerState = rememberPagerState()
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
-    val categoriesState = mainViewModel.shopCategoriesState
-    val categoryState = mainViewModel.categoryState
-    val loggedUser = mainViewModel.loggedUser
+    val categoriesState = viewModel.shopCategoriesState
+    val categoryState = viewModel.categoryState
+    val loggedUser = viewModel.loggedUser
 
     var chosenProduct: Product? = null
     val launcher = rememberLauncherForActivityResult(
@@ -57,9 +57,10 @@ fun Shop(mainViewModel: MainViewModel) {
             val result = activityResult.data?.getBooleanExtra(Constants.ADD_TO_CART, false)
             if (result == true) {
                 chosenProduct?.let { product ->
-                    mainViewModel.addProduct(product)
+                    viewModel.addProduct(product)
                 }
             }
+            viewModel.onProductEvent(ProductEvent.GetFavorites)
         }
     }
 
@@ -94,7 +95,7 @@ fun Shop(mainViewModel: MainViewModel) {
                             ) {
                                 items(category.products) { product ->
                                     CategoryProduct(
-                                        mainViewModel = mainViewModel,
+                                        viewModel = viewModel,
                                         product = product,
                                         onProductClick = { chosenProd ->
                                             chosenProduct = chosenProd
@@ -108,14 +109,14 @@ fun Shop(mainViewModel: MainViewModel) {
                                             launcher.launch(intent)
                                         },
                                         onFavoriteClick = { chosenProd ->
-                                            mainViewModel.onProductEvent(
+                                            viewModel.onProductEvent(
                                                 ProductEvent.SaveToFavorites(
                                                     chosenProd
                                                 )
                                             )
                                         },
                                         onDeleteFavoriteClick = { chosenProd ->
-                                            mainViewModel.onProductEvent(
+                                            viewModel.onProductEvent(
                                                 ProductEvent.DeleteFromFavorites(
                                                     chosenProd
                                                 )
@@ -210,7 +211,7 @@ fun Shop(mainViewModel: MainViewModel) {
                                 ) {
                                     items(shopCategories) { shopCategory ->
                                         ProductCategory(shopCategory = shopCategory) { category ->
-                                            mainViewModel.onCategoriesEvent(
+                                            viewModel.onCategoriesEvent(
                                                 CategoryEvent.GetCategory(
                                                     loggedUser?.token!!,
                                                     category.categoryId,

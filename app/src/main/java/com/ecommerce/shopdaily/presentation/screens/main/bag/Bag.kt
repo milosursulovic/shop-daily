@@ -28,7 +28,7 @@ import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Bag(mainViewModel: MainViewModel) {
+fun Bag(viewModel: MainViewModel) {
     Scaffold(
         topBar = {
             AppBar(
@@ -39,7 +39,7 @@ fun Bag(mainViewModel: MainViewModel) {
         content = {
             BottomPaddingColumn(verticalScroll = true) {
                 ScreenTitle(title = "My Bag")
-                if (mainViewModel.cartProducts.isNotEmpty()) {
+                if (viewModel.cartProducts.isNotEmpty()) {
                     LazyColumn(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -47,7 +47,7 @@ fun Bag(mainViewModel: MainViewModel) {
                         contentPadding = PaddingValues(10.dp),
                         verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
-                        items(mainViewModel.cartProducts) { product ->
+                        items(viewModel.cartProducts) { product ->
                             BagProduct(product = product)
                         }
                     }

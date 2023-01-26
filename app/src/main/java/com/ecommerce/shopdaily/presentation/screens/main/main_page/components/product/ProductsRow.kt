@@ -20,7 +20,7 @@ import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 
 @Composable
 fun ProductsRow(
-    mainViewModel: MainViewModel
+    viewModel: MainViewModel
 ) {
     val context = LocalContext.current
     var chosenProduct: Product? = null
@@ -31,7 +31,7 @@ fun ProductsRow(
             val result = activityResult.data?.getBooleanExtra(Constants.ADD_TO_CART, false)
             if (result == true) {
                 chosenProduct?.let { product ->
-                    mainViewModel.addProduct(product)
+                    viewModel.addProduct(product)
                 }
             }
         }
@@ -41,7 +41,7 @@ fun ProductsRow(
         contentPadding = PaddingValues(10.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        items(mainViewModel.dummyProducts) { product ->
+        items(viewModel.dummyProducts) { product ->
             ProductCard(product = product) { chosenProd ->
                 chosenProduct = chosenProd
                 val intent = Intent(context, AddToCartActivity::class.java).apply {

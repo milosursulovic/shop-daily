@@ -21,7 +21,7 @@ import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.components.main_area.MainArea
 
 @Composable
-fun MainPage(mainViewModel: MainViewModel) {
+fun MainPage(viewModel: MainViewModel) {
     BottomPaddingColumn(verticalScroll = true, justBottomPadding = true) {
         Box(
             modifier = Modifier
@@ -61,13 +61,13 @@ fun MainPage(mainViewModel: MainViewModel) {
         MainArea(
             mainAreaLabel = "New",
             mainAreaSubtitle = "You've never seen it before!",
-            mainViewModel = mainViewModel
+            viewModel = viewModel
         )
         Spacer(modifier = Modifier.height(10.dp))
         MainArea(
             mainAreaLabel = "Sale",
             mainAreaSubtitle = "Super summer sale",
-            mainViewModel = mainViewModel
+            viewModel = viewModel
         )
     }
 }

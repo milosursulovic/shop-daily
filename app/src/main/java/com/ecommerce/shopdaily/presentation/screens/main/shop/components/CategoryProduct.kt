@@ -19,13 +19,13 @@ import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 
 @Composable
 fun CategoryProduct(
-    mainViewModel: MainViewModel,
+    viewModel: MainViewModel,
     product: Product,
     onProductClick: (Product) -> Unit,
     onFavoriteClick: (Product) -> Unit,
     onDeleteFavoriteClick: (Product) -> Unit
 ) {
-    val found = mainViewModel.favoritesState.favorites?.find { indexedProduct ->
+    val found = viewModel.favoritesState.favorites?.find { indexedProduct ->
         indexedProduct.productId == product.productId && indexedProduct.category == product.category
     }
     Box(modifier = Modifier.fillMaxSize()) {

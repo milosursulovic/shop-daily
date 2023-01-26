@@ -27,7 +27,7 @@ import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Profile(mainViewModel: MainViewModel) {
+fun Profile(viewModel: MainViewModel) {
     Scaffold(modifier = Modifier
         .fillMaxSize(),
         topBar = {
@@ -49,20 +49,20 @@ fun Profile(mainViewModel: MainViewModel) {
                             .clip(RoundedCornerShape(40.dp))
                             .width(60.dp)
                             .height(60.dp),
-                        model = mainViewModel.loggedUser?.image,
+                        model = viewModel.loggedUser?.image,
                         contentDescription = null
                     )
                     Column(
                         modifier = Modifier.padding(10.dp)
                     ) {
                         Text(
-                            text = "${mainViewModel.loggedUser?.firstName} ${mainViewModel.loggedUser?.lastName}",
+                            text = "${viewModel.loggedUser?.firstName} ${viewModel.loggedUser?.lastName}",
                             style = MaterialTheme.typography.h3,
                             color = MaterialTheme.colors.onBackground,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
-                            text = "${mainViewModel.loggedUser?.email}",
+                            text = "${viewModel.loggedUser?.email}",
                             style = MaterialTheme.typography.h3,
                             color = Gray,
                             fontWeight = FontWeight.Bold

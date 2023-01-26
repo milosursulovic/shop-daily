@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,12 +16,18 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.product.*
+import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
+import com.ecommerce.shopdaily.presentation.screens.main.util.product.ProductEvent
 
 @Composable
 fun ProductCard(
+    viewModel: MainViewModel,
     product: Product,
     onProductClick: (Product) -> Unit
 ) {
+    val found = viewModel.favoritesState.favorites?.find { indexedProduct ->
+        indexedProduct.productId == product.productId && indexedProduct.category == product.category
+    }
     Column(
         modifier = Modifier.clickable { onProductClick(product) }
     ) {
@@ -42,9 +49,15 @@ fun ProductCard(
                 iconModifier = Modifier
                     .width(15.dp)
                     .height(15.dp),
-                icon = Icons.Outlined.FavoriteBorder,
-                tint = MaterialTheme.colors.onSecondary,
-                onClick = {})
+                icon = if (found != null) Icons.Outlined.Favorite else Icons.Outlined.FavoriteBorder,
+                tint = if (found != null) MaterialTheme.colors.primary else MaterialTheme.colors.onSecondary,
+                onClick = {
+                    if (found != null) {
+                        viewModel.onProductEvent(ProductEvent.DeleteFromFavorites(product))
+                    } else {
+                        viewModel.onProductEvent(ProductEvent.SaveToFavorites(product))
+                    }
+                })
         }
         Spacer(modifier = Modifier.height(10.dp))
         ProductRating(product = product)

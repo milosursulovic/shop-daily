@@ -17,6 +17,7 @@ import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.screen.Loading
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_page.ProductType
+import com.ecommerce.shopdaily.presentation.screens.main.util.product.ProductBaseState
 import com.ecommerce.shopdaily.presentation.screens.main.util.product.ProductEvent
 import com.ecommerce.shopdaily.presentation.screens.product.AddToCartActivity
 import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
@@ -41,7 +42,8 @@ fun ProductsRow(
             viewModel.onProductEvent(ProductEvent.GetFavorites)
         }
     }
-    val currentState = when (productType) {
+
+    val currentState: ProductBaseState = when (productType) {
         is ProductType.New -> viewModel.newProductsState
         is ProductType.Sale -> viewModel.saleProductsState
     }
@@ -56,13 +58,16 @@ fun ProductsRow(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 items(products) { product ->
-                    ProductCard(product = product) { chosenProd ->
-                        chosenProduct = chosenProd
-                        val intent = Intent(context, AddToCartActivity::class.java).apply {
-                            putExtra(Constants.PRODUCT, chosenProduct)
-                        }
-                        launcher.launch(intent)
-                    }
+                    ProductCard(
+                        viewModel = viewModel,
+                        product = product,
+                        onProductClick = { chosenProd ->
+                            chosenProduct = chosenProd
+                            val intent = Intent(context, AddToCartActivity::class.java).apply {
+                                putExtra(Constants.PRODUCT, chosenProduct)
+                            }
+                            launcher.launch(intent)
+                        })
                 }
             }
         }

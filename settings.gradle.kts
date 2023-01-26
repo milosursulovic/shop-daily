@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Shop Daily"
-include ':app'
+include(":app")

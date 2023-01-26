@@ -4,7 +4,7 @@ A Simple E Commerce Mobile Application which has been implemented using Clean Ar
 
 ## ***THIS REPOSITORY IS JUST FOR TRAINING PURPOSE***
 
-### Technologies & Methodologies which used:
+### Technologies & Methodologies:
 
 - Jetpack Compose
 - Dagger Hilt

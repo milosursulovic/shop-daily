@@ -18,7 +18,7 @@ import com.ecommerce.shopdaily.presentation.common.components.product.*
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 
 @Composable
-fun FavoriteProduct(favorite: Product) {
+fun FavoriteProduct(favorite: Product, onRemoveClick: (Product) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -49,7 +49,9 @@ fun FavoriteProduct(favorite: Product) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     ProductSubtitle(product = favorite)
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = {
+                        onRemoveClick(favorite)
+                    }) {
                         Icon(
                             imageVector = Icons.Outlined.Close,
                             contentDescription = null,

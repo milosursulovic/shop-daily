@@ -18,6 +18,7 @@ import com.ecommerce.shopdaily.presentation.common.components.screen.ScreenTitle
 import com.ecommerce.shopdaily.presentation.common.util.feedback.FeedbackType
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.favorites.components.FavoriteProduct
+import com.ecommerce.shopdaily.presentation.screens.main.util.product.ProductEvent
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -54,7 +55,15 @@ fun Favorites(
                                 verticalArrangement = Arrangement.spacedBy(10.dp)
                             ) {
                                 items(favoritesState.favorites) { favorite ->
-                                    FavoriteProduct(favorite = favorite)
+                                    FavoriteProduct(
+                                        favorite = favorite,
+                                        onRemoveClick = { chosenFavorite ->
+                                            mainViewModel.onProductEvent(
+                                                ProductEvent.DeleteFromFavorites(
+                                                    chosenFavorite
+                                                )
+                                            )
+                                        })
                                 }
                             }
                         } else {

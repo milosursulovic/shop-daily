@@ -6,54 +6,64 @@ import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 class FakeApi {
     fun getDummyProducts() = listOf(
         Product(
-            "",
-            "T-Shirt Sailing",
-            "Mango Boy",
-            10,
-            2.2,
-            0.0,
-            Constants.PRODUCT_DESCRIPTION,
-            emptyList()
+            productId = 1,
+            image =  "",
+            title = "T-Shirt Sailing",
+            subtitle = "Mango Boy",
+            price = 10,
+            discount = 2.2,
+            rating = 0.0,
+            description = Constants.PRODUCT_DESCRIPTION,
+            images = emptyList(),
+            category = ""
         ),
         Product(
-            "",
-            "T-Shirt Sailing",
-            "Mango Boy",
-            10,
-            2.2,
-            0.0,
-            Constants.PRODUCT_DESCRIPTION,
-            emptyList()
+            productId = 1,
+            image =  "",
+            title = "T-Shirt Sailing",
+            subtitle = "Mango Boy",
+            price = 10,
+            discount = 2.2,
+            rating = 0.0,
+            description = Constants.PRODUCT_DESCRIPTION,
+            images = emptyList(),
+            category = ""
         ),
         Product(
-            "",
-            "T-Shirt Sailing",
-            "Mango Boy",
-            10,
-            2.2,
-            0.0,
-            Constants.PRODUCT_DESCRIPTION,
-            emptyList()
+            productId = 1,
+            image =  "",
+            title = "T-Shirt Sailing",
+            subtitle = "Mango Boy",
+            price = 10,
+            discount = 2.2,
+            rating = 0.0,
+            description = Constants.PRODUCT_DESCRIPTION,
+            images = emptyList(),
+            category = ""
         ),
         Product(
-            "",
-            "T-Shirt Sailing",
-            "Mango Boy",
-            10,
-            2.2,
-            0.0,
-            Constants.PRODUCT_DESCRIPTION,
-            emptyList()
+            productId = 1,
+            image =  "",
+            title = "T-Shirt Sailing",
+            subtitle = "Mango Boy",
+            price = 10,
+            discount = 2.2,
+            rating = 0.0,
+            description = Constants.PRODUCT_DESCRIPTION,
+            images = emptyList(),
+            category = ""
         ),
         Product(
-            "",
-            "T-Shirt Sailing",
-            "Mango Boy",
-            10,
-            2.2,
-            0.0,
-            Constants.PRODUCT_DESCRIPTION,
-            emptyList()
+            productId = 1,
+            image =  "",
+            title = "T-Shirt Sailing",
+            subtitle = "Mango Boy",
+            price = 10,
+            discount = 2.2,
+            rating = 0.0,
+            description = Constants.PRODUCT_DESCRIPTION,
+            images = emptyList(),
+            category = ""
         )
     )
 }

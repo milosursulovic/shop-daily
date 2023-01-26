@@ -5,7 +5,14 @@ import com.ecommerce.shopdaily.data.remote.dto.login.UserDto
 import com.ecommerce.shopdaily.domain.model.login.User
 
 fun User.toUserEntity(): UserEntity =
-    UserEntity(0, username, email, firstName, lastName, image, token)
+    UserEntity(
+        username = username,
+        email = email,
+        firstName = firstName,
+        lastName = lastName,
+        image = image,
+        token = token
+    )
 
 fun UserDto.toUser(): User = User(username, email, firstName, lastName, image, token)
 

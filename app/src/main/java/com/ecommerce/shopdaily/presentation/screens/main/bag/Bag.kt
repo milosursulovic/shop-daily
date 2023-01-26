@@ -52,7 +52,10 @@ fun Bag(mainViewModel: MainViewModel) {
                         }
                     }
                 } else {
-                    FeedbackLabel(feedbackType = FeedbackType.Info("No added products to cart yet"))
+                    FeedbackLabel(
+                        modifier = Modifier.fillMaxWidth(),
+                        feedbackType = FeedbackType.Info("No added products to cart yet")
+                    )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Box(

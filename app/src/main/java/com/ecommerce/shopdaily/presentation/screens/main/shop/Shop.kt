@@ -182,6 +182,7 @@ fun Shop(mainViewModel: MainViewModel) {
                             categoriesState.error?.let { errorMessage ->
                                 if (errorMessage.isNotBlank()) {
                                     FeedbackLabel(
+                                        modifier = Modifier.fillMaxWidth(),
                                         FeedbackType.Error(errorMessage)
                                     )
                                 }

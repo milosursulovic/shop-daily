@@ -20,17 +20,16 @@ fun ProductDto.toProduct(): Product =
 
 fun Product.toProductEntity(): ProductEntity =
     ProductEntity(
-        0,
-        productId,
-        image,
-        title,
-        subtitle,
-        price,
-        discount,
-        rating,
-        description,
-        images,
-        category
+        productId = productId,
+        image = image,
+        title = title,
+        subtitle = subtitle,
+        price = price,
+        discount = discount,
+        rating = rating,
+        description = description,
+        images = images,
+        category = category
     )
 
 fun ProductEntity.toProduct(): Product =

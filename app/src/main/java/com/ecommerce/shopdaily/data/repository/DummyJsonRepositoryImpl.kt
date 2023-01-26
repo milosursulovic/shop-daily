@@ -30,4 +30,6 @@ class DummyJsonRepositoryImpl(
 
     override suspend fun saveProductToFavorites(product: ProductEntity): Long =
         dao.saveProductToFavorites(product)
+
+    override suspend fun getFavorites(): List<ProductEntity> = dao.getFavorites()
 }

@@ -71,6 +71,7 @@ fun Login(viewModel: LoginViewModel) {
                 loginState.error?.let { errorMessage ->
                     if (errorMessage.isNotBlank()) {
                         FeedbackLabel(
+                            modifier = Modifier.fillMaxWidth(),
                             FeedbackType.Error(errorMessage)
                         )
                     }

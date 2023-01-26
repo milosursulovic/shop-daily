@@ -17,4 +17,7 @@ interface ShopDailyDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveProductToFavorites(product: ProductEntity): Long
+
+    @Query("select * from favorites")
+    suspend fun getFavorites(): List<ProductEntity>
 }

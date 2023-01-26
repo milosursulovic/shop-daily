@@ -26,13 +26,13 @@ fun ProductPrice(product: Product, modifier: Modifier = Modifier) {
             textDecoration = TextDecoration.LineThrough
         )
         Text(
-            text = "${product.price}$",
+            text = "${product.price.toInt()}$",
             style = strikethroughTextStyle,
             color = Gray
         )
         Spacer(modifier = Modifier.width(2.dp))
         Text(
-            text = "${product.price - product.discount * 0.01 * product.price}$",
+            text = "${(product.price - product.discount * 0.01 * product.price).toInt()}$",
             style = MaterialTheme.typography.body2,
             color = Hot
         )

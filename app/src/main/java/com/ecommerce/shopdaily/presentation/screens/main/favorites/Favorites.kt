@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.ecommerce.shopdaily.presentation.common.components.appbar.AppBar
 import com.ecommerce.shopdaily.presentation.common.components.feedback.FeedbackLabel
 import com.ecommerce.shopdaily.presentation.common.components.screen.BottomPaddingColumn
+import com.ecommerce.shopdaily.presentation.common.components.screen.Loading
 import com.ecommerce.shopdaily.presentation.common.components.screen.ScreenTitle
 import com.ecommerce.shopdaily.presentation.common.util.feedback.FeedbackType
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
@@ -23,6 +24,8 @@ import com.ecommerce.shopdaily.presentation.screens.main.favorites.components.Fa
 fun Favorites(
     mainViewModel: MainViewModel
 ) {
+    val favoritesState = mainViewModel.favoritesState
+
     Scaffold(modifier = Modifier
         .fillMaxSize(),
         topBar = {
@@ -34,19 +37,33 @@ fun Favorites(
         content = {
             BottomPaddingColumn {
                 ScreenTitle(title = "Favorites")
-                if (mainViewModel.dummyProducts.isNotEmpty()) {
-                    LazyColumn(
-                        modifier = Modifier
-                            .fillMaxSize(),
-                        contentPadding = PaddingValues(10.dp),
-                        verticalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
-                        items(mainViewModel.dummyProducts) { favorite ->
-                            FavoriteProduct(favorite = favorite)
+                if (favoritesState.isLoading) {
+                    Loading(modifier = Modifier.fillMaxSize())
+                } else {
+                    if (favoritesState.error != null && favoritesState.error.isNotEmpty()) {
+                        FeedbackLabel(
+                            modifier = Modifier.fillMaxSize(),
+                            FeedbackType.Error(favoritesState.error)
+                        )
+                    } else {
+                        if (favoritesState.favorites != null) {
+                            LazyColumn(
+                                modifier = Modifier
+                                    .fillMaxSize(),
+                                contentPadding = PaddingValues(10.dp),
+                                verticalArrangement = Arrangement.spacedBy(10.dp)
+                            ) {
+                                items(favoritesState.favorites) { favorite ->
+                                    FavoriteProduct(favorite = favorite)
+                                }
+                            }
+                        } else {
+                            FeedbackLabel(
+                                modifier = Modifier.fillMaxSize(),
+                                FeedbackType.Info("There is no favorites")
+                            )
                         }
                     }
-                } else {
-                    FeedbackLabel(feedbackType = FeedbackType.Info("No added products to cart yet"))
                 }
             }
         })

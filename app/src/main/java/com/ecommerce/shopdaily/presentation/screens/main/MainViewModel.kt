@@ -161,6 +161,7 @@ class MainViewModel @Inject constructor(
                         result.data?.let { user ->
                             loggedUser = user
                             getCategories(loggedUser?.token!!)
+                            onProductEvent(ProductEvent.GetFavorites)
                         }
                     }
                     is Resource.Error -> {
@@ -183,7 +184,10 @@ class MainViewModel @Inject constructor(
             saveToFavoritesUseCase(product).collect { result ->
                 screenLoadingState = when (result) {
                     is Resource.Loading -> true
-                    is Resource.Success -> false
+                    is Resource.Success -> {
+                        onProductEvent(ProductEvent.GetFavorites)
+                        false
+                    }
                     is Resource.Error -> false
                 }
             }

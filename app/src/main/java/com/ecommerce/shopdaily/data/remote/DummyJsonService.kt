@@ -19,6 +19,13 @@ interface DummyJsonService {
         @Path("category") categoryId: String
     ): Response<CategoryDto>
 
+    @GET("products")
+    suspend fun getProducts(
+        @Header("Authorization") token: String,
+        @Query("limit") limit: Int = 10,
+        @Query("skip") skip: Int = 0
+    ): Response<CategoryDto>
+
     companion object {
         const val API_URL = "https://dummyjson.com/"
     }

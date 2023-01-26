@@ -19,6 +19,7 @@ import com.ecommerce.shopdaily.presentation.common.components.button.CustomButto
 import com.ecommerce.shopdaily.presentation.common.components.screen.BottomPaddingColumn
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.components.main_area.MainArea
+import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_page.ProductType
 
 @Composable
 fun MainPage(viewModel: MainViewModel) {
@@ -59,12 +60,14 @@ fun MainPage(viewModel: MainViewModel) {
             }
         }
         MainArea(
+            productType = ProductType.New,
             mainAreaLabel = "New",
             mainAreaSubtitle = "You've never seen it before!",
             viewModel = viewModel
         )
         Spacer(modifier = Modifier.height(10.dp))
         MainArea(
+            productType = ProductType.Sale,
             mainAreaLabel = "Sale",
             mainAreaSubtitle = "Super summer sale",
             viewModel = viewModel

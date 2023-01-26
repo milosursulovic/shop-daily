@@ -9,10 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.components.product.ProductsRow
+import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_page.ProductType
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 
 @Composable
-fun MainArea(mainAreaLabel: String, mainAreaSubtitle: String, viewModel: MainViewModel) {
+fun MainArea(
+    productType: ProductType,
+    mainAreaLabel: String,
+    mainAreaSubtitle: String,
+    viewModel: MainViewModel
+) {
     Column {
         Row(
             modifier = Modifier
@@ -39,6 +45,6 @@ fun MainArea(mainAreaLabel: String, mainAreaSubtitle: String, viewModel: MainVie
                 color = MaterialTheme.colors.onBackground
             )
         }
-        ProductsRow(viewModel = viewModel)
+        ProductsRow(productType = productType, viewModel = viewModel)
     }
 }

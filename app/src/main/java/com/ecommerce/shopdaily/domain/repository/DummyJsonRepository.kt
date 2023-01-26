@@ -22,4 +22,6 @@ interface DummyJsonRepository {
     suspend fun getFavorites(): List<ProductEntity>
 
     suspend fun deleteFromFavorites(productId: Int, category: String)
+
+    suspend fun getProducts(token: String, skip: Int = 0): Response<CategoryDto>
 }

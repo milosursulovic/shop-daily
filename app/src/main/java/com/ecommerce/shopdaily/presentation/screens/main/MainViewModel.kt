@@ -6,20 +6,22 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ecommerce.shopdaily.common.Resource
-import com.ecommerce.shopdaily.data.remote.FakeApi
 import com.ecommerce.shopdaily.domain.model.login.User
 import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.domain.use_cases.local.DeleteFromFavoritesUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.GetFavoritesUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.GetSavedUserUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.SaveToFavoritesUseCase
-import com.ecommerce.shopdaily.domain.use_cases.remote.categories.GetCategoriesUseCase
-import com.ecommerce.shopdaily.domain.use_cases.remote.categories.GetCategoryUseCase
+import com.ecommerce.shopdaily.domain.use_cases.remote.category.GetCategoriesUseCase
+import com.ecommerce.shopdaily.domain.use_cases.remote.category.GetCategoryUseCase
+import com.ecommerce.shopdaily.domain.use_cases.remote.product.GetProductsUseCase
 import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryEvent
 import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryState
 import com.ecommerce.shopdaily.presentation.screens.main.util.category.ShopCategoriesState
 import com.ecommerce.shopdaily.presentation.screens.main.util.favorites.FavoritesState
+import com.ecommerce.shopdaily.presentation.screens.main.util.product.NewProductsState
 import com.ecommerce.shopdaily.presentation.screens.main.util.product.ProductEvent
+import com.ecommerce.shopdaily.presentation.screens.main.util.product.SaleProductsState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,7 +33,8 @@ class MainViewModel @Inject constructor(
     private val getCategoryUseCase: GetCategoryUseCase,
     private val saveToFavoritesUseCase: SaveToFavoritesUseCase,
     private val getFavoritesUseCase: GetFavoritesUseCase,
-    private val deleteFromFavoritesUseCase: DeleteFromFavoritesUseCase
+    private val deleteFromFavoritesUseCase: DeleteFromFavoritesUseCase,
+    private val getProductsUseCase: GetProductsUseCase
 ) : ViewModel() {
     var loggedUser: User? = null
         private set
@@ -43,18 +46,17 @@ class MainViewModel @Inject constructor(
         private set
     var favoritesState by mutableStateOf(FavoritesState())
         private set
+    var newProductsState by mutableStateOf(NewProductsState())
+        private set
+    var saleProductsState by mutableStateOf(SaleProductsState())
+        private set
 
     init {
         getSavedUser()
     }
 
-    private val fakeApi = FakeApi()
-
     private val _cartProducts = mutableListOf<Product>()
     val cartProducts: List<Product> = _cartProducts
-
-    private val _dummyProducts = fakeApi.getDummyProducts()
-    val dummyProducts: List<Product> = _dummyProducts
 
     fun addProduct(product: Product) {
         _cartProducts.add(product)
@@ -164,6 +166,8 @@ class MainViewModel @Inject constructor(
                             loggedUser = user
                             getCategories(loggedUser?.token!!)
                             onProductEvent(ProductEvent.GetFavorites)
+                            getNewProducts(loggedUser?.token!!, 0)
+                            getSaleProducts(loggedUser?.token!!, 10)
                         }
                     }
                     is Resource.Error -> {
@@ -241,6 +245,74 @@ class MainViewModel @Inject constructor(
                         false
                     }
                     is Resource.Error -> false
+                }
+            }
+        }
+    }
+
+    private fun getNewProducts(token: String, skip: Int) {
+        viewModelScope.launch {
+            getProductsUseCase(token, skip).collect { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        newProductsState = newProductsState.copy(
+                            loading = true,
+                            newProducts = null,
+                            errorMsg = null
+                        )
+                    }
+                    is Resource.Success -> {
+                        result.data?.let { newProducts ->
+                            newProductsState = newProductsState.copy(
+                                loading = false,
+                                newProducts = newProducts,
+                                errorMsg = null
+                            )
+                        }
+                    }
+                    is Resource.Error -> {
+                        result.message?.let { errorMessage ->
+                            newProductsState = newProductsState.copy(
+                                loading = false,
+                                newProducts = null,
+                                errorMsg = errorMessage
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getSaleProducts(token: String, skip: Int) {
+        viewModelScope.launch {
+            getProductsUseCase(token, skip).collect { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        saleProductsState = saleProductsState.copy(
+                            loading = true,
+                            saleProducts = null,
+                            errorMsg = null
+                        )
+                    }
+                    is Resource.Success -> {
+                        result.data?.let { saleProducts ->
+                            saleProductsState = saleProductsState.copy(
+                                loading = false,
+                                saleProducts = saleProducts,
+                                errorMsg = null
+                            )
+                        }
+                    }
+                    is Resource.Error -> {
+                        result.message?.let { errorMessage ->
+                            saleProductsState = saleProductsState.copy(
+                                loading = false,
+                                saleProducts = null,
+                                errorMsg = errorMessage
+                            )
+                        }
+                    }
                 }
             }
         }

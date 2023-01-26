@@ -1,8 +1,8 @@
 package com.ecommerce.shopdaily.di.use_cases
 
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
-import com.ecommerce.shopdaily.domain.use_cases.remote.categories.GetCategoriesUseCase
-import com.ecommerce.shopdaily.domain.use_cases.remote.categories.GetCategoryUseCase
+import com.ecommerce.shopdaily.domain.use_cases.remote.category.GetCategoriesUseCase
+import com.ecommerce.shopdaily.domain.use_cases.remote.category.GetCategoryUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

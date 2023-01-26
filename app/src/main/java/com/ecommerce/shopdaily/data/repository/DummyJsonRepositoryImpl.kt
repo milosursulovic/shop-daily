@@ -36,4 +36,7 @@ class DummyJsonRepositoryImpl(
     override suspend fun deleteFromFavorites(productId: Int, category: String) {
         dao.deleteFromFavorites(productId, category)
     }
+
+    override suspend fun getProducts(token: String, skip: Int): Response<CategoryDto> =
+        api.getProducts(token = token, skip = skip)
 }

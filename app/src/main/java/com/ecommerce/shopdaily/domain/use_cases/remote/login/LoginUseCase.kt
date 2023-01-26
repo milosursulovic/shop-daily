@@ -1,4 +1,4 @@
-package com.ecommerce.shopdaily.domain.use_cases.remote
+package com.ecommerce.shopdaily.domain.use_cases.remote.login
 
 import com.ecommerce.shopdaily.common.Resource
 import com.ecommerce.shopdaily.data.mappers.user.toUser

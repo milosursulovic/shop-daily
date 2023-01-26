@@ -3,7 +3,7 @@ package com.ecommerce.shopdaily.di.use_cases
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
 import com.ecommerce.shopdaily.domain.use_cases.local.GetSavedUserUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.SaveUserUseCase
-import com.ecommerce.shopdaily.domain.use_cases.remote.LoginUseCase
+import com.ecommerce.shopdaily.domain.use_cases.remote.login.LoginUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

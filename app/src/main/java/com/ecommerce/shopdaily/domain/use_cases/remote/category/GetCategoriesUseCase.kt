@@ -1,4 +1,4 @@
-package com.ecommerce.shopdaily.domain.use_cases.remote.categories
+package com.ecommerce.shopdaily.domain.use_cases.remote.category
 
 import com.ecommerce.shopdaily.common.Resource
 import com.ecommerce.shopdaily.domain.model.category.ShopCategory

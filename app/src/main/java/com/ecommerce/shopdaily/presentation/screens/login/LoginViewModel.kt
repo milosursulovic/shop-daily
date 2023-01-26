@@ -9,7 +9,7 @@ import com.ecommerce.shopdaily.common.Resource
 import com.ecommerce.shopdaily.domain.model.login.User
 import com.ecommerce.shopdaily.domain.use_cases.local.GetSavedUserUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.SaveUserUseCase
-import com.ecommerce.shopdaily.domain.use_cases.remote.LoginUseCase
+import com.ecommerce.shopdaily.domain.use_cases.remote.login.LoginUseCase
 import com.ecommerce.shopdaily.presentation.screens.login.util.LoginEvent
 import com.ecommerce.shopdaily.presentation.screens.login.util.LoginState
 import dagger.hilt.android.lifecycle.HiltViewModel

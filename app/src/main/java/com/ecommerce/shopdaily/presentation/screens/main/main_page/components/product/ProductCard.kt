@@ -1,9 +1,5 @@
 package com.ecommerce.shopdaily.presentation.screens.main.main_page.components.product
 
-import android.app.Activity
-import android.content.Intent
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -17,15 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.product.*
-import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_area.ProductType
-import com.ecommerce.shopdaily.presentation.screens.product.ProductActivity
-import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 import com.ecommerce.shopdaily.presentation.ui.theme.Black
 import com.ecommerce.shopdaily.presentation.ui.theme.Hot
 import com.ecommerce.shopdaily.presentation.ui.theme.White
@@ -33,26 +25,10 @@ import com.ecommerce.shopdaily.presentation.ui.theme.White
 @Composable
 fun ProductCard(
     product: Product,
-    mainViewModel: MainViewModel
+    onProductClick: (Product) -> Unit
 ) {
-    val context = LocalContext.current
-    val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult(),
-    ) { activityResult ->
-        if (activityResult.resultCode == Activity.RESULT_OK) {
-            val result = activityResult.data?.getBooleanExtra(Constants.ADD_TO_CART, false)
-            if (result == true) {
-                mainViewModel.addProduct(product)
-            }
-        }
-    }
     Column(
-        modifier = Modifier.clickable {
-            val intent = Intent(context, ProductActivity::class.java).apply {
-                putExtra(Constants.PRODUCT, product)
-            }
-            launcher.launch(intent)
-        }
+        modifier = Modifier.clickable { onProductClick(product) }
     ) {
         Box {
             AsyncImage(

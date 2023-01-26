@@ -4,6 +4,10 @@
 package com.ecommerce.shopdaily.presentation.screens.main.shop
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,7 +20,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.appbar.AppBar
 import com.ecommerce.shopdaily.presentation.common.components.feedback.FeedbackLabel
 import com.ecommerce.shopdaily.presentation.common.components.screen.Loading
@@ -25,12 +31,15 @@ import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.shop.components.CategoryProduct
 import com.ecommerce.shopdaily.presentation.screens.main.shop.components.ProductCategory
 import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryEvent
+import com.ecommerce.shopdaily.presentation.screens.product.AddToCartActivity
+import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 
 @Composable
 fun Shop(mainViewModel: MainViewModel) {
+    val context = LocalContext.current
     val tabItems = listOf("Women", "Men", "Kids")
     val pagerState = rememberPagerState()
     val configuration = LocalConfiguration.current
@@ -38,6 +47,20 @@ fun Shop(mainViewModel: MainViewModel) {
     val categoriesState = mainViewModel.shopCategoriesState
     val categoryState = mainViewModel.categoryState
     val loggedUser = mainViewModel.loggedUser
+
+    var chosenProduct: Product? = null
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult(),
+    ) { activityResult ->
+        if (activityResult.resultCode == Activity.RESULT_OK) {
+            val result = activityResult.data?.getBooleanExtra(Constants.ADD_TO_CART, false)
+            if (result == true) {
+                chosenProduct?.let { product ->
+                    mainViewModel.addProduct(product)
+                }
+            }
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -69,8 +92,13 @@ fun Shop(mainViewModel: MainViewModel) {
                                 verticalArrangement = Arrangement.spacedBy(15.dp)
                             ) {
                                 items(category.products) { product ->
-                                    CategoryProduct(product = product) {
-
+                                    CategoryProduct(product = product) { chosenProd ->
+                                        chosenProduct = chosenProd
+                                        val intent =
+                                            Intent(context, AddToCartActivity::class.java).apply {
+                                                putExtra(Constants.PRODUCT, chosenProduct)
+                                            }
+                                        launcher.launch(intent)
                                     }
                                 }
                             }

@@ -1,6 +1,7 @@
 package com.ecommerce.shopdaily.presentation.screens.main.shop.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -20,7 +21,8 @@ fun CategoryProduct(product: Product, onProductClick: (Product) -> Unit) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp),
+                .height(200.dp)
+                .clickable { onProductClick(product) },
             shape = RoundedCornerShape(20.dp),
             elevation = 5.dp
         ) {

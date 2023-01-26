@@ -18,6 +18,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,7 +35,7 @@ import com.ecommerce.shopdaily.presentation.common.util.spinner.SpinnerType
 import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 import com.ecommerce.shopdaily.presentation.ui.theme.ShopDailyTheme
 
-class ProductActivity : ComponentActivity() {
+class AddToCartActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,11 +82,15 @@ class ProductActivity : ComponentActivity() {
                                 ) {
                                     CustomSpinner(SpinnerType.Size)
                                     CustomSpinner(SpinnerType.Color)
-                                    ProductFavorite(
-                                        modifier = Modifier
-                                            .height(40.dp)
-                                            .width(40.dp)
-                                    )
+                                    CircularButton(modifier = Modifier
+                                        .height(40.dp)
+                                        .width(40.dp),
+                                        iconModifier = Modifier
+                                            .width(15.dp)
+                                            .height(15.dp),
+                                        icon = Icons.Outlined.FavoriteBorder,
+                                        tint = MaterialTheme.colors.onSecondary,
+                                        onClick = {})
                                 }
                                 Spacer(modifier = Modifier.height(20.dp))
                                 Row(

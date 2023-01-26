@@ -30,7 +30,8 @@
                 android:value="" />
         </activity>
         <activity android:name=".presentation.screens.main.MainActivity" />
-        <activity android:name=".presentation.screens.product.ProductActivity" />
+        <activity android:name=".presentation.screens.product.AddToCartActivity" />
+        <activity android:name=".presentation.screens.product.ProductDetailsActivity" />
     </application>
 
 </manifest>

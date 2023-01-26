@@ -1,11 +1,9 @@
 package com.ecommerce.shopdaily.presentation.screens.main.main_page.components.product
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
@@ -17,10 +15,6 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.product.*
-import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_area.ProductType
-import com.ecommerce.shopdaily.presentation.ui.theme.Black
-import com.ecommerce.shopdaily.presentation.ui.theme.Hot
-import com.ecommerce.shopdaily.presentation.ui.theme.White
 
 @Composable
 fun ProductCard(
@@ -40,29 +34,6 @@ fun ProductCard(
                     .width(150.dp),
                 contentScale = ContentScale.Crop
             )
-            Row(
-                modifier = Modifier
-                    .padding(10.dp)
-                    .align(Alignment.TopStart)
-            ) {
-                Text(
-                    text = when (product.productType) {
-                        is ProductType.New -> "NEW"
-                        is ProductType.Sale -> "-${product.discount}%"
-                    },
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(5.dp))
-                        .background(
-                            when (product.productType) {
-                                is ProductType.New -> Black
-                                is ProductType.Sale -> Hot
-                            }
-                        )
-                        .padding(5.dp),
-                    style = MaterialTheme.typography.h4,
-                    color = White
-                )
-            }
             CircularButton(modifier = Modifier
                 .height(30.dp)
                 .width(30.dp)

@@ -34,14 +34,14 @@ fun Favorites(
         content = {
             BottomPaddingColumn {
                 ScreenTitle(title = "Favorites")
-                if (mainViewModel.favorites.isNotEmpty()) {
+                if (mainViewModel.dummyProducts.isNotEmpty()) {
                     LazyColumn(
                         modifier = Modifier
                             .fillMaxSize(),
                         contentPadding = PaddingValues(10.dp),
                         verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
-                        items(mainViewModel.favorites) { favorite ->
+                        items(mainViewModel.dummyProducts) { favorite ->
                             FavoriteProduct(favorite = favorite)
                         }
                     }

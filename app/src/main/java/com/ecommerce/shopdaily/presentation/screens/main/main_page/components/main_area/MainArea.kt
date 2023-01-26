@@ -9,11 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.components.product.ProductsRow
-import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_area.ProductType
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 
 @Composable
-fun MainArea(productType: ProductType, mainViewModel: MainViewModel) {
+fun MainArea(mainAreaLabel: String, mainAreaSubtitle: String, mainViewModel: MainViewModel) {
     Column {
         Row(
             modifier = Modifier
@@ -24,18 +23,12 @@ fun MainArea(productType: ProductType, mainViewModel: MainViewModel) {
         ) {
             Column {
                 Text(
-                    text = when (productType) {
-                        is ProductType.New -> "New"
-                        is ProductType.Sale -> "Sale"
-                    },
+                    text = mainAreaLabel,
                     style = MaterialTheme.typography.h1,
                     color = MaterialTheme.colors.onBackground
                 )
                 Text(
-                    text = when (productType) {
-                        is ProductType.New -> "You've never seen it before!"
-                        is ProductType.Sale -> "Super summer sale"
-                    },
+                    text = mainAreaSubtitle,
                     style = MaterialTheme.typography.h4,
                     color = Gray
                 )
@@ -46,10 +39,6 @@ fun MainArea(productType: ProductType, mainViewModel: MainViewModel) {
                 color = MaterialTheme.colors.onBackground
             )
         }
-        val products = when (productType) {
-            is ProductType.New -> mainViewModel.newProducts
-            is ProductType.Sale -> mainViewModel.saleProducts
-        }
-        ProductsRow(products, mainViewModel = mainViewModel)
+        ProductsRow(mainViewModel = mainViewModel)
     }
 }

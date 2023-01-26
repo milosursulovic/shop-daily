@@ -1,4 +1,4 @@
-package com.ecommerce.shopdaily.presentation.screens.main.main_page.components.products
+package com.ecommerce.shopdaily.presentation.screens.main.main_page.components.product
 
 import android.app.Activity
 import android.content.Intent

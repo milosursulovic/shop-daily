@@ -1,6 +1,6 @@
 package com.ecommerce.shopdaily.data.remote
 
-import com.ecommerce.shopdaily.data.remote.dto.categories.CategoryDto
+import com.ecommerce.shopdaily.data.remote.dto.category.CategoryDto
 import com.ecommerce.shopdaily.data.remote.dto.login.UserDto
 import com.ecommerce.shopdaily.data.remote.dto.login.request.LoginRequestBody
 import retrofit2.Response

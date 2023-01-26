@@ -1,7 +1,7 @@
-package com.ecommerce.shopdaily.data.remote.dto.categories
+package com.ecommerce.shopdaily.data.remote.dto.category
 
 
-import com.ecommerce.shopdaily.data.remote.dto.products.ProductDto
+import com.ecommerce.shopdaily.data.remote.dto.product.ProductDto
 import com.squareup.moshi.Json
 
 data class CategoryDto(

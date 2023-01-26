@@ -3,7 +3,7 @@ package com.ecommerce.shopdaily.data.repository
 import com.ecommerce.shopdaily.data.db.ShopDailyDao
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
 import com.ecommerce.shopdaily.data.remote.DummyJsonService
-import com.ecommerce.shopdaily.data.remote.dto.categories.CategoryDto
+import com.ecommerce.shopdaily.data.remote.dto.category.CategoryDto
 import com.ecommerce.shopdaily.data.remote.dto.login.UserDto
 import com.ecommerce.shopdaily.data.remote.dto.login.request.LoginRequestBody
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository

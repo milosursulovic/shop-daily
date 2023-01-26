@@ -28,13 +28,10 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
     var loggedUser: User? = null
         private set
-
     var screenLoadingState by mutableStateOf(true)
         private set
-
     var shopCategoriesState by mutableStateOf(ShopCategoriesState())
         private set
-
     var categoryState by mutableStateOf(CategoryState())
         private set
 

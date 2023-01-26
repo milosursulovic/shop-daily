@@ -1,4 +1,4 @@
-package com.ecommerce.shopdaily.presentation.screens.main.main_page.components.products
+package com.ecommerce.shopdaily.presentation.screens.main.main_page.components.product
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues

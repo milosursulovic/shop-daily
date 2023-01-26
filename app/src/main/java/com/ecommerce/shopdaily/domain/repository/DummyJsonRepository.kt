@@ -1,7 +1,7 @@
 package com.ecommerce.shopdaily.domain.repository
 
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
-import com.ecommerce.shopdaily.data.remote.dto.categories.CategoryDto
+import com.ecommerce.shopdaily.data.remote.dto.category.CategoryDto
 import com.ecommerce.shopdaily.data.remote.dto.login.UserDto
 import retrofit2.Response
 

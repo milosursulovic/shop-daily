@@ -1,7 +1,7 @@
-package com.ecommerce.shopdaily.data.mappers.categories
+package com.ecommerce.shopdaily.data.mappers.category
 
-import com.ecommerce.shopdaily.data.mappers.products.toProduct
-import com.ecommerce.shopdaily.data.remote.dto.categories.CategoryDto
+import com.ecommerce.shopdaily.data.mappers.product.toProduct
+import com.ecommerce.shopdaily.data.remote.dto.category.CategoryDto
 import com.ecommerce.shopdaily.domain.model.category.Category
 
 fun CategoryDto.toCategory(): Category =

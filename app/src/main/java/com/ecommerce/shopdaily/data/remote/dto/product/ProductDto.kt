@@ -1,4 +1,4 @@
-package com.ecommerce.shopdaily.data.remote.dto.products
+package com.ecommerce.shopdaily.data.remote.dto.product
 
 
 import com.squareup.moshi.Json

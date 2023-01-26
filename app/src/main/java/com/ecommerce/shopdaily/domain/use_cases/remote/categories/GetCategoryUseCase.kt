@@ -1,7 +1,7 @@
 package com.ecommerce.shopdaily.domain.use_cases.remote.categories
 
 import com.ecommerce.shopdaily.common.Resource
-import com.ecommerce.shopdaily.data.mappers.categories.toCategory
+import com.ecommerce.shopdaily.data.mappers.category.toCategory
 import com.ecommerce.shopdaily.domain.model.category.Category
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
 import kotlinx.coroutines.flow.Flow

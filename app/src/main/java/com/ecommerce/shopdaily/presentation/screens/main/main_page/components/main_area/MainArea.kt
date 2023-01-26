@@ -8,7 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
-import com.ecommerce.shopdaily.presentation.screens.main.main_page.components.products.ProductsRow
+import com.ecommerce.shopdaily.presentation.screens.main.main_page.components.product.ProductsRow
 import com.ecommerce.shopdaily.presentation.screens.main.main_page.util.main_area.ProductType
 import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 

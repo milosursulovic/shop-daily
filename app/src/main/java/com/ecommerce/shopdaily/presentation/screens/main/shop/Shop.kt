@@ -112,7 +112,8 @@ fun Shop(mainViewModel: MainViewModel) {
                                                     chosenProd
                                                 )
                                             )
-                                        })
+                                        }, mainViewModel = mainViewModel
+                                    )
                                 }
                             }
                         }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,9 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.product.*
+import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 
 @Composable
 fun CategoryProduct(
+    mainViewModel: MainViewModel,
     product: Product,
     onProductClick: (Product) -> Unit,
     onFavoriteClick: (Product) -> Unit
@@ -53,6 +56,9 @@ fun CategoryProduct(
                 }
             }
         }
+        val found = mainViewModel.favoritesState.favorites?.find { indexedProduct ->
+            indexedProduct.productId == product.productId && indexedProduct.category == product.category
+        }
         CircularButton(modifier = Modifier
             .height(40.dp)
             .width(40.dp)
@@ -61,8 +67,8 @@ fun CategoryProduct(
             iconModifier = Modifier
                 .width(25.dp)
                 .height(25.dp),
-            icon = Icons.Outlined.FavoriteBorder,
-            tint = MaterialTheme.colors.onSecondary,
+            icon = if (found != null) Icons.Outlined.Favorite else Icons.Outlined.FavoriteBorder,
+            tint = if (found != null) MaterialTheme.colors.primary else MaterialTheme.colors.onSecondary,
             onClick = {
                 onFavoriteClick(product)
             })

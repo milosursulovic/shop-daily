@@ -22,8 +22,12 @@ fun CategoryProduct(
     mainViewModel: MainViewModel,
     product: Product,
     onProductClick: (Product) -> Unit,
-    onFavoriteClick: (Product) -> Unit
+    onFavoriteClick: (Product) -> Unit,
+    onDeleteFavoriteClick: (Product) -> Unit
 ) {
+    val found = mainViewModel.favoritesState.favorites?.find { indexedProduct ->
+        indexedProduct.productId == product.productId && indexedProduct.category == product.category
+    }
     Box(modifier = Modifier.fillMaxSize()) {
         Card(
             modifier = Modifier
@@ -56,9 +60,6 @@ fun CategoryProduct(
                 }
             }
         }
-        val found = mainViewModel.favoritesState.favorites?.find { indexedProduct ->
-            indexedProduct.productId == product.productId && indexedProduct.category == product.category
-        }
         CircularButton(modifier = Modifier
             .height(40.dp)
             .width(40.dp)
@@ -70,7 +71,11 @@ fun CategoryProduct(
             icon = if (found != null) Icons.Outlined.Favorite else Icons.Outlined.FavoriteBorder,
             tint = if (found != null) MaterialTheme.colors.primary else MaterialTheme.colors.onSecondary,
             onClick = {
-                onFavoriteClick(product)
+                if (found != null) {
+                    onDeleteFavoriteClick(product)
+                } else {
+                    onFavoriteClick(product)
+                }
             })
     }
 }

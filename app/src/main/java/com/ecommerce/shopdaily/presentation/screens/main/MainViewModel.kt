@@ -9,6 +9,7 @@ import com.ecommerce.shopdaily.common.Resource
 import com.ecommerce.shopdaily.data.remote.FakeApi
 import com.ecommerce.shopdaily.domain.model.login.User
 import com.ecommerce.shopdaily.domain.model.product.Product
+import com.ecommerce.shopdaily.domain.use_cases.local.DeleteFromFavoritesUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.GetFavoritesUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.GetSavedUserUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.SaveToFavoritesUseCase
@@ -29,7 +30,8 @@ class MainViewModel @Inject constructor(
     private val getCategoriesUseCase: GetCategoriesUseCase,
     private val getCategoryUseCase: GetCategoryUseCase,
     private val saveToFavoritesUseCase: SaveToFavoritesUseCase,
-    private val getFavoritesUseCase: GetFavoritesUseCase
+    private val getFavoritesUseCase: GetFavoritesUseCase,
+    private val deleteFromFavoritesUseCase: DeleteFromFavoritesUseCase
 ) : ViewModel() {
     var loggedUser: User? = null
         private set
@@ -176,6 +178,7 @@ class MainViewModel @Inject constructor(
         when (event) {
             is ProductEvent.SaveToFavorites -> saveToFavorites(event.product)
             is ProductEvent.GetFavorites -> getFavorites()
+            is ProductEvent.DeleteFromFavorites -> deleteFromFavorites(event.product)
         }
     }
 
@@ -223,6 +226,21 @@ class MainViewModel @Inject constructor(
                             )
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private fun deleteFromFavorites(product: Product) {
+        viewModelScope.launch {
+            deleteFromFavoritesUseCase(product).collect { result ->
+                screenLoadingState = when (result) {
+                    is Resource.Loading -> true
+                    is Resource.Success -> {
+                        onProductEvent(ProductEvent.GetFavorites)
+                        false
+                    }
+                    is Resource.Error -> false
                 }
             }
         }

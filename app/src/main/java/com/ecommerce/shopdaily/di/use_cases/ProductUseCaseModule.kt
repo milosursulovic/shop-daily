@@ -1,6 +1,7 @@
 package com.ecommerce.shopdaily.di.use_cases
 
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
+import com.ecommerce.shopdaily.domain.use_cases.local.DeleteFromFavoritesUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.GetFavoritesUseCase
 import com.ecommerce.shopdaily.domain.use_cases.local.SaveToFavoritesUseCase
 import dagger.Module
@@ -21,4 +22,9 @@ object ProductUseCaseModule {
     @Provides
     fun providesGetFavoritesUseCase(repository: DummyJsonRepository): GetFavoritesUseCase =
         GetFavoritesUseCase(repository)
+
+    @Singleton
+    @Provides
+    fun providesDeleteFromFavoritesUseCase(repository: DummyJsonRepository): DeleteFromFavoritesUseCase =
+        DeleteFromFavoritesUseCase(repository)
 }

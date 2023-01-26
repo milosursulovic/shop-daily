@@ -1,9 +1,6 @@
 package com.ecommerce.shopdaily.data.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.ecommerce.shopdaily.data.db.entities.ProductEntity
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
 
@@ -20,4 +17,7 @@ interface ShopDailyDao {
 
     @Query("select * from favorites")
     suspend fun getFavorites(): List<ProductEntity>
+
+    @Query("delete from favorites where productId = :productId and category = :category")
+    suspend fun deleteFromFavorites(productId: Int, category: String)
 }

@@ -94,6 +94,7 @@ fun Shop(mainViewModel: MainViewModel) {
                             ) {
                                 items(category.products) { product ->
                                     CategoryProduct(
+                                        mainViewModel = mainViewModel,
                                         product = product,
                                         onProductClick = { chosenProd ->
                                             chosenProduct = chosenProd
@@ -112,7 +113,14 @@ fun Shop(mainViewModel: MainViewModel) {
                                                     chosenProd
                                                 )
                                             )
-                                        }, mainViewModel = mainViewModel
+                                        },
+                                        onDeleteFavoriteClick = { chosenProd ->
+                                            mainViewModel.onProductEvent(
+                                                ProductEvent.DeleteFromFavorites(
+                                                    chosenProd
+                                                )
+                                            )
+                                        }
                                     )
                                 }
                             }

@@ -7,7 +7,7 @@ class FakeApi {
     fun getDummyProducts() = listOf(
         Product(
             productId = 1,
-            image =  "",
+            image = "",
             title = "T-Shirt Sailing",
             subtitle = "Mango Boy",
             price = 10,
@@ -19,7 +19,7 @@ class FakeApi {
         ),
         Product(
             productId = 1,
-            image =  "",
+            image = "",
             title = "T-Shirt Sailing",
             subtitle = "Mango Boy",
             price = 10,
@@ -31,7 +31,7 @@ class FakeApi {
         ),
         Product(
             productId = 1,
-            image =  "",
+            image = "",
             title = "T-Shirt Sailing",
             subtitle = "Mango Boy",
             price = 10,
@@ -43,7 +43,7 @@ class FakeApi {
         ),
         Product(
             productId = 1,
-            image =  "",
+            image = "",
             title = "T-Shirt Sailing",
             subtitle = "Mango Boy",
             price = 10,
@@ -55,7 +55,7 @@ class FakeApi {
         ),
         Product(
             productId = 1,
-            image =  "",
+            image = "",
             title = "T-Shirt Sailing",
             subtitle = "Mango Boy",
             price = 10,

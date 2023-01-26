@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CategoryUseCase {
+object CategoryUseCaseModule {
     @Singleton
     @Provides
     fun providesGetCategoriesUseCase(repository: DummyJsonRepository): GetCategoriesUseCase =

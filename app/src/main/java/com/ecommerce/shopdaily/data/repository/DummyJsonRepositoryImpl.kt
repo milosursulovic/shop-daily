@@ -1,6 +1,7 @@
 package com.ecommerce.shopdaily.data.repository
 
 import com.ecommerce.shopdaily.data.db.ShopDailyDao
+import com.ecommerce.shopdaily.data.db.entities.ProductEntity
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
 import com.ecommerce.shopdaily.data.remote.DummyJsonService
 import com.ecommerce.shopdaily.data.remote.dto.category.CategoryDto
@@ -26,4 +27,7 @@ class DummyJsonRepositoryImpl(
 
     override suspend fun getCategory(token: String, categoryId: String): Response<CategoryDto> =
         api.getCategory(token, categoryId)
+
+    override suspend fun saveProductToFavorites(product: ProductEntity): Long =
+        dao.saveProductToFavorites(product)
 }

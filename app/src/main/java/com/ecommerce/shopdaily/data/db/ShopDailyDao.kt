@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.ecommerce.shopdaily.data.db.entities.ProductEntity
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
 
 @Dao
@@ -13,4 +14,7 @@ interface ShopDailyDao {
 
     @Query("select * from login")
     suspend fun getUser(): List<UserEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveProductToFavorites(product: ProductEntity): Long
 }

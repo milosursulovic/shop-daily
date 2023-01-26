@@ -13,6 +13,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
+
     @Singleton
     @Provides
     fun providesDatabase(app: Application): ShopDailyDatabase =
@@ -20,7 +21,8 @@ object DatabaseModule {
             app,
             ShopDailyDatabase::class.java,
             ShopDailyDatabase.DATABASE_NAME
-        ).build()
+        )
+            .build()
 
     @Singleton
     @Provides

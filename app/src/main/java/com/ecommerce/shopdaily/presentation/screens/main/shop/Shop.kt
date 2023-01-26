@@ -31,6 +31,7 @@ import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.shop.components.CategoryProduct
 import com.ecommerce.shopdaily.presentation.screens.main.shop.components.ProductCategory
 import com.ecommerce.shopdaily.presentation.screens.main.util.category.CategoryEvent
+import com.ecommerce.shopdaily.presentation.screens.main.util.product.ProductEvent
 import com.ecommerce.shopdaily.presentation.screens.product.AddToCartActivity
 import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -92,14 +93,26 @@ fun Shop(mainViewModel: MainViewModel) {
                                 verticalArrangement = Arrangement.spacedBy(15.dp)
                             ) {
                                 items(category.products) { product ->
-                                    CategoryProduct(product = product) { chosenProd ->
-                                        chosenProduct = chosenProd
-                                        val intent =
-                                            Intent(context, AddToCartActivity::class.java).apply {
-                                                putExtra(Constants.PRODUCT, chosenProduct)
-                                            }
-                                        launcher.launch(intent)
-                                    }
+                                    CategoryProduct(
+                                        product = product,
+                                        onProductClick = { chosenProd ->
+                                            chosenProduct = chosenProd
+                                            val intent =
+                                                Intent(
+                                                    context,
+                                                    AddToCartActivity::class.java
+                                                ).apply {
+                                                    putExtra(Constants.PRODUCT, chosenProduct)
+                                                }
+                                            launcher.launch(intent)
+                                        },
+                                        onFavoriteClick = { chosenProd ->
+                                            mainViewModel.onProductEvent(
+                                                ProductEvent.SaveToFavorites(
+                                                    chosenProd
+                                                )
+                                            )
+                                        })
                                 }
                             }
                         }

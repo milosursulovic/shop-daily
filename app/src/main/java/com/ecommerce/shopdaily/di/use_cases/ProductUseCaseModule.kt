@@ -1,0 +1,18 @@
+package com.ecommerce.shopdaily.di.use_cases
+
+import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
+import com.ecommerce.shopdaily.domain.use_cases.local.SaveToFavoritesUseCase
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+object ProductUseCaseModule {
+    @Singleton
+    @Provides
+    fun providesSaveToFavoritesUseCase(repository: DummyJsonRepository): SaveToFavoritesUseCase =
+        SaveToFavoritesUseCase(repository)
+}

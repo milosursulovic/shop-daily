@@ -16,7 +16,11 @@ import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.presentation.common.components.product.*
 
 @Composable
-fun CategoryProduct(product: Product, onProductClick: (Product) -> Unit) {
+fun CategoryProduct(
+    product: Product,
+    onProductClick: (Product) -> Unit,
+    onFavoriteClick: (Product) -> Unit
+) {
     Box(modifier = Modifier.fillMaxSize()) {
         Card(
             modifier = Modifier
@@ -59,6 +63,8 @@ fun CategoryProduct(product: Product, onProductClick: (Product) -> Unit) {
                 .height(25.dp),
             icon = Icons.Outlined.FavoriteBorder,
             tint = MaterialTheme.colors.onSecondary,
-            onClick = {})
+            onClick = {
+                onFavoriteClick(product)
+            })
     }
 }

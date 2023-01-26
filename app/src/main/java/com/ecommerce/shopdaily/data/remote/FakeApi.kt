@@ -14,7 +14,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -24,7 +25,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -34,7 +36,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -44,7 +47,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -54,7 +58,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         )
     )
 
@@ -67,7 +72,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -77,7 +83,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -87,7 +94,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -97,7 +105,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -107,7 +116,8 @@ class FakeApi {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         )
     )
 }

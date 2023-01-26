@@ -34,8 +34,11 @@ import com.ecommerce.shopdaily.presentation.common.components.spinner.CustomSpin
 import com.ecommerce.shopdaily.presentation.common.util.spinner.SpinnerType
 import com.ecommerce.shopdaily.presentation.screens.product.common.Constants
 import com.ecommerce.shopdaily.presentation.ui.theme.ShopDailyTheme
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
 
 class AddToCartActivity : ComponentActivity() {
+    @OptIn(ExperimentalPagerApi::class)
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,14 +65,20 @@ class AddToCartActivity : ComponentActivity() {
                                 .fillMaxSize()
                                 .verticalScroll(rememberScrollState())
                         ) {
-                            AsyncImage(
-                                model = product.image,
-                                contentDescription = null,
-                                modifier = Modifier
+                            HorizontalPager(
+                                count = product.images.size, modifier = Modifier
                                     .fillMaxWidth()
                                     .fillMaxHeight(0.6f),
-                                contentScale = ContentScale.Crop
-                            )
+                                contentPadding = PaddingValues(end = 20.dp)
+                            ) { pageIndex ->
+                                AsyncImage(
+                                    model = product.images[pageIndex],
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .fillMaxSize(),
+                                    contentScale = ContentScale.Crop
+                                )
+                            }
                             Column(
                                 modifier = Modifier
                                     .fillMaxSize()

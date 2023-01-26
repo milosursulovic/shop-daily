@@ -13,5 +13,6 @@ fun ProductDto.toProduct(): Product =
         discount = discountPercentage,
         rating = rating,
         description = description,
-        productType = ProductType.New
+        productType = ProductType.New,
+        images = images
     )

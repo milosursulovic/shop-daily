@@ -11,5 +11,6 @@ data class Product(
     val discount: Double,
     val rating: Double,
     val description: String,
-    val productType: ProductType
+    val productType: ProductType,
+    val images: List<String>
 ) : Serializable

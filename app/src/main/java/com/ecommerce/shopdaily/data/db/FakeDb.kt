@@ -14,7 +14,8 @@ class FakeDb {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -24,7 +25,8 @@ class FakeDb {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -34,7 +36,8 @@ class FakeDb {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -44,7 +47,8 @@ class FakeDb {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         ),
         Product(
             "",
@@ -54,7 +58,8 @@ class FakeDb {
             2.2,
             0.0,
             Constants.PRODUCT_DESCRIPTION,
-            ProductType.New
+            ProductType.New,
+            emptyList()
         )
     )
 }

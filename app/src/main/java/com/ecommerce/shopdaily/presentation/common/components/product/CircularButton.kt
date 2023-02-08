@@ -10,13 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun CircularButton(
     modifier: Modifier,
     iconModifier: Modifier = Modifier,
-    icon: ImageVector,
+    icon: ImageVector?,
+    iconDrawable: Int?,
     tint: Color,
     onClick: () -> Unit
 ) {
@@ -28,12 +30,22 @@ fun CircularButton(
         IconButton(
             modifier = Modifier.background(color = MaterialTheme.colors.secondary),
             onClick = { onClick() }) {
-            Icon(
-                modifier = iconModifier,
-                imageVector = icon,
-                contentDescription = null,
-                tint = tint
-            )
+            if (icon != null) {
+                Icon(
+                    modifier = iconModifier,
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = tint
+                )
+            }
+            if (iconDrawable != null) {
+                Icon(
+                    modifier = iconModifier,
+                    painter = painterResource(id = iconDrawable),
+                    contentDescription = null,
+                    tint = tint
+                )
+            }
         }
     }
 }

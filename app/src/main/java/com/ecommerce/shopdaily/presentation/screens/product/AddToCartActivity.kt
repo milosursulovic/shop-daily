@@ -117,9 +117,10 @@ class AddToCartActivity : ComponentActivity() {
                                         ) {
                                             CustomSpinner(SpinnerType.Size)
                                             CustomSpinner(SpinnerType.Color)
-                                            CircularButton(modifier = Modifier
-                                                .height(40.dp)
-                                                .width(40.dp),
+                                            CircularButton(
+                                                modifier = Modifier
+                                                    .height(40.dp)
+                                                    .width(40.dp),
                                                 iconModifier = Modifier
                                                     .width(15.dp)
                                                     .height(15.dp),
@@ -139,7 +140,9 @@ class AddToCartActivity : ComponentActivity() {
                                                             )
                                                         )
                                                     }
-                                                })
+                                                },
+                                                iconDrawable = null
+                                            )
                                         }
                                         Spacer(modifier = Modifier.height(20.dp))
                                         Row(

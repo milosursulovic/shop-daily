@@ -41,11 +41,12 @@ fun ProductCard(
                     .width(150.dp),
                 contentScale = ContentScale.Crop
             )
-            CircularButton(modifier = Modifier
-                .height(30.dp)
-                .width(30.dp)
-                .align(Alignment.BottomEnd)
-                .offset(x = 0.dp, y = 15.dp),
+            CircularButton(
+                modifier = Modifier
+                    .height(30.dp)
+                    .width(30.dp)
+                    .align(Alignment.BottomEnd)
+                    .offset(x = 0.dp, y = 15.dp),
                 iconModifier = Modifier
                     .width(15.dp)
                     .height(15.dp),
@@ -57,7 +58,9 @@ fun ProductCard(
                     } else {
                         viewModel.onProductEvent(ProductEvent.SaveToFavorites(product))
                     }
-                })
+                },
+                iconDrawable = null
+            )
         }
         Spacer(modifier = Modifier.height(10.dp))
         ProductRating(product = product)

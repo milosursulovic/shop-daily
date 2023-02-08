@@ -60,11 +60,12 @@ fun CategoryProduct(
                 }
             }
         }
-        CircularButton(modifier = Modifier
-            .height(40.dp)
-            .width(40.dp)
-            .align(Alignment.BottomEnd)
-            .offset(x = 0.dp, y = 5.dp),
+        CircularButton(
+            modifier = Modifier
+                .height(40.dp)
+                .width(40.dp)
+                .align(Alignment.BottomEnd)
+                .offset(x = 0.dp, y = 5.dp),
             iconModifier = Modifier
                 .width(25.dp)
                 .height(25.dp),
@@ -76,6 +77,8 @@ fun CategoryProduct(
                 } else {
                     onFavoriteClick(product)
                 }
-            })
+            },
+            iconDrawable = null
+        )
     }
 }

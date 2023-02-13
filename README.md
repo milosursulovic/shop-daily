@@ -5,8 +5,7 @@ A Simple E Commerce Mobile Application which has been implemented using Clean Ar
 ## ***THIS REPOSITORY IS JUST FOR TRAINING PURPOSE***
 
 ### Contribution
-Feel free to fork and contribute to this repository. I'll try to approve every PR that
-makes sense, as soon as possible. Also be free to star this repository.
+Feel free to fork and contribute to this repository. Also be free to star this repository.
 
 ### Technologies & Methodologies:
 

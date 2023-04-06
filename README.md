@@ -17,6 +17,9 @@ Feel free to fork and contribute to this repository. Also be free to star this r
 - MVVM Pattern
 - Flow
 - Material design
+- JUnit
+- Truth
+- Espresso
 
 ### App Scenario
 User should register, login, list available products,

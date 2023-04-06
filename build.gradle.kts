@@ -10,7 +10,7 @@ val navigationHiltVersion by extra { "1.0.0" }
 
 plugins {
     id("com.google.dagger.hilt.android") version "2.44.2" apply false
-    id ("com.android.application") version "7.3.1" apply false
-    id ("com.android.library") version "7.3.1" apply false
-    id ("org.jetbrains.kotlin.android") version "1.6.10" apply false
+    id("com.android.application") version "7.3.1" apply false
+    id("com.android.library") version "7.3.1" apply false
+    id("org.jetbrains.kotlin.android") version "1.6.10" apply false
 }

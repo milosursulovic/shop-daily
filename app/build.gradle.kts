@@ -1,13 +1,3 @@
-val composeUIVersion: String by rootProject.extra
-val navVersion: String by rootProject.extra
-val retrofitVersion: String by rootProject.extra
-val okhttpVersion: String by rootProject.extra
-val hiltVersion: String by rootProject.extra
-val pagerVersion: String by rootProject.extra
-val roomVersion: String by rootProject.extra
-val coilVersion: String by rootProject.extra
-val navigationHiltVersion: String by rootProject.extra
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -64,46 +54,53 @@ android {
 
 dependencies {
     //compose navigation
-    implementation("androidx.navigation:navigation-compose:$navVersion")
+    implementation("androidx.navigation:navigation-compose:2.5.3")
 
     //retrofit
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
-
-    //okhttp
-    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
     //pager
-    implementation("com.google.accompanist:accompanist-pager:$pagerVersion")
-    implementation("com.google.accompanist:accompanist-pager-indicators:$pagerVersion")
+    implementation("com.google.accompanist:accompanist-pager:0.29.0-alpha")
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.29.0-alpha")
 
     //dagger hilt
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
+    implementation("com.google.dagger:hilt-android:2.44.2")
+    kapt("com.google.dagger:hilt-compiler:2.44.2")
 
     //that I can use hiltViewModel() method
-    implementation("androidx.hilt:hilt-navigation-compose:$navigationHiltVersion")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     //room
-    implementation("androidx.room:room-runtime:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-runtime:2.5.0")
+    implementation("androidx.room:room-ktx:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
 
     //coil
-    implementation("io.coil-kt:coil-compose:$coilVersion")
+    implementation("io.coil-kt:coil-compose:2.2.2")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.compose.ui:ui:$composeUIVersion")
-    implementation("androidx.compose.ui:ui-tooling-preview:$composeUIVersion")
+    implementation("androidx.compose.ui:ui:1.3.3")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.3.3")
     implementation("androidx.compose.material:material:1.3.1")
+
+    //junit
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
+
+    //truth
+    testImplementation("com.google.truth:truth:1.1.3")
+    androidTestImplementation("com.google.truth:truth:1.1.3")
+
+    //espresso
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeUIVersion")
-    debugImplementation("androidx.compose.ui:ui-tooling:$composeUIVersion")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeUIVersion")
+
+    //compose testing
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.3.3")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.3.3")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.3")
 }
 
 kapt {

@@ -48,6 +48,8 @@ android {
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/LICENSE-notice.md"
         }
     }
 }
@@ -96,6 +98,12 @@ dependencies {
 
     //espresso
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //mockito
+    testImplementation("org.mockito:mockito-android:4.1.0")
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    androidTestImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    androidTestImplementation("org.mockito:mockito-android:4.1.0")
 
     //compose testing
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.3.3")

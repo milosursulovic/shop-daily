@@ -1,4 +1,5 @@
-import com.ecommerce.shopdaily.data.db.entities.ProductEntity
+package com.ecommerce.shopdaily.data.db.entities
+
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test

@@ -1,16 +1,15 @@
-package com.ecommerce.shopdaily.remote
+package com.ecommerce.shopdaily.data.remote
 
-import com.ecommerce.shopdaily.data.remote.DummyJsonService
 import com.ecommerce.shopdaily.data.remote.dto.category.CategoryDto
 import com.ecommerce.shopdaily.data.remote.dto.login.UserDto
 import com.ecommerce.shopdaily.data.remote.dto.login.request.LoginRequestBody
 import com.ecommerce.shopdaily.data.remote.dto.product.ProductDto
 import com.google.common.truth.Truth.assertThat
-import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
+import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Response
 
@@ -20,7 +19,7 @@ class DummyJsonServiceTest {
     lateinit var dummyJsonService: DummyJsonService
 
     @Test
-    fun testLogin() = runBlocking {
+    fun `test login`() = runBlocking {
         val userDto = UserDto(
             "test@test.com",
             "John",
@@ -33,34 +32,34 @@ class DummyJsonServiceTest {
         )
         val loginRequestBody = LoginRequestBody("johndoe", "password")
         val response = Response.success(userDto)
-        whenever(dummyJsonService.login(loginRequestBody)).thenReturn(response)
+        `when`(dummyJsonService.login(loginRequestBody)).thenReturn(response)
         val result = dummyJsonService.login(loginRequestBody)
         assertThat(response).isEqualTo(result)
     }
 
     @Test
-    fun testGetCategories() = runBlocking {
+    fun `test get categories`() = runBlocking {
         val categories = listOf("Category 1", "Category 2", "Category 3")
         val response = Response.success(categories)
         val token = "token"
-        whenever(dummyJsonService.getCategories(token)).thenReturn(response)
+        `when`(dummyJsonService.getCategories(token)).thenReturn(response)
         val result = dummyJsonService.getCategories(token)
         assertThat(response).isEqualTo(result)
     }
 
     @Test
-    fun testGetCategory() = runBlocking {
+    fun `test get category`() = runBlocking {
         val categoryDto = CategoryDto(10, emptyList(), 0, 0)
         val categoryId = "category-1"
         val response = Response.success(categoryDto)
         val token = "token"
-        whenever(dummyJsonService.getCategory(token, categoryId)).thenReturn(response)
+        `when`(dummyJsonService.getCategory(token, categoryId)).thenReturn(response)
         val result = dummyJsonService.getCategory(token, categoryId)
         assertThat(response).isEqualTo(result)
     }
 
     @Test
-    fun testGetProducts() = runBlocking {
+    fun `test get products`() = runBlocking {
         val productDto = ProductDto(
             "Brand",
             "Category",
@@ -79,7 +78,7 @@ class DummyJsonServiceTest {
         val token = "token"
         val limit = 10
         val skip = 0
-        whenever(dummyJsonService.getProducts(token, limit, skip)).thenReturn(response)
+        `when`(dummyJsonService.getProducts(token, limit, skip)).thenReturn(response)
         val result = dummyJsonService.getProducts(token, limit, skip)
         assertThat(response).isEqualTo(result)
     }

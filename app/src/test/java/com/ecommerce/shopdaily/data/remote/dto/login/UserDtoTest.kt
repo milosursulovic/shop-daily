@@ -6,7 +6,6 @@ import org.junit.Test
 class UserDtoTest {
     @Test
     fun `user properties should match the provided values`() {
-        // Arrange
         val userDto = UserDto(
             email = "user@example.com",
             firstName = "John",
@@ -18,7 +17,6 @@ class UserDtoTest {
             username = "johndoe"
         )
 
-        // Act
         val actualEmail = userDto.email
         val actualFirstName = userDto.firstName
         val actualGender = userDto.gender
@@ -28,7 +26,6 @@ class UserDtoTest {
         val actualToken = userDto.token
         val actualUsername = userDto.username
 
-        // Assert
         assertThat(actualEmail).isEqualTo("user@example.com")
         assertThat(actualFirstName).isEqualTo("John")
         assertThat(actualGender).isEqualTo("male")

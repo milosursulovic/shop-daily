@@ -50,6 +50,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
             excludes += "META-INF/LICENSE.md"
             excludes += "META-INF/LICENSE-notice.md"
+            excludes += "mockito-extensions/org.mockito.plugins.MockMaker"
         }
     }
 }
@@ -96,14 +97,12 @@ dependencies {
     testImplementation("com.google.truth:truth:1.1.3")
     androidTestImplementation("com.google.truth:truth:1.1.3")
 
-    //espresso
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
     //mockito
-    testImplementation("org.mockito:mockito-android:4.1.0")
-    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
-    androidTestImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
-    androidTestImplementation("org.mockito:mockito-android:4.1.0")
+    testImplementation("org.mockito:mockito-core:3.11.2")
+    androidTestImplementation("org.mockito:mockito-android:3.11.2")
+
+    //arch core
+    androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
 
     //compose testing
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.3.3")

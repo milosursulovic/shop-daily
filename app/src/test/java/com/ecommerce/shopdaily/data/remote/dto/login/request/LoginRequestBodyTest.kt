@@ -6,7 +6,6 @@ import org.junit.Test
 class LoginRequestBodyTest {
     @Test
     fun `username and password should match the provided values`() {
-        // Arrange
         val username = "user@example.com"
         val password = "password123"
         val loginRequestBody = LoginRequestBody(
@@ -14,11 +13,9 @@ class LoginRequestBodyTest {
             password = password
         )
 
-        // Act
         val actualUsername = loginRequestBody.username
         val actualPassword = loginRequestBody.password
 
-        // Assert
         assertThat(actualUsername).isEqualTo(username)
         assertThat(actualPassword).isEqualTo(password)
     }

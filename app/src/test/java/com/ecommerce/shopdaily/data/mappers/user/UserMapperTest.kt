@@ -9,7 +9,6 @@ import org.junit.Test
 class UserMapperTest {
     @Test
     fun `toUserEntity converts User to UserEntity correctly`() {
-        // Arrange
         val user = User(
             username = "test_user",
             email = "test_user@example.com",
@@ -19,10 +18,8 @@ class UserMapperTest {
             token = "some_token"
         )
 
-        // Act
         val userEntity = user.toUserEntity()
 
-        // Assert
         assertThat(userEntity.username).isEqualTo(user.username)
         assertThat(userEntity.email).isEqualTo(user.email)
         assertThat(userEntity.firstName).isEqualTo(user.firstName)
@@ -33,7 +30,6 @@ class UserMapperTest {
 
     @Test
     fun `toUser converts UserDto to User correctly`() {
-        // Arrange
         val userDto = UserDto(
             email = "test_user@example.com",
             firstName = "Test",
@@ -45,10 +41,8 @@ class UserMapperTest {
             username = "test_user"
         )
 
-        // Act
         val user = userDto.toUser()
 
-        // Assert
         assertThat(user.username).isEqualTo(userDto.username)
         assertThat(user.email).isEqualTo(userDto.email)
         assertThat(user.firstName).isEqualTo(userDto.firstName)
@@ -59,7 +53,6 @@ class UserMapperTest {
 
     @Test
     fun `toUser converts UserEntity to User correctly`() {
-        // Arrange
         val userEntity = UserEntity(
             id = 123,
             username = "test_user",
@@ -70,10 +63,8 @@ class UserMapperTest {
             token = "some_token"
         )
 
-        // Act
         val user = userEntity.toUser()
 
-        // Assert
         assertThat(user.username).isEqualTo(userEntity.username)
         assertThat(user.email).isEqualTo(userEntity.email)
         assertThat(user.firstName).isEqualTo(userEntity.firstName)

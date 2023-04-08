@@ -9,7 +9,6 @@ class CategoryDtoTest {
 
     @Test
     fun `mapping CategoryDto to Category`() {
-        // Arrange
         val productDto1 = ProductDto(
             "Brand 1",
             "Category 1",
@@ -38,10 +37,8 @@ class CategoryDtoTest {
         )
         val categoryDto = CategoryDto(2, listOf(productDto1, productDto2), 0, 2)
 
-        // Act
         val category = categoryDto.toCategory()
 
-        // Assert
         assertThat(category.categoryId).isEqualTo("")
         assertThat(category.name).isEqualTo("")
         assertThat(category.limit).isEqualTo(2)

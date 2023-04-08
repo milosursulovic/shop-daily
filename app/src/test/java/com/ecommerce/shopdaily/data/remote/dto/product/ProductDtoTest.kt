@@ -6,7 +6,6 @@ import org.junit.Test
 class ProductDtoTest {
     @Test
     fun `product properties should match the provided values`() {
-        // Arrange
         val productDto = ProductDto(
             brand = "Apple",
             category = "Electronics",
@@ -21,7 +20,6 @@ class ProductDtoTest {
             title = "iPhone 12"
         )
 
-        // Act
         val actualBrand = productDto.brand
         val actualCategory = productDto.category
         val actualDescription = productDto.description
@@ -34,7 +32,6 @@ class ProductDtoTest {
         val actualThumbnail = productDto.thumbnail
         val actualTitle = productDto.title
 
-        // Assert
         assertThat(actualBrand).isEqualTo("Apple")
         assertThat(actualCategory).isEqualTo("Electronics")
         assertThat(actualDescription).isEqualTo("The latest iPhone")

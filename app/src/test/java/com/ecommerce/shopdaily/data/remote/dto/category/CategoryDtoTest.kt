@@ -8,7 +8,6 @@ import org.junit.Test
 class CategoryDtoTest {
     @Test
     fun `products list should not be null or empty`() {
-        // Arrange
         val productDto = ProductDto(
             brand = "Nike",
             category = "shoes",
@@ -29,17 +28,14 @@ class CategoryDtoTest {
             total = 1
         )
 
-        // Act
         val products = categoryDto.products
 
-        // Assert
         assertThat(products).isNotNull()
         assertThat(products).isNotEmpty()
     }
 
     @Test
     fun `total should be greater than or equal to zero`() {
-        // Arrange
         val categoryDto = CategoryDto(
             limit = 10,
             products = emptyList(),
@@ -47,10 +43,8 @@ class CategoryDtoTest {
             total = 1
         )
 
-        // Act
         val total = categoryDto.total
 
-        // Assert
         assertThat(total).isAtLeast(0)
     }
 }

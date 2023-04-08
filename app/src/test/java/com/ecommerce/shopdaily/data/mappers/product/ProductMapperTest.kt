@@ -10,7 +10,6 @@ class ProductMapperTest {
 
     @Test
     fun `test ProductDto to Product conversion`() {
-        // given
         val productDto = ProductDto(
             id = 123,
             thumbnail = "https://example.com/thumbnail.jpg",
@@ -25,10 +24,8 @@ class ProductMapperTest {
             stock = 10
         )
 
-        // when
         val product = productDto.toProduct()
 
-        // then
         assertThat(product.productId).isEqualTo(123)
         assertThat(product.image).isEqualTo("https://example.com/thumbnail.jpg")
         assertThat(product.title).isEqualTo("Product Title")
@@ -46,7 +43,6 @@ class ProductMapperTest {
 
     @Test
     fun `test Product to ProductEntity conversion`() {
-        // given
         val product = Product(
             productId = 123,
             image = "https://example.com/image.jpg",
@@ -60,10 +56,8 @@ class ProductMapperTest {
             category = "Product Category"
         )
 
-        // when
         val productEntity = product.toProductEntity()
 
-        // then
         assertThat(productEntity.productId).isEqualTo(123)
         assertThat(productEntity.image).isEqualTo("https://example.com/image.jpg")
         assertThat(productEntity.title).isEqualTo("Product Title")
@@ -81,7 +75,6 @@ class ProductMapperTest {
 
     @Test
     fun `test ProductEntity to Product conversion`() {
-        // given
         val productEntity = ProductEntity(
             id = 456,
             productId = 123,
@@ -96,10 +89,8 @@ class ProductMapperTest {
             category = "Product Category"
         )
 
-        // when
         val product = productEntity.toProduct()
 
-        // then
         assertThat(product.productId).isEqualTo(123)
         assertThat(product.image).isEqualTo("https://example.com/image.jpg")
         assertThat(product.title).isEqualTo("Product Title")

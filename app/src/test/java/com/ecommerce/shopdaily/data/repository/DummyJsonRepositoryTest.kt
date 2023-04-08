@@ -56,7 +56,7 @@ class DummyJsonRepositoryTest {
     }
 
     @Test
-    fun `test getCategory() function`() = runBlocking {
+    fun `test getCategory function`() = runBlocking {
         val token = "token"
         val categoryDto = CategoryDto(20, emptyList(), 0, 0)
         `when`(mockApi.getCategory(token, "123")).thenReturn(Response.success(categoryDto))

@@ -35,10 +35,15 @@ class DummyJsonRepositoryTest {
     fun `test login function`() = runBlocking {
         val userDto =
             UserDto("test@gmail.com", "Test", "Male", 1, "", "User", "1234567890", "test_user")
-        val requestBody = LoginRequestBody("test_user", "1234567890")
-        `when`(mockApi.login(requestBody)).thenReturn(Response.success(userDto))
+        val username = "test_user"
+        val password = "1234567890"
+        `when`(mockApi.login(LoginRequestBody(username, password))).thenReturn(
+            Response.success(
+                userDto
+            )
+        )
 
-        val response = mockApi.login(requestBody)
+        val response = repository.login(username, password)
 
         assertThat(response.body()).isEqualTo(userDto)
     }
@@ -61,7 +66,7 @@ class DummyJsonRepositoryTest {
         val categoryDto = CategoryDto(20, emptyList(), 0, 0)
         `when`(mockApi.getCategory(token, "123")).thenReturn(Response.success(categoryDto))
 
-        val response = mockApi.getCategory(token, "123")
+        val response = repository.getCategory(token, "123")
 
         assertThat(response.body()).isEqualTo(categoryDto)
     }
@@ -70,9 +75,9 @@ class DummyJsonRepositoryTest {
     fun `test getProducts function`() = runBlocking {
         val token = "token"
         val categoryDto = CategoryDto(20, emptyList(), 0, 0)
-        `when`(mockApi.getProducts(token, 0)).thenReturn(Response.success(categoryDto))
+        `when`(mockApi.getProducts(token, skip = 0)).thenReturn(Response.success(categoryDto))
 
-        val response = mockApi.getProducts(token, 0)
+        val response = repository.getProducts(token, 0)
 
         assertThat(response.body()).isEqualTo(categoryDto)
     }

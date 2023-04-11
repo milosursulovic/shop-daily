@@ -5,6 +5,7 @@ import com.ecommerce.shopdaily.domain.model.product.Product
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -16,6 +17,13 @@ class DeleteFromFavoritesUseCaseTest {
 
     @Mock
     private lateinit var mockRepository: DummyJsonRepository
+
+    private lateinit var useCase: DeleteFromFavoritesUseCase
+
+    @Before
+    fun setUp() {
+        useCase = DeleteFromFavoritesUseCase(mockRepository)
+    }
 
     @Test
     fun `invoke should emit Success resource when deleteFromFavorites is successful`() =
@@ -36,7 +44,6 @@ class DeleteFromFavoritesUseCaseTest {
                 ),
                 category = "Electronics"
             )
-            val useCase = DeleteFromFavoritesUseCase(mockRepository)
             val expectedResource = Resource.Success(product)
             `when`(
                 mockRepository.deleteFromFavorites(
@@ -73,7 +80,6 @@ class DeleteFromFavoritesUseCaseTest {
                 ),
                 category = "Electronics"
             )
-            val useCase = DeleteFromFavoritesUseCase(mockRepository)
             val expectedResource = Resource.Error<Nothing>("Test exception message")
             `when`(
                 mockRepository.deleteFromFavorites(

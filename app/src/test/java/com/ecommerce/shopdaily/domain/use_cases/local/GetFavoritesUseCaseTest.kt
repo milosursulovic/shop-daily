@@ -60,11 +60,26 @@ class GetFavoritesUseCaseTest {
         }
 
     @Test
-    fun `invoke should emit Loading and Error resource when getFavorites throws an exception`() =
+    fun `invoke should emit Error resource when getFavorites is empty`() =
         runBlocking {
             val favorites = emptyList<ProductEntity>()
             `when`(mockRepository.getFavorites()).thenReturn(favorites)
             val expectedResource = Resource.Error<Nothing>("")
+
+            var actualResource: Resource.Error<List<Product>>? = null
+
+            useCase().collect { result ->
+                if (result is Resource.Error) actualResource = result
+            }
+
+            assertThat(actualResource?.message).isEqualTo(expectedResource.message)
+        }
+
+    @Test
+    fun `invoke should emit Error resource when getFavorites throws an exception`() =
+        runBlocking {
+            `when`(mockRepository.getFavorites()).thenThrow(RuntimeException("Test exception message"))
+            val expectedResource = Resource.Error<Nothing>("Test exception message")
 
             var actualResource: Resource.Error<List<Product>>? = null
 

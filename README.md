@@ -1,50 +1,63 @@
-# Shop Daily
+# ShopDaily eCommerce App
 
-A Simple E Commerce Mobile Application which has been implemented using Clean Architecture alongside MVVM design.
+## Overview
+ShopDaily is an Android application built for educational purposes and is open to contributions from developers. It demonstrates the integration of various modern Android technologies and libraries to create an eCommerce app.
 
-## ***THIS REPOSITORY IS JUST FOR TRAINING PURPOSE***
+## Technologies and Libraries Used
 
-### Contribution
-Feel free to fork and contribute to this repository. Also be free to star this repository.
+### 1. Android
+   - The application is built for the Android platform.
 
-### Technologies & Methodologies:
+### 2. Kotlin
+   - The primary programming language used for development.
 
-- Jetpack Compose
-- Dagger Hilt
-- Room
-- Coroutines
-- Clean Architecture
-- MVVM Pattern
-- Flow
-- Material design
-- JUnit
-- Truth
-- Espresso
+### 3. Dagger Hilt
+   - Dagger Hilt is used for dependency injection, enhancing code modularity and maintainability.
 
-### App Scenario
-User should register, login, list available products,
-add them to cart and do checkout, add promo codes,
-add different payment methods, be able to favorite products,
-see different product categories, be able to change profile settings, etc.
+### 4. Retrofit
+   - Retrofit is used for making network requests and handling REST APIs for eCommerce functionalities.
 
-### Users for login
-You can login with some of this users:
-- User 1 **username: kminchelle; password: 0lelplR**
-- User 2 **username: atuny0; password: 9uQFF1Lh**
-- User 3 **username: hbingley1; password: CQutx25i8r**
-- User 4 **username: rshawe2; password: OWsTbMUgFc**
-- User 5 **username: yraigatt3; password: sRQxjPfdS**
+### 5. Compose Navigation
+   - Android Compose Navigation is implemented for handling navigation within the app.
 
-For more users visit: https://dummyjson.com/users
+### 6. Compose UI
+   - Jetpack Compose is used for building the user interface, providing a modern and responsive design.
 
-### Supported Android Versions
-Android versions targeted:
+### 7. Compose Pager
+   - Accompanist Pager is integrated for creating interactive pagers.
 
-- Android API level 21 or higher
+### 8. Coil
+   - Coil is used for efficient image loading and caching in the app.
 
-Tested on:
+### 9. Room
+   - Android Room is employed for local data storage and database operations.
 
-- Pixel 3a API 33 x86 64 (emulator device)
+## Project Structure
+The project follows modern Android app development practices, providing users with a responsive and user-friendly eCommerce experience.
 
-### Used API
-The API is here: https://dummyjson.com/
+## Setup
+To run and contribute to this project, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Open the project in Android Studio.
+3. Connect your Android device or emulator.
+4. Build and run the application.
+
+## Features
+This eCommerce Android project includes the following features:
+
+- Efficient network calls using Retrofit.
+- Navigation between different sections of the app.
+- Interactive image pagers using Compose Pager.
+- Dependency injection with Dagger Hilt.
+- Local data storage and database operations with Room.
+- Modern and responsive user interface designed with Jetpack Compose.
+
+## Contributing
+Contributions to this project are highly encouraged. Feel free to open issues, submit pull requests, or suggest improvements or bug fixes.
+
+## License
+This project is open-source and welcomes contributors. It is not bound by any specific license. Feel free to use, modify, or distribute it as needed.
+
+## Contact
+For questions, issues, or inquiries related to the project, please contact the project maintainers or contributors listed in the repository.

@@ -1,7 +1,6 @@
 package com.ecommerce.shopdaily.data.mappers.user
 
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
-import com.ecommerce.shopdaily.data.remote.dto.login.UserDto
 import com.ecommerce.shopdaily.domain.model.login.User
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test

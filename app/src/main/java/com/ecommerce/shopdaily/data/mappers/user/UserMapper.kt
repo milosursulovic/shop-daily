@@ -14,6 +14,6 @@ fun User.toUserEntity(): UserEntity =
         token = token
     )
 
-fun UserDto.toUser(): User = User(username, email, firstName, lastName, image, token)
+fun UserDto.toUser(): User = User(username, email, firstName, lastName, image, accessToken)
 
 fun UserEntity.toUser(): User = User(username, email, firstName, lastName, image, token)

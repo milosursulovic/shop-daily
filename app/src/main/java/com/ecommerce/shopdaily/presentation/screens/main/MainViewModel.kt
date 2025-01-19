@@ -167,7 +167,7 @@ class MainViewModel @Inject constructor(
                             getCategories(loggedUser?.token!!)
                             onProductEvent(ProductEvent.GetFavorites)
                             getNewProducts(loggedUser?.token!!, 0)
-                            getSaleProducts(loggedUser?.token!!, 10)
+                            getSaleProducts(loggedUser?.token!!, 5)
                         }
                     }
                     is Resource.Error -> {

@@ -19,7 +19,7 @@ class GetCategoriesUseCase(
                 response.body()?.let { categories ->
                     val newCategories = mutableListOf<ShopCategory>()
                     categories.forEach { category ->
-                        val newCategory = category.replace("-", " ").split(" ")
+                        val newCategory = category.name.replace("-", " ").split(" ")
                             .joinToString(" ") { word ->
                                 word.replaceFirstChar {
                                     if (it.isLowerCase()) it.titlecase(
@@ -27,7 +27,7 @@ class GetCategoriesUseCase(
                                     ) else it.toString()
                                 }
                             }
-                        newCategories.add(ShopCategory(categoryId = category, name = newCategory))
+                        newCategories.add(ShopCategory(categoryId = category.slug, name = newCategory))
                     }
                     emit(Resource.Success(newCategories))
                 }

@@ -1,6 +1,7 @@
 package com.ecommerce.shopdaily.data.remote
 
 import com.ecommerce.shopdaily.data.remote.dto.category.CategoryDto
+import com.ecommerce.shopdaily.data.remote.dto.category.ProductCategoriesDto
 import com.ecommerce.shopdaily.data.remote.dto.login.UserDto
 import com.ecommerce.shopdaily.data.remote.dto.login.request.LoginRequestBody
 import retrofit2.Response
@@ -11,7 +12,7 @@ interface DummyJsonService {
     suspend fun login(@Body body: LoginRequestBody): Response<UserDto>
 
     @GET("products/categories")
-    suspend fun getCategories(@Header("Authorization") token: String): Response<List<String>>
+    suspend fun getCategories(@Header("Authorization") token: String): Response<List<ProductCategoriesDto>>
 
     @GET("products/category/{category}")
     suspend fun getCategory(

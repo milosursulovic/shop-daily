@@ -5,6 +5,7 @@ import com.ecommerce.shopdaily.data.db.entities.ProductEntity
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
 import com.ecommerce.shopdaily.data.remote.DummyJsonService
 import com.ecommerce.shopdaily.data.remote.dto.category.CategoryDto
+import com.ecommerce.shopdaily.data.remote.dto.category.ProductCategoriesDto
 import com.ecommerce.shopdaily.data.remote.dto.login.UserDto
 import com.ecommerce.shopdaily.data.remote.dto.login.request.LoginRequestBody
 import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
@@ -22,7 +23,7 @@ class DummyJsonRepositoryImpl(
 
     override suspend fun saveUser(user: UserEntity): Long = dao.saveUser(user)
 
-    override suspend fun getCategories(token: String): Response<List<String>> =
+    override suspend fun getCategories(token: String): Response<List<ProductCategoriesDto>> =
         api.getCategories(token)
 
     override suspend fun getCategory(token: String, categoryId: String): Response<CategoryDto> =

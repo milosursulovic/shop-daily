@@ -3,7 +3,7 @@ package com.ecommerce.shopdaily.domain.model.product
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
-class ProductTest {
+class ProductDtoTest {
     @Test
     fun `test that Product has correct properties`() {
         val product = Product(

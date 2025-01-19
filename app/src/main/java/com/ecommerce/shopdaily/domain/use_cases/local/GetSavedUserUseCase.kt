@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 class GetSavedUserUseCase(
     private val repository: DummyJsonRepository
 ) {
-    suspend operator fun invoke(): Flow<Resource<User>> = flow {
+    operator fun invoke(): Flow<Resource<User>> = flow {
         emit(Resource.Loading())
         try {
             if (repository.getSavedUser().isNotEmpty()) {

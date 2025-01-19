@@ -1,9 +1,10 @@
 package com.ecommerce.shopdaily.data.remote.dto.product
 
+import com.ecommerce.shopdaily.data.remote.dto.category.ProductDto
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
-class ProductDtoTest {
+class ProductDtoDtoTest {
     @Test
     fun `product properties should match the provided values`() {
         val productDto = ProductDto(

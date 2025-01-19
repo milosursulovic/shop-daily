@@ -1,12 +1,11 @@
 package com.ecommerce.shopdaily.data.mappers.product
 
 import com.ecommerce.shopdaily.data.db.entities.ProductEntity
-import com.ecommerce.shopdaily.data.remote.dto.product.ProductDto
 import com.ecommerce.shopdaily.domain.model.product.Product
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
-class ProductMapperTest {
+class ProductDtoMapperTest {
 
     @Test
     fun `test ProductDto to Product conversion`() {

@@ -11,7 +11,7 @@ import org.json.JSONObject
 class GetCategoryUseCase(
     private val repository: DummyJsonRepository
 ) {
-    suspend operator fun invoke(
+    operator fun invoke(
         token: String,
         categoryId: String,
         name: String

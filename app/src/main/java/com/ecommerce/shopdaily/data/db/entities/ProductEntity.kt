@@ -18,7 +18,7 @@ data class ProductEntity(
     @ColumnInfo(name = "subtitle")
     val subtitle: String,
     @ColumnInfo(name = "price")
-    val price: Int,
+    val price: Double,
     @ColumnInfo(name = "discount")
     val discount: Double,
     @ColumnInfo(name = "rating")

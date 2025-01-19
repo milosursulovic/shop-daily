@@ -1,7 +1,5 @@
 package com.ecommerce.shopdaily.data.mappers.category
 
-import com.ecommerce.shopdaily.data.remote.dto.category.CategoryDto
-import com.ecommerce.shopdaily.data.remote.dto.product.ProductDto
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 

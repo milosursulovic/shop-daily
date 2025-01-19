@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetFavoritesUseCase(private val repository: DummyJsonRepository) {
-    suspend operator fun invoke(): Flow<Resource<List<Product>>> = flow {
+    operator fun invoke(): Flow<Resource<List<Product>>> = flow {
         emit(Resource.Loading())
         try {
             val favoritesEntities = repository.getFavorites()

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 class SaveUserUseCase(
     private val repository: DummyJsonRepository
 ) {
-    suspend operator fun invoke(user: User): Flow<Resource<User>> = flow {
+    operator fun invoke(user: User): Flow<Resource<User>> = flow {
         emit(Resource.Loading())
         try {
             repository.saveUser(user.toUserEntity())

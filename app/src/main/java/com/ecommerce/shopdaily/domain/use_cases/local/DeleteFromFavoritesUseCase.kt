@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class DeleteFromFavoritesUseCase(private val repository: DummyJsonRepository) {
-    suspend operator fun invoke(product: Product): Flow<Resource<Product>> = flow {
+    operator fun invoke(product: Product): Flow<Resource<Product>> = flow {
         emit(Resource.Loading())
         try {
             repository.deleteFromFavorites(product.productId, product.category)

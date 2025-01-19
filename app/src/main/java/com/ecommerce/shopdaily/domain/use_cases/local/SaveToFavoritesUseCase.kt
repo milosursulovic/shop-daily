@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 class SaveToFavoritesUseCase(
     private val repository: DummyJsonRepository
 ) {
-    suspend operator fun invoke(product: Product): Flow<Resource<Product>> = flow {
+    operator fun invoke(product: Product): Flow<Resource<Product>> = flow {
         emit(Resource.Loading())
         try {
             repository.saveProductToFavorites(product.toProductEntity())

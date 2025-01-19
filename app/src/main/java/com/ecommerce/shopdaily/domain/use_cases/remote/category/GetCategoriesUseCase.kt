@@ -11,7 +11,7 @@ import java.util.*
 class GetCategoriesUseCase(
     private val repository: DummyJsonRepository
 ) {
-    suspend operator fun invoke(token: String): Flow<Resource<List<ShopCategory>>> = flow {
+    operator fun invoke(token: String): Flow<Resource<List<ShopCategory>>> = flow {
         emit(Resource.Loading())
         try {
             val response = repository.getCategories(token)

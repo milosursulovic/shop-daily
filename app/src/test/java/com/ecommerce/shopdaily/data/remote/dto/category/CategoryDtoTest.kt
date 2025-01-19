@@ -1,6 +1,5 @@
 package com.ecommerce.shopdaily.data.remote.dto.category
 
-import com.ecommerce.shopdaily.data.remote.dto.product.ProductDto
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
@@ -23,12 +22,12 @@ class CategoryDtoTest {
         )
         val categoryDto = CategoryDto(
             limit = 10,
-            products = listOf(productDto),
+            productDtos = listOf(productDto),
             skip = 0,
             total = 1
         )
 
-        val products = categoryDto.products
+        val products = categoryDto.productDtos
 
         assertThat(products).isNotNull()
         assertThat(products).isNotEmpty()
@@ -38,7 +37,7 @@ class CategoryDtoTest {
     fun `total should be greater than or equal to zero`() {
         val categoryDto = CategoryDto(
             limit = 10,
-            products = emptyList(),
+            productDtos = emptyList(),
             skip = 0,
             total = 1
         )

@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 import org.json.JSONObject
 
 class GetProductsUseCase(private val repository: DummyJsonRepository) {
-    suspend operator fun invoke(token: String, skip: Int = 0): Flow<Resource<List<Product>>> =
+    operator fun invoke(token: String, skip: Int = 0): Flow<Resource<List<Product>>> =
         flow {
             emit(Resource.Loading())
             try {

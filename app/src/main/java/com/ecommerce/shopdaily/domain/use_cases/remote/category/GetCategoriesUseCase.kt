@@ -6,7 +6,7 @@ import com.ecommerce.shopdaily.domain.repository.DummyJsonRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.json.JSONObject
-import java.util.*
+import java.util.Locale
 
 class GetCategoriesUseCase(
     private val repository: DummyJsonRepository

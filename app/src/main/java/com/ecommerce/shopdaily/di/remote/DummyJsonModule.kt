@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -15,9 +16,10 @@ import javax.inject.Singleton
 object DummyJsonModule {
     @Singleton
     @Provides
-    fun providesDummyJsonService(app: Application): DummyJsonService =
+    fun providesDummyJsonService(app: Application, okHttpClient: OkHttpClient): DummyJsonService =
         Retrofit.Builder()
             .baseUrl(DummyJsonService.API_URL)
+            .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create(DummyJsonService::class.java)

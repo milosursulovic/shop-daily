@@ -1,7 +1,13 @@
 package com.ecommerce.shopdaily.presentation.screens.main.main_page.components.product
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
@@ -15,7 +21,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ecommerce.shopdaily.domain.model.product.Product
-import com.ecommerce.shopdaily.presentation.common.components.product.*
+import com.ecommerce.shopdaily.presentation.common.components.product.CircularButton
+import com.ecommerce.shopdaily.presentation.common.components.product.ProductPrice
+import com.ecommerce.shopdaily.presentation.common.components.product.ProductRating
+import com.ecommerce.shopdaily.presentation.common.components.product.ProductSubtitle
+import com.ecommerce.shopdaily.presentation.common.components.product.ProductTitle
 import com.ecommerce.shopdaily.presentation.screens.main.MainViewModel
 import com.ecommerce.shopdaily.presentation.screens.main.util.product.ProductEvent
 

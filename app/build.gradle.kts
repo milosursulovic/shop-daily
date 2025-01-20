@@ -59,32 +59,35 @@ android {
 }
 
 dependencies {
-    //compose navigation
+    //Compose Navigation
     implementation("androidx.navigation:navigation-compose:2.8.5")
 
-    //retrofit
+    //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
-    //pager
+    //Login Interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    //Pager
     implementation("com.google.accompanist:accompanist-pager:0.29.0-alpha")
     implementation("com.google.accompanist:accompanist-pager-indicators:0.29.0-alpha")
 
-    //dagger hilt
+    //Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-compiler:2.50")
 
-    //that I can use hiltViewModel() method
+    //Contains hiltViewModel() method
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
-    //room
+    //Room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 
-    //coil
+    //Coil
     implementation("io.coil-kt:coil-compose:2.2.2")
 
     implementation("androidx.core:core-ktx:1.15.0")
@@ -95,22 +98,22 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:1.7.6")
     implementation("androidx.compose.material:material:1.7.6")
 
-    //junit
+    //Junit
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
 
-    //truth
+    //Truth
     testImplementation("com.google.truth:truth:1.1.3")
     androidTestImplementation("com.google.truth:truth:1.1.3")
 
-    //mockito
+    //Mockito
     testImplementation("org.mockito:mockito-core:3.11.2")
     androidTestImplementation("org.mockito:mockito-android:3.11.2")
 
-    //arch core
+    //Arch Core
     androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
 
-    //compose testing
+    //Compose Testing
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.7.6")
     debugImplementation("androidx.compose.ui:ui-tooling:1.7.6")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.7.6")

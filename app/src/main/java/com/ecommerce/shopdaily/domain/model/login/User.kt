@@ -8,5 +8,7 @@ data class User(
     val firstName: String,
     val lastName: String,
     val image: String,
-    val token: String
+    val gender: String,
+    val accessToken: String,
+    val refreshToken: String,
 ) : Serializable

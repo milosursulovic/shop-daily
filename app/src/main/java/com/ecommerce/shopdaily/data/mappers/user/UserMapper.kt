@@ -11,9 +11,13 @@ fun User.toUserEntity(): UserEntity =
         firstName = firstName,
         lastName = lastName,
         image = image,
-        token = token
+        gender = gender,
+        accessToken = accessToken,
+        refreshToken = refreshToken
     )
 
-fun UserDto.toUser(): User = User(username, email, firstName, lastName, image, accessToken)
+fun UserDto.toUser(): User =
+    User(username, email, firstName, lastName, image, gender, accessToken, refreshToken)
 
-fun UserEntity.toUser(): User = User(username, email, firstName, lastName, image, token)
+fun UserEntity.toUser(): User =
+    User(username, email, firstName, lastName, image, gender, accessToken, refreshToken)

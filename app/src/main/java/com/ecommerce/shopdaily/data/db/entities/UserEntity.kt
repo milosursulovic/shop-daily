@@ -19,6 +19,10 @@ data class UserEntity(
     val lastName: String,
     @ColumnInfo(name = "image")
     val image: String,
-    @ColumnInfo(name = "token")
-    val token: String
+    @ColumnInfo(name = "accessToken")
+    val accessToken: String,
+    @ColumnInfo(name = "gender")
+    val gender: String,
+    @ColumnInfo(name = "refreshToken")
+    val refreshToken: String,
 )

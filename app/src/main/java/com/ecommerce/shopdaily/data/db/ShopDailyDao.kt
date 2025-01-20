@@ -1,6 +1,9 @@
 package com.ecommerce.shopdaily.data.db
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.ecommerce.shopdaily.data.db.entities.ProductEntity
 import com.ecommerce.shopdaily.data.db.entities.UserEntity
 

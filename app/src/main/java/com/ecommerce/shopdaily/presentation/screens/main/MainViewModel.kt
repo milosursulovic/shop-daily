@@ -164,10 +164,10 @@ class MainViewModel @Inject constructor(
                         screenLoadingState = false
                         result.data?.let { user ->
                             loggedUser = user
-                            getCategories(loggedUser?.token!!)
+                            getCategories(loggedUser?.accessToken!!)
                             onProductEvent(ProductEvent.GetFavorites)
-                            getNewProducts(loggedUser?.token!!, 0)
-                            getSaleProducts(loggedUser?.token!!, 5)
+                            getNewProducts(loggedUser?.accessToken!!, 0)
+                            getSaleProducts(loggedUser?.accessToken!!, 5)
                         }
                     }
                     is Resource.Error -> {

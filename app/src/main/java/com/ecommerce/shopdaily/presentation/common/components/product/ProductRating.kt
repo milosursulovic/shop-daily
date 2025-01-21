@@ -18,9 +18,13 @@ import com.ecommerce.shopdaily.presentation.ui.theme.Gray
 import com.ecommerce.shopdaily.presentation.ui.theme.StartYellow
 
 @Composable
-fun ProductRating(product: Product, modifier: Modifier = Modifier) {
+fun ProductRating(product: Product) {
     Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically) {
-        repeat(5) {
+        val fullStars = product.rating.toInt()
+        val halfStars = if (product.rating % 1 >= 0.5) 1 else 0
+        val emptyStars = 5 - fullStars - halfStars
+
+        repeat(fullStars) {
             Icon(
                 imageVector = Icons.Filled.Star,
                 contentDescription = null,
@@ -30,7 +34,31 @@ fun ProductRating(product: Product, modifier: Modifier = Modifier) {
                 tint = StartYellow
             )
         }
+
+        if (halfStars == 1) {
+            Icon(
+                imageVector = Icons.Filled.Star,
+                contentDescription = null,
+                modifier = Modifier
+                    .height(15.dp)
+                    .width(15.dp),
+                tint = StartYellow
+            )
+        }
+
+        repeat(emptyStars) {
+            Icon(
+                imageVector = Icons.Filled.Star,
+                contentDescription = null,
+                modifier = Modifier
+                    .height(15.dp)
+                    .width(15.dp),
+                tint = Gray
+            )
+        }
+
         Spacer(modifier = Modifier.width(5.dp))
+
         Text(
             text = "(${product.rating})",
             style = MaterialTheme.typography.h4,

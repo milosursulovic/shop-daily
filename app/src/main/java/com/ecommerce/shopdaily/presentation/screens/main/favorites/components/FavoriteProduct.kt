@@ -78,7 +78,7 @@ fun FavoriteProduct(favorite: Product, onRemoveClick: (Product) -> Unit) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    ProductRating(product = favorite, modifier = Modifier.weight(1f))
+                    ProductRating(product = favorite)
                     ProductPrice(product = favorite, modifier = Modifier.weight(1f))
                 }
             }

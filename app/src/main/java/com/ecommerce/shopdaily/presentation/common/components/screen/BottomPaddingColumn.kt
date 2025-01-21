@@ -18,18 +18,23 @@ fun BottomPaddingColumn(
 ) {
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
-    val modifier =
-        if (verticalScroll && justBottomPadding) Modifier
+
+    val paddingModifier = if (justBottomPadding) {
+        Modifier.padding(bottom = screenHeight * 0.15f)
+    } else {
+        Modifier.padding(top = 10.dp, start = 10.dp, end = 10.dp, bottom = screenHeight * 0.15f)
+    }
+
+    val modifier = if (verticalScroll) {
+        Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(bottom = screenHeight * 0.15f)
-        else if (verticalScroll && !justBottomPadding) Modifier
+            .then(paddingModifier)
+    } else {
+        Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(top = 10.dp, start = 10.dp, end = 10.dp, bottom = screenHeight * 0.15f)
-        else Modifier
-            .fillMaxSize()
-            .padding(top = 10.dp, start = 10.dp, end = 10.dp, bottom = screenHeight * 0.15f)
+            .then(paddingModifier)
+    }
 
     Column(modifier = modifier) {
         innerContent()

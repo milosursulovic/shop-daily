@@ -9,7 +9,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ArrowForward
+import androidx.compose.material.icons.automirrored.outlined.ArrowForward
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,7 +28,7 @@ fun ForgotPassword() {
         )
         IconButton(onClick = { }) {
             Icon(
-                Icons.Outlined.ArrowForward,
+                Icons.AutoMirrored.Outlined.ArrowForward,
                 null,
                 modifier = Modifier.size(20.dp),
                 tint = MaterialTheme.colors.primary

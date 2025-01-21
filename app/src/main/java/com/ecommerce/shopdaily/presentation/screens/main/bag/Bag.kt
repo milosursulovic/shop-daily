@@ -19,7 +19,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -112,7 +112,7 @@ fun Bag(viewModel: MainViewModel) {
                         iconModifier = Modifier
                             .width(40.dp)
                             .height(40.dp),
-                        icon = Icons.Outlined.KeyboardArrowRight,
+                        icon = Icons.AutoMirrored.Outlined.KeyboardArrowRight,
                         tint = Gray,
                         onClick = {},
                         iconDrawable = null

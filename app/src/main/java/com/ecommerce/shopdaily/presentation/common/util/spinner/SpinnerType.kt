@@ -1,6 +1,6 @@
 package com.ecommerce.shopdaily.presentation.common.util.spinner
 
 sealed class SpinnerType {
-    object Size : SpinnerType()
-    object Color : SpinnerType()
+    data object Size : SpinnerType()
+    data object Color : SpinnerType()
 }

@@ -10,7 +10,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowLeft
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,7 +47,7 @@ fun AppBar(
             if (isBackEnabled) {
                 IconButton(onClick = { }) {
                     Icon(
-                        Icons.Outlined.KeyboardArrowLeft,
+                        Icons.AutoMirrored.Outlined.KeyboardArrowLeft,
                         null,
                         modifier = Modifier.size(40.dp),
                         tint = MaterialTheme.colors.onBackground

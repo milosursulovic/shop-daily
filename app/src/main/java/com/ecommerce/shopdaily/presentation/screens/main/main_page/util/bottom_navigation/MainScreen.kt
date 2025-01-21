@@ -1,16 +1,9 @@
 package com.ecommerce.shopdaily.presentation.screens.main.main_page.util.bottom_navigation
 
 sealed class MainScreen(val route: String) {
-    object MainPage : MainScreen("main_page")
-    object ShopPage : MainScreen("shop_page")
-    object BagPage : MainScreen("bag_page")
-    object FavoritesPage : MainScreen("favorites_page")
-    object ProfilePage : MainScreen("profile_page")
-
-    fun withArgs(vararg args: String): String = buildString {
-        append(route)
-        args.forEach { arg ->
-            append("/$arg")
-        }
-    }
+    data object MainPage : MainScreen("main_page")
+    data object ShopPage : MainScreen("shop_page")
+    data object BagPage : MainScreen("bag_page")
+    data object FavoritesPage : MainScreen("favorites_page")
+    data object ProfilePage : MainScreen("profile_page")
 }

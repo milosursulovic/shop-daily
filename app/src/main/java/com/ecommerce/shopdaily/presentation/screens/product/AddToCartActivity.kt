@@ -3,7 +3,6 @@
 package com.ecommerce.shopdaily.presentation.screens.product
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -99,7 +98,7 @@ class AddToCartActivity : ComponentActivity() {
                             if (screenLoading) {
                                 Loading(modifier = Modifier.fillMaxSize())
                             } else {
-                                if (favoritesState.error != null && favoritesState.error.isNotBlank()) {
+                                if (!favoritesState.error.isNullOrBlank()) {
                                     FeedbackLabel(
                                         modifier = Modifier.fillMaxSize(),
                                         feedbackType = FeedbackType.Error(favoritesState.error)
@@ -194,7 +193,7 @@ class AddToCartActivity : ComponentActivity() {
         val data = Intent().apply {
             putExtra(Constants.ADD_TO_CART, result)
         }
-        setResult(Activity.RESULT_OK, data)
+        setResult(RESULT_OK, data)
         (context as ComponentActivity).finish()
     }
 }

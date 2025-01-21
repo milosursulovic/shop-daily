@@ -1,6 +1,5 @@
 package com.ecommerce.shopdaily.di.remote
 
-import android.app.Application
 import com.ecommerce.shopdaily.data.remote.DummyJsonService
 import dagger.Module
 import dagger.Provides
@@ -16,7 +15,7 @@ import javax.inject.Singleton
 object DummyJsonModule {
     @Singleton
     @Provides
-    fun providesDummyJsonService(app: Application, okHttpClient: OkHttpClient): DummyJsonService =
+    fun providesDummyJsonService(okHttpClient: OkHttpClient): DummyJsonService =
         Retrofit.Builder()
             .baseUrl(DummyJsonService.API_URL)
             .client(okHttpClient)

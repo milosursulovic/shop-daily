@@ -43,7 +43,7 @@ fun Favorites(
                 if (favoritesState.isLoading) {
                     Loading(modifier = Modifier.fillMaxSize())
                 } else {
-                    if (favoritesState.error != null && favoritesState.error.isNotBlank()) {
+                    if (!favoritesState.error.isNullOrBlank()) {
                         FeedbackLabel(
                             modifier = Modifier.fillMaxSize(),
                             FeedbackType.Error(favoritesState.error)

@@ -2,9 +2,10 @@ import { useAuthStore } from '../store/authStore'
 
 const BASE_URL = 'https://dummyjson.com'
 
-interface RequestOptions extends RequestInit {
+interface RequestOptions extends Omit<RequestInit, 'headers'> {
   auth?: boolean
   skipRetry?: boolean
+  headers?: Record<string, string>
 }
 
 async function refreshAccessToken(): Promise<string | null> {
@@ -31,7 +32,7 @@ export async function apiFetch<T>(path: string, options: RequestOptions = {}): P
   const { auth = false, skipRetry = false, headers, ...rest } = options
   const accessToken = useAuthStore.getState().accessToken
 
-  const finalHeaders: HeadersInit = {
+  const finalHeaders: Record<string, string> = {
     'Content-Type': 'application/json',
     ...headers,
     ...(auth && accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),

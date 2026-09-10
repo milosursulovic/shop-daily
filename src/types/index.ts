@@ -1,9 +1,3 @@
-export interface ProductDimensions {
-  width: number
-  height: number
-  depth: number
-}
-
 export interface ProductReview {
   rating: number
   comment: string
@@ -21,17 +15,9 @@ export interface Product {
   discountPercentage: number
   rating: number
   stock: number
-  tags: string[]
   brand?: string
-  sku: string
-  weight: number
-  dimensions: ProductDimensions
-  warrantyInformation: string
-  shippingInformation: string
   availabilityStatus: string
   reviews: ProductReview[]
-  returnPolicy: string
-  minimumOrderQuantity: number
   images: string[]
   thumbnail: string
 }
@@ -93,11 +79,6 @@ export interface User {
     country: string
   }
   phone: string
-  company: {
-    name: string
-    title: string
-    department: string
-  }
 }
 
 export interface AuthUser extends User {

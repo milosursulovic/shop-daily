@@ -1,5 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { createJSONStorage, persist } from 'zustand/middleware'
 import type { Product } from '../types'
 
 export interface LocalCartItem {
@@ -66,16 +67,15 @@ export const useCartStore = create<CartState>()(
         set({ items: get().items.filter((i) => i.productId !== productId) }),
       clear: () => set({ items: [] }),
     }),
-    { name: 'dummyjson-cart' },
+    { name: 'shopdaily-cart', storage: createJSONStorage(() => AsyncStorage) },
   ),
 )
 
 export function cartTotals(items: LocalCartItem[]) {
   const totalQuantity = items.reduce((sum, i) => sum + i.quantity, 0)
-  const subtotal = items.reduce((sum, i) => sum + i.price * i.quantity, 0)
   const discounted = items.reduce(
     (sum, i) => sum + i.price * i.quantity * (1 - i.discountPercentage / 100),
     0,
   )
-  return { totalQuantity, subtotal, discounted }
+  return { totalQuantity, discounted }
 }

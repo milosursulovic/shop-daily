@@ -1,4 +1,4 @@
-import type { AuthUser, User } from '../types'
+import type { AuthUser } from '../types'
 import { apiFetch } from './client'
 
 export function login(username: string, password: string) {
@@ -6,8 +6,4 @@ export function login(username: string, password: string) {
     method: 'POST',
     body: JSON.stringify({ username, password, expiresInMins: 60 }),
   })
-}
-
-export function getMe() {
-  return apiFetch<User>('/auth/me', { auth: true })
 }

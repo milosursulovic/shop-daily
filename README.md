@@ -1,32 +1,24 @@
-# React + TypeScript + Vite
+# ShopDaily
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+E-commerce demo app built with React Native (bare CLI) + TypeScript, backed by the [DummyJSON](https://dummyjson.com) API. React Native port of the original [Jetpack Compose Android app](https://github.com/milosursulovic/shop-daily) — same screens, navigation, color palette, font, and icon assets, ported to cross-platform React Native.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React Native CLI + TypeScript
+- React Navigation (native-stack + bottom-tabs, custom tab bar)
+- Zustand + AsyncStorage (auth, cart, favorites)
+- react-native-vector-icons (Feather)
 
-## React Compiler
+## Screens
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Login → Home (New/Sale rows) · Shop (categories → category product list) · Product detail (image pager, add to cart, favorite) · Bag (cart, checkout) · Favorites · Profile (order history, logout).
 
-## Expanding the Oxlint configuration
+## Getting started
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm install
+npm start          # Metro
+npm run android     # requires Android SDK + emulator/device
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Test login: `emilys` / `emilyspass` (DummyJSON seed account).

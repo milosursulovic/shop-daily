@@ -11,3 +11,9 @@ export function addCart(userId: number, products: { id: number; quantity: number
     body: JSON.stringify({ userId, products }),
   })
 }
+
+export function deleteCart(cartId: number) {
+  return apiFetch<Cart & { isDeleted: boolean }>(`/carts/${cartId}`, {
+    method: 'DELETE',
+  })
+}

@@ -5,15 +5,17 @@ interface Props {
   children: React.ReactNode
   onPress: () => void
   style?: ViewStyle
+  testID?: string
 }
 
-export function CircularButton({ children, onPress, style }: Props) {
+export function CircularButton({ children, onPress, style, testID }: Props) {
   const { colors } = useTheme()
 
   return (
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
+      testID={testID}
       style={[styles.button, { backgroundColor: colors.secondary }, style]}
     >
       {children}

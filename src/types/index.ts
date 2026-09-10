@@ -79,6 +79,11 @@ export interface User {
     country: string
   }
   phone: string
+  bank?: {
+    cardNumber: string
+    cardType: string
+    cardExpire: string
+  }
 }
 
 export interface AuthUser extends User {

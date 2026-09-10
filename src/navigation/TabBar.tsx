@@ -39,35 +39,41 @@ export function TabBar({ state, navigation }: BottomTabBarProps) {
   const { colors, isDark } = useTheme()
 
   return (
-    <View style={[styles.bar, { backgroundColor: colors.secondary }]}>
-      {state.routes.map((route, index) => {
-        const label = route.name as keyof typeof icons
-        const isFocused = state.index === index
-        const iconSet = icons[label]
-        const source = isFocused
-          ? isDark
-            ? iconSet.selectedDark
-            : iconSet.selectedLight
-          : isDark
-            ? iconSet.unselectedDark
-            : iconSet.unselectedLight
+    <View style={{ backgroundColor: colors.background }}>
+      <View style={[styles.bar, { backgroundColor: colors.secondary }]}>
+        {state.routes.map((route, index) => {
+          const label = route.name as keyof typeof icons
+          const isFocused = state.index === index
+          const iconSet = icons[label]
+          const source = isFocused
+            ? isDark
+              ? iconSet.selectedDark
+              : iconSet.selectedLight
+            : isDark
+              ? iconSet.unselectedDark
+              : iconSet.unselectedLight
 
-        return (
-          <TouchableOpacity
-            key={route.key}
-            onPress={() => {
-              const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true })
-              if (!isFocused && !event.defaultPrevented) navigation.navigate(route.name)
-            }}
-            style={styles.tab}
-          >
-            <Image source={source} style={styles.icon} resizeMode="contain" />
-            <Text style={[styles.label, { color: isFocused ? colors.primary : colors.gray }]}>
-              {label}
-            </Text>
-          </TouchableOpacity>
-        )
-      })}
+          return (
+            <TouchableOpacity
+              key={route.key}
+              onPress={() => {
+                const event = navigation.emit({
+                  type: 'tabPress',
+                  target: route.key,
+                  canPreventDefault: true,
+                })
+                if (!isFocused && !event.defaultPrevented) navigation.navigate(route.name)
+              }}
+              style={styles.tab}
+            >
+              <Image source={source} style={styles.icon} resizeMode="contain" />
+              <Text style={[styles.label, { color: isFocused ? colors.primary : colors.gray }]}>
+                {label}
+              </Text>
+            </TouchableOpacity>
+          )
+        })}
+      </View>
     </View>
   )
 }

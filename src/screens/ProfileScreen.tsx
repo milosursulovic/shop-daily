@@ -4,22 +4,24 @@ import { useAuthStore } from '../store/authStore'
 import { useTheme } from '../theme/useTheme'
 import { AppBar } from '../components/AppBar'
 import { ScreenTitle } from '../components/ScreenTitle'
+import type { ProfileStackParamList, ProfileStackScreenProps } from '../navigation/types'
 
 interface ProfileItem {
   title: string
   subtitle: string
+  route?: keyof ProfileStackParamList
 }
 
 const profileItems: ProfileItem[] = [
-  { title: 'My orders', subtitle: 'View your order history' },
-  { title: 'Shipping addresses', subtitle: 'Manage delivery addresses' },
-  { title: 'Payment methods', subtitle: 'Visa **34' },
+  { title: 'My orders', subtitle: 'View your order history', route: 'Orders' },
+  { title: 'Shipping addresses', subtitle: 'Manage delivery addresses', route: 'Address' },
+  { title: 'Payment methods', subtitle: 'Manage saved cards', route: 'PaymentMethods' },
   { title: 'Promocodes', subtitle: 'You have special promocodes' },
   { title: 'My reviews', subtitle: 'Reviews for items you bought' },
-  { title: 'Settings', subtitle: 'Notifications, password' },
+  { title: 'Settings', subtitle: 'Notifications, theme', route: 'Settings' },
 ]
 
-export function ProfileScreen() {
+export function ProfileScreen({ navigation }: ProfileStackScreenProps<'ProfileHome'>) {
   const { colors } = useTheme()
   const user = useAuthStore((s) => s.user)
   const logout = useAuthStore((s) => s.logout)
@@ -51,13 +53,17 @@ export function ProfileScreen() {
         keyExtractor={(item) => item.title}
         contentContainerStyle={styles.list}
         renderItem={({ item }) => (
-          <View style={styles.item}>
+          <TouchableOpacity
+            style={styles.item}
+            disabled={!item.route}
+            onPress={() => item.route && navigation.navigate(item.route)}
+          >
             <View>
               <Text style={[styles.itemTitle, { color: colors.onBackground }]}>{item.title}</Text>
               <Text style={[styles.itemSubtitle, { color: colors.gray }]}>{item.subtitle}</Text>
             </View>
-            <Feather name="chevron-right" size={20} color={colors.gray} />
-          </View>
+            {item.route && <Feather name="chevron-right" size={20} color={colors.gray} />}
+          </TouchableOpacity>
         )}
         ListFooterComponent={
           <TouchableOpacity style={styles.item} onPress={logout}>

@@ -21,6 +21,14 @@ export type ShopStackParamList = {
   Category: { slug: string; name: string }
 }
 
+export type ProfileStackParamList = {
+  ProfileHome: undefined
+  Orders: undefined
+  Address: undefined
+  PaymentMethods: undefined
+  Settings: undefined
+}
+
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>
 
@@ -32,4 +40,9 @@ export type MainTabScreenProps<T extends keyof MainTabParamList> = CompositeScre
 export type ShopStackScreenProps<T extends keyof ShopStackParamList> = CompositeScreenProps<
   NativeStackScreenProps<ShopStackParamList, T>,
   MainTabScreenProps<'Shop'>
+>
+
+export type ProfileStackScreenProps<T extends keyof ProfileStackParamList> = CompositeScreenProps<
+  NativeStackScreenProps<ProfileStackParamList, T>,
+  MainTabScreenProps<'Profile'>
 >

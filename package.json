@@ -34,6 +34,7 @@
     "@react-native/jest-preset": "0.87.1",
     "@react-native/metro-config": "0.87.1",
     "@react-native/typescript-config": "0.87.1",
+    "@testing-library/react-native": "^14.0.1",
     "@types/jest": "^29.5.13",
     "@types/react": "^19.2.0",
     "@types/react-native-vector-icons": "^6.4.18",

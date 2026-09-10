@@ -38,7 +38,11 @@ export function ProductCard({ product, onPress }: Props) {
           </Text>
         </View>
       </TouchableOpacity>
-      <CircularButton style={styles.favorite} onPress={() => toggleFavorite(product)}>
+      <CircularButton
+        style={styles.favorite}
+        onPress={() => toggleFavorite(product)}
+        testID="favorite-button"
+      >
         <Feather name="heart" size={18} color={isFavorite ? colors.primary : colors.gray} />
       </CircularButton>
     </View>
